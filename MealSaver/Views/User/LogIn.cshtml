@@ -1,7 +1,21 @@
-﻿
+﻿@model UserLoginVM
 @{
     ViewData["Title"] = "LogIn";
 }
 
 <h1>LogIn</h1>
 
+<form asp-controller="Account" asp-action="Login">
+    @*TODO: lägg till denna ovan så att man routas vidare efter att ha fyllt i formuläret
+        asp-route-returnUrl="@Model.ReturnUrl"*@
+    <label asp-for="Username"></label>
+    <input asp-for="Username" />
+    <span asp-validation-for="Username"></span>
+
+    <label asp-for="Password"></label>
+    <input asp-for="Password" />
+    <span asp-validation-for="Password"></span>
+    <br />
+    <input type="submit" value="Login" />
+</form>
+<div asp-validation-summary="All"></div>

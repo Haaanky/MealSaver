@@ -3,7 +3,20 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<header class="masthead text-center text-white">
+    <div class="masthead-content">
+        <div class="container">
+            <h1 class="masthead-heading mb-0">Welcome</h1>
+            <h2 class="masthead-subheading mb-0">to the Wasteland</h2>
+            <a asp-controller="home" asp-action="index" class="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a>
+        </div>
+    </div>
+    <div class="bg-circle-1 bg-circle"></div>
+    <div class="bg-circle-2 bg-circle"></div>
+    <div class="bg-circle-3 bg-circle"></div>
+    <div class="bg-circle-4 bg-circle"></div>
+</header>
+
 <partial name="_PartialInspiration" model="Model" /> <br />
 <partial name="_PartialHowItWorks" model="Model" /> <br />
 <partial name="_PartialWhyUseWasteland" model="Model" /> <br />

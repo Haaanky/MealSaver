@@ -1,24 +1,46 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link rel="stylesheet" href="~/lib/bootstrap-4.3.1/dist/css/bootstrap.css" type="text/css"/>
-    <link rel="stylesheet" href="~/css/site.css" type="text/css"/>
+    <link rel="stylesheet" href="~/lib/bootstrap-4.3.1/dist/css/bootstrap.css" type="text/css" />
+    <link href="~/css/one-page-wonder.css" rel="stylesheet">
+    <link href="~/css/one-page-wonder.min.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        header
-        <a class="btn btn-outline-danger" asp-controller="home" asp-action="_PartialInspiration">Inspiration</a>
-        <a asp-controller="home" asp-action="index">Wasteland</a>
-        <a asp-controller="home" asp-action="_PartialInspiration">Inspiration</a>
-        <a asp-controller="home" asp-action="_PartialHowItWorks">Så funkar det</a>
-        <a asp-controller="home" asp-action="_PartialWhyUseWasteland">Varför Wasteland</a>
-        <a asp-controller="user" asp-action="Login">Logga in</a>
-        <a asp-controller="user" asp-action="Signup">Registrera</a>
-    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Wasteland</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a a class="nav-link" asp-controller="home" asp-action="index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a a class="nav-link" asp-controller="home" asp-action="_PartialInspiration">Inspiration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a a class="nav-link" asp-controller="home" asp-action="_PartialHowItWorks">Så funkar det</a>
+                    </li>
+                    <li class="nav-item">
+                        <a a class="nav-link" asp-controller="home" asp-action="_PartialWhyUseWasteland">Varför Wasteland</a>
+                    </li>
+                    <li class="nav-item">
+                        <a a class="nav-link" asp-controller="user" asp-action="Login">Logga in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a a class="nav-link" asp-controller="user" asp-action="Signup">Registrera</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div>
         @RenderBody()
     </div>
