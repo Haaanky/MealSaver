@@ -22,17 +22,17 @@ namespace MealSaver.Controllers
             return View();
         }
 
-        [Route("/Inspiration")]
+        [Route("Inspiration")]
         public IActionResult Inspiration()
         {
             return PartialView("_Inspiration");
         }
-        [Route("/HurDetFungerar")]
+        [Route("HurDetFungerar")]
         public IActionResult PartialHowItWorks()
         {
             return PartialView("_PartialHowItWorks");
         }
-        [Route("/VarförMealsaver")]
+        [Route("VarforMealsaver")]
         public IActionResult PartialWhyUseWasteland()
         {
             return PartialView("_PartialWhyUseWasteland");
