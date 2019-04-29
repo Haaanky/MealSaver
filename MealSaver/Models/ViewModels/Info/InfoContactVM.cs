@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MealSaver.Models.ViewModels
+namespace MealSaver.Models.ViewModels.Info
 {
     public class InfoContactVM
     {
