@@ -1,0 +1,12 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace MealSaver.Models.ViewModels
+{
+    public class InfoAboutVM
+    {
+        public string Image { get; set; }
+    }
+}
