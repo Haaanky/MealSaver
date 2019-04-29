@@ -51,7 +51,7 @@ namespace MealSaver
         {
             app.UseDeveloperExceptionPage();
             app.UseAuthentication();
-            app.UseMvc();
+            app.UseMvcWithDefaultRoute();
         }
     }
 }
