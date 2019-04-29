@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\ViewModels\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\lib\" />
     <Folder Include="wwwroot\js\" />
