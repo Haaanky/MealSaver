@@ -3,20 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MealSaver.Models.ViewModels.User;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MealSaver.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         [HttpGet]
         [Route("logga-in")]
+        [AllowAnonymous]
         public IActionResult Login()
         {
             return View();
         }
         [HttpPost]
         [Route("logga-in")]
+        [AllowAnonymous]
         public IActionResult Login(UserLoginVM userLoginVM)
         {
             return RedirectToAction(nameof(Overview));
@@ -29,12 +33,14 @@ namespace MealSaver.Controllers
         }
         [HttpGet]
         [Route("registrera")]
+        [AllowAnonymous]
         public IActionResult SignUp()
         {
             return View();
         }
         [HttpPost]
         [Route("registrera")]
+        [AllowAnonymous]
         public IActionResult SignUp(UserSignUpVM userSignUpVM)
         {
             return View(userSignUpVM);
