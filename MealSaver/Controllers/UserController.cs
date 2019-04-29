@@ -47,18 +47,21 @@ namespace MealSaver.Controllers
         }
         [HttpGet]
         [Route("oversikt")]
+        [AllowAnonymous] //ta bort när vi är klara
         public IActionResult Overview()
         {
             return View();
         }
         [HttpGet]
         [Route("lagga-till")]
+        [AllowAnonymous] //ta bort när vi är klara
         public IActionResult AddItem()
         {
             return View();
         }
         [HttpPost]
         [Route("lagga-till")]
+        [AllowAnonymous] //ta bort när vi är klara
         public IActionResult AddItem(UserAddItemVM userAddItemVM)
         {
             return RedirectToAction(nameof(AddItem));
