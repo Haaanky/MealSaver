@@ -8,10 +8,18 @@ namespace MealSaver.Models.ViewModels.User
 {
     public class UserSignUpVM
     {
-        [Display(Name = "E-mail")]
+        [Required]
+        [Display(Name ="E-post")]
         [EmailAddress]
+        [DataType(DataType.EmailAddress)]
         public string Username { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
+        [Required]
+        [Display(Name ="Repeat Password")]
+        [DataType(DataType.Password)]
+        [Compare(nameof(Password))]
         public string PasswordRepeat { get; set; }
     }
 }
