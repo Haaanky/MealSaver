@@ -22,20 +22,20 @@ namespace MealSaver.Controllers
             return View();
         }
 
-        [Route("Inspiration")]
+        [Route("/Inspiration")]
         public IActionResult Inspiration()
         {
             return PartialView("_Inspiration");
         }
-        [Route("PartialSaFunkarDet")]
-        public IActionResult PartialSaFunkarDet()
+        [Route("/HurDetFungerar")]
+        public IActionResult PartialHowItWorks()
         {
-            return PartialView("_PartialSaFunkarDet");
+            return PartialView("_PartialHowItWorks");
         }
-        [Route("PartialVarforWasteland")]
-        public IActionResult PartialVarforWasteland()
+        [Route("/VarförMealsaver")]
+        public IActionResult PartialWhyUseWasteland()
         {
-            return PartialView("_PartialVarforWasteland");
+            return PartialView("_PartialWhyUseWasteland");
         }
     }
 }
