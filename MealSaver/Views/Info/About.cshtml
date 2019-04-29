@@ -1,7 +1,10 @@
-﻿
-@{
-    ViewData["Title"] = "About";
-}
+﻿@model InfoAboutVM[]
 
 <h1>About</h1>
 
+
+@foreach (var item in Model)
+{
+    @item.Name;
+
+}
