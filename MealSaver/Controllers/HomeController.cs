@@ -21,5 +21,21 @@ namespace MealSaver.Controllers
         {
             return View();
         }
+
+        [Route("Inspiration")]
+        public IActionResult Inspiration()
+        {
+            return PartialView("_Inspiration");
+        }
+        [Route("PartialSaFunkarDet")]
+        public IActionResult PartialSaFunkarDet()
+        {
+            return PartialView("_PartialSaFunkarDet");
+        }
+        [Route("PartialVarforWasteland")]
+        public IActionResult PartialVarforWasteland()
+        {
+            return PartialView("_PartialVarforWasteland");
+        }
     }
 }
