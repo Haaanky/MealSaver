@@ -15,6 +15,7 @@ namespace MealSaver.Controllers
         {
             this.userService = userService;
         }
+
         [Route("")]
         public IActionResult Index()
         {
