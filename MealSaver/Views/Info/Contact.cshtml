@@ -1,7 +1,7 @@
 ﻿@model InfoContactVM
 
-<h1>Contact</h1>
-
+<h1>Kontakta oss</h1>
+<p>Vi är intresserade att veta vad du har på hjärtat. Besök oss, mejla eller skriv din fråga i kontaktformuläret!</p>
 <form asp-controller="info" asp-action="contact" method="post">
     <label asp-for="Name"></label>
     <input asp-for="Name" />
@@ -16,8 +16,18 @@
     <span asp-validation-for="Description"></span>
     <br />
     <input type="submit" value="Submit" />
-
 </form>
 
-@*<a asp-controller="home" asp-action="index">Back</a>*@
+<h5>Postadress</h5>
+<p>
+    Miljögatan 14 <br />
+    12345 Miljöstad
+</p>
+
+<h5>Hör av dig</h5>
+<p>
+    E-post: mealsaver@mail.com <br />
+</p>
+
+
 
