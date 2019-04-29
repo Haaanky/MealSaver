@@ -21,5 +21,9 @@ namespace MealSaver.Models.ViewModels.User
         [DataType(DataType.Password)]
         [Compare(nameof(Password))]
         public string PasswordRepeat { get; set; }
+        [Display(Name = "Förnamn")]
+        public string FirstName { get; set; }
+        [Display(Name = "Efternamn")]
+        public string LastName { get; set; }
     }
 }

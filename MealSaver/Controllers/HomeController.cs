@@ -25,7 +25,7 @@ namespace MealSaver.Controllers
         [Route("Inspiration")]
         public IActionResult Inspiration()
         {
-            return PartialView("_Inspiration");
+            return PartialView("_PartialInspiration");
         }
         [Route("HurDetFungerar")]
         public IActionResult PartialHowItWorks()

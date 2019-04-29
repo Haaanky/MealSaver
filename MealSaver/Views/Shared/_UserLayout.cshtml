@@ -8,18 +8,18 @@
 
 <body>
     <header>
-        header
+        <a asp-controller="home" asp-action="index">Wasteland</a>
         <a asp-controller="home" asp-action="_PartialInspiration">Inspiration</a>
         <a asp-controller="home" asp-action="_PartialHowItWorks">Så funkar det</a>
         <a asp-controller="home" asp-action="_PartialWhyUseWasteland">Varför Wasteland</a>
-        <a asp-controller="user" asp-action="Login">Logga in</a>
-        <a asp-controller="user" asp-action="Signup">Registrera</a>
+        <a asp-controller="user" asp-action="Overview">Elin</a>
+        <a asp-controller="user" asp-action="Logout">Logga ut</a>
     </header>
     <div>
         @RenderBody()
     </div>
     <footer>
-        <p>All rights belong to HEH-Corporation</p>
+        <p>© All rights reserved: HEH corporation</p>
         <a asp-controller="Info" asp-action="About">Om oss</a>
         <a asp-controller="Info" asp-action="Contact">Kontakt</a>
     </footer>
