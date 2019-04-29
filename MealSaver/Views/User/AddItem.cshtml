@@ -1,4 +1,4 @@
-﻿
+﻿@model UserAddItemVM
 @{
     ViewData["Title"] = "AddItem";
     Layout = "_UserLayout";
@@ -16,5 +16,12 @@
         <a class="dropdown-item" href="#">Köttprodukter</a>
         <a class="dropdown-item" href="#">Frukt</a>
     </div>
+
+    <label asp-for="FoodArray"></label>
+    <select
+            asp-for="SelectedFoodValue"
+            asp-items="Model.FoodArray"></select>
+    <span asp-validation-for="SelectedFoodValue"></span>
+
 </div>
 
