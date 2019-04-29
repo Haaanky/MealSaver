@@ -5,6 +5,12 @@
 
 @foreach (var item in Model)
 {
-    @item.Name;
+    <img src="@item.Image" width="300" />
+    <h2>@item.Name</h2>
+    <p>@item.Description</p>
 
 }
+
+@*<a asp-controller="info" asp-action="contact">Kontakta oss</a>*@
+
+
