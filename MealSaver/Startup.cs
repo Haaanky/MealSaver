@@ -42,7 +42,7 @@ namespace MealSaver
             services.ConfigureApplicationCookie(o => o.LoginPath = "/home/login"); // välja vart login ska vara
 
             services.AddTransient<UserService>(); // lägg till de services vi kommer behöva ha flera instanser av
-
+            services.AddTransient<InfoService>();
             services.AddMvc();
 
         }
