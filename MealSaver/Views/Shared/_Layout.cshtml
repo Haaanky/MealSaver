@@ -2,13 +2,16 @@
 
 <html>
 <head>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap-4.3.1/dist/css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="~/css/site.css" type="text/css"/>
 </head>
 <body>
     <header>
         header
-        <a asp-controller="home" asp-action="_PartialInspiration">Inspiration</a>
+        <a class="btn btn-outline-danger" asp-controller="home" asp-action="_PartialInspiration">Inspiration</a>
         <a asp-controller="home" asp-action="_PartialHowItWorks">Så funkar det</a>
         <a asp-controller="home" asp-action="_PartialWhyUseWasteland">Varför Wasteland</a>
         <a asp-controller="user" asp-action="Login">Logga in</a>
