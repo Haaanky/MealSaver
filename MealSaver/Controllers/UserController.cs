@@ -9,31 +9,53 @@ namespace MealSaver.Controllers
 {
     public class UserController : Controller
     {
+        [HttpGet]
+        [Route("logga-in")]
         public IActionResult Login()
         {
             return View();
         }
-        public IActionResult Logout()
+        [HttpPost]
+        [Route("logga-in")]
+        public IActionResult Login(UserLoginVM userLoginVM)
         {
-            return View();
+            return RedirectToAction(nameof(Overview));
         }
         [HttpGet]
+        [Route("logga-ut")]
+        public IActionResult Logout()
+        {
+            return Redirect("");
+        }
+        [HttpGet]
+        [Route("registrera")]
         public IActionResult SignUp()
         {
             return View();
         }
         [HttpPost]
+        [Route("registrera")]
         public IActionResult SignUp(UserSignUpVM userSignUpVM)
         {
             return View(userSignUpVM);
         }
+        [HttpGet]
+        [Route("oversikt")]
         public IActionResult Overview()
         {
             return View();
         }
+        [HttpGet]
+        [Route("lagga-till")]
         public IActionResult AddItem()
         {
             return View();
+        }
+        [HttpPost]
+        [Route("lagga-till")]
+        public IActionResult AddItem(UserAddItemVM userAddItemVM)
+        {
+            return RedirectToAction(nameof(AddItem));
         }
     }
 }
