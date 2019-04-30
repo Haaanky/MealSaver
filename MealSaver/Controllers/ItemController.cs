@@ -26,12 +26,12 @@ namespace MealSaver.Controllers
 
         private readonly ItemService itemService;
 
-        [Route("lagga-till")]
-        [HttpGet]
-        public IActionResult Index()
-        {
-            return View(itemService.GetAllItems());
-        }
+        //[Route("lagga-till")]
+        //[HttpGet]
+        //public IActionResult Index()
+        //{
+        //    return View(itemService.GetAllItems());
+        //}
 
         [HttpGet]
         [Route("lagga-till")]

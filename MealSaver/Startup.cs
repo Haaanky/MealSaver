@@ -28,9 +28,9 @@ namespace MealSaver
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            var connString = configuration.GetConnectionString("defaultConnection");
+            var connStringIdentity = configuration["defaultConnection"];
 
-            services.AddDbContext<MyIdentityContext>(o => o.UseSqlServer(connString));
+            services.AddDbContext<MyIdentityContext>(o => o.UseSqlServer(connStringIdentity));
             services.AddIdentity<MyIdentityUser, IdentityRole>(o =>
             {
                 o.Password.RequireNonAlphanumeric = false;
