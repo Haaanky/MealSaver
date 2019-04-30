@@ -2,75 +2,77 @@
 @{
     ViewData["Title"] = "Index";
 }
-@*href="#test" 
-id test på destinationen*@
-<header class="masthead text-center text-white">
-    <div class="masthead-content">
-        <div class="container">
-            <h1 class="masthead-heading mb-0">Welcome</h1>
-            <h2 class="masthead-subheading mb-0">to the Wasteland</h2>
-            <a asp-controller="home" asp-action="index" class="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a>
-        </div>
-    </div>
-    <div class="bg-circle-1 bg-circle"></div>
-    <div class="bg-circle-2 bg-circle"></div>
-    <div class="bg-circle-3 bg-circle"></div>
-    <div class="bg-circle-4 bg-circle"></div>
-</header>
 
-<body>
-    <section id="inspiration">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 order-lg-2">
-                    <div class="p-5">
-                        <img class="img-fluid rounded-circle" src="~/images/01.jpg" alt="">
+@section SectionName{
+    <header class="masthead text-center text-white">
+        <div class="masthead-content">
+            <div class="container">
+                <h1 class="masthead-heading mb-0">Welcome</h1>
+                <h2 class="masthead-subheading mb-0">to the Wasteland</h2>
+                <a asp-controller="home" asp-action="index" class="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a>
+            </div>
+        </div>
+        <div class="bg-circle-1 bg-circle"></div>
+        <div class="bg-circle-2 bg-circle"></div>
+        <div class="bg-circle-3 bg-circle"></div>
+        <div class="bg-circle-4 bg-circle"></div>
+    </header>
+
+    <header class="masthead">hello world</header>
+
+    <body>
+        <section id="inspiration">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5">
+                            <img class="img-fluid rounded-circle" src="~/images/01.jpg" alt="">
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6 order-lg-1">
-                    <div class="p-5">
-                        <h2 class="display-4">Inspiration</h2>
-                        <partial name="_PartialInspiration" model="Model" />
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">Inspiration</h2>
+                            <partial name="_PartialInspiration" model="Model" />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="howItWorks">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="p-5">
-                        <img class="img-fluid rounded-circle" src="~/images/02.jpg" alt="">
+        <section id="howItWorks">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <img class="img-fluid rounded-circle" src="~/images/02.jpg" alt="">
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="p-5">
-                        <h2 class="display-4">Hur funkar det?</h2>
-                        <partial name="_PartialHowItWorks" model="Model" /> <br />
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <h2 class="display-4">Hur funkar det?</h2>
+                            <partial name="_PartialHowItWorks" model="Model" /> <br />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="whyWasteland">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 order-lg-2">
-                    <div class="p-5">
-                        <img class="img-fluid rounded-circle" src="~/images/03.jpg" alt="">
+        <section id="whyWasteland">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5">
+                            <img class="img-fluid rounded-circle" src="~/images/03.jpg" alt="">
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6 order-lg-1">
-                    <div class="p-5">
-                        <h2 class="display-4">Varför Wasteland?</h2>
-                        <partial name="_PartialWhyUseWasteland" model="Model" />
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">Varför Wasteland?</h2>
+                            <partial name="_PartialWhyUseWasteland" model="Model" />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-</body>
-
+        </section>
+    </body>
+}

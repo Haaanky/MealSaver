@@ -42,8 +42,11 @@
             </div>
         </div>
     </nav>
-    <div>
-        @RenderBody()
+    <div id="body">
+        @RenderSection("SectionName", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
     </div>
     <footer class="py-5 bg-black">
         <div class="d-flex justify-content-around">
@@ -90,6 +93,6 @@
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
-        @RenderSection("scripts", required: false)
+    @RenderSection("scripts", required: false)
 </body>
 </html>

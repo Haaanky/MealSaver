@@ -54,7 +54,7 @@ namespace MealSaver.Controllers
         public async Task<IActionResult> Logout()
         {
             await userService.LogoutAsync();
-            return Redirect("");
+            return Redirect("/");
         }
 
         [HttpGet]
