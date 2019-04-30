@@ -3,8 +3,8 @@
     ViewData["Title"] = "LogIn";
 }
 <div class="login">
-    <h1>LogIn</h1>
-    <form asp-controller="Account" asp-action="Login">
+    <h1>Logga in</h1>
+    <form asp-controller="user" asp-action="login" asp-route-returnUrl="@Model.ReturnUrl">
         @*TODO: lägg till denna ovan så att man routas vidare efter att ha fyllt i formuläret
             asp-route-returnUrl="@Model.ReturnUrl"*@
         <label asp-for="Username"></label>
@@ -15,7 +15,7 @@
         <input asp-for="Password" />
         <span asp-validation-for="Password"></span>
         <br />
-        <input type="submit" value="Login" />
+        <input type="submit" value="Logga in" />
     </form>
     <div asp-validation-summary="All"></div>
 </div>

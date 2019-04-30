@@ -3,8 +3,11 @@
     ViewData["Title"] = "AddItem";
     Layout = "_UserLayout";
 }
+</div>
+<div>
 
-<h1>AddItem</h1>
+    <h1>AddItem</h1>
+</div>
 
 <div class="dropdown">
     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -12,14 +15,13 @@
     </a>
 
     @*<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="#">Mjölkprodukter</a>
-        <a class="dropdown-item" href="#">Köttprodukter</a>
-        <a class="dropdown-item" href="#">Frukt</a>
-    </div>*@
+            <a class="dropdown-item" href="#">Mjölkprodukter</a>
+            <a class="dropdown-item" href="#">Köttprodukter</a>
+            <a class="dropdown-item" href="#">Frukt</a>
+        </div>*@
 
     <label asp-for="FoodArray"></label>
-    <select
-            asp-for="SelectedFoodValue"
+    <select asp-for="SelectedFoodValue"
             asp-items="Model.FoodArray"></select>
     <span asp-validation-for="SelectedFoodValue"></span>
 
