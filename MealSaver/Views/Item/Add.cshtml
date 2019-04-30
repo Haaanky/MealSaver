@@ -1,9 +1,8 @@
-﻿@model UserAddItemVM
+﻿@model ItemAddVM
 @{
     ViewData["Title"] = "AddItem";
     //Layout = "_UserLayout";
 }
-</div>
 <div>
 
     <h1>AddItem</h1>
@@ -35,7 +34,7 @@
     <span asp-validation-for="SelectedWeightValue"></span>
 
     <label asp-for="DateOfInput"></label>
-    <input asp-for="DateOfInput" />
+    <input asp-for="DateOfInput" value="@DateTime.Now" />
     <span asp-validation-for="DateOfInput"></span>
 
     <input type="submit" value="Submit" />

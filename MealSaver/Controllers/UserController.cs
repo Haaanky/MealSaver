@@ -13,6 +13,7 @@ namespace MealSaver.Controllers
     [Authorize]
     public class UserController : Controller
     {
+
         private readonly UserService userService;
 
         public UserController(UserService userService)
@@ -44,7 +45,7 @@ namespace MealSaver.Controllers
                 return View(userLoginVM);
             }
             if (string.IsNullOrWhiteSpace(userLoginVM.ReturnUrl))
-                return RedirectToAction(nameof(Overview));
+                return Redirect("oversikt");
 
             return Redirect(userLoginVM.ReturnUrl);
         }
@@ -54,7 +55,7 @@ namespace MealSaver.Controllers
         public async Task<IActionResult> Logout()
         {
             await userService.LogoutAsync();
-            return Redirect("");
+            return Redirect("/");
         }
 
         [HttpGet]
@@ -81,50 +82,6 @@ namespace MealSaver.Controllers
             }
 
             return RedirectToAction(nameof(Login));
-        }
-
-        [HttpGet]
-        [Route("oversikt")]
-        [AllowAnonymous] //ta bort när vi är klara
-        public IActionResult Overview()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        [Route("lagga-till")]
-        [AllowAnonymous] //ta bort när vi är klara
-        public IActionResult AddItem()
-        {
-            var viewModel = new UserAddItemVM
-            {
-                //lägg till fler alternativ
-                FoodItem = new SelectListItem[]
-                {
-                    new SelectListItem {Value = "1", Text = "Välj", Selected = true},
-                    new SelectListItem {Value = "2", Text = "Mjölk"},
-                    new SelectListItem {Value = "3", Text = "Kött"},
-                    new SelectListItem {Value = "4", Text = "Frukt"}
-                },
-
-                ItemWeight = new SelectListItem[]
-                {
-                    new SelectListItem {Value = "1", Text = "Välj", Selected = true},
-                    new SelectListItem {Value = "2", Text = "Kg"},
-                    new SelectListItem {Value = "3", Text = "g"},
-                    new SelectListItem {Value = "4", Text = "L"},
-                    new SelectListItem {Value = "5", Text = "dl"}
-                }
-            };
-            return View(viewModel);
-        }
-
-        [HttpPost]
-        [Route("lagga-till")]
-        [AllowAnonymous] //ta bort när vi är klara
-        public IActionResult AddItem(UserAddItemVM userAddItemVM)
-        {
-            return RedirectToAction(nameof(AddItem));
         }
     }
 }
