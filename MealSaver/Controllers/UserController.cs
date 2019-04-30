@@ -13,7 +13,6 @@ namespace MealSaver.Controllers
     [Authorize]
     public class UserController : Controller
     {
-
         private readonly UserService userService;
 
         public UserController(UserService userService)
@@ -81,7 +80,11 @@ namespace MealSaver.Controllers
                 return View(userSignUpVM);
             }
 
-            return RedirectToAction(nameof(Login));
+            //return RedirectToAction(nameof(Login)); // Ändra så att man blir inloggad direkt och hamnar på overview
+
+            UserLoginVM userLoginVM = userSignUpVM;
+            await userService.TryLoginAsync(userLoginVM);
+            return Redirect("oversikt");
         }
     }
 }

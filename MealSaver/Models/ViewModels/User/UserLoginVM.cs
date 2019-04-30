@@ -17,5 +17,14 @@ namespace MealSaver.Models.ViewModels.User
         [DataType(DataType.Password)]
         public string Password { get; set; }
         public string ReturnUrl { get; set; }
+
+        public static implicit operator UserLoginVM(UserSignUpVM v)
+        {
+            return new UserLoginVM
+            {
+                Username = v.Username,
+                Password = v.Password
+            };
+        }
     }
 }
