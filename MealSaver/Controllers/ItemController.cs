@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MealSaver.Models;
 using MealSaver.Models.ViewModels.Item;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,11 +13,24 @@ namespace MealSaver.Controllers
     [Authorize]
     public class ItemController : Controller
     {
+        public ItemController(ItemService itemService)
+        {
+            this.itemService = itemService;
+        }
         [HttpGet]
         [Route("oversikt")]
         public IActionResult Overview()
         {
             return View();
+        }
+
+        private readonly ItemService itemService;
+
+        [Route("lagga-till")]
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View(itemService.GetAllItems());
         }
 
         [HttpGet]

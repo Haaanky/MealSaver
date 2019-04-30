@@ -41,11 +41,5 @@ namespace MealSaver.Models
         {
             await signInManager.SignOutAsync();
         }
-
-        //static int idCounter = 3;
-        //private static List<UserAddItemVM> thrownItems = new List<UserAddItemVM>
-        //{
-        //    new UserAddItemVM{ Id= 1, FoodItem = }
-        //};
     }
 }
