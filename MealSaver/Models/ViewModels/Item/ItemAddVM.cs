@@ -25,7 +25,7 @@ namespace MealSaver.Models.ViewModels.Item
         public int SelectedFoodValue { get; set; }
 
         [Display(Name = "Måttenhet")]
-        public SelectListItem[] ItemWeight { get; set; }
+        public SelectListItem[] ItemWeightMeasurement { get; set; }
         [Range(1, 3)]
         public int SelectedWeightValue { get; set; }
 
