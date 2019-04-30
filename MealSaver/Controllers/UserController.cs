@@ -98,12 +98,22 @@ namespace MealSaver.Controllers
         {
             var viewModel = new UserAddItemVM
             {
-                FoodArray = new SelectListItem[]
+                //lägg till fler alternativ
+                FoodItem = new SelectListItem[]
                 {
                     new SelectListItem {Value = "1", Text = "Välj", Selected = true},
                     new SelectListItem {Value = "2", Text = "Mjölk"},
                     new SelectListItem {Value = "3", Text = "Kött"},
                     new SelectListItem {Value = "4", Text = "Frukt"}
+                },
+
+                ItemWeight = new SelectListItem[]
+                {
+                    new SelectListItem {Value = "1", Text = "Välj", Selected = true},
+                    new SelectListItem {Value = "2", Text = "Kg"},
+                    new SelectListItem {Value = "3", Text = "g"},
+                    new SelectListItem {Value = "4", Text = "L"},
+                    new SelectListItem {Value = "5", Text = "dl"}
                 }
             };
             return View(viewModel);

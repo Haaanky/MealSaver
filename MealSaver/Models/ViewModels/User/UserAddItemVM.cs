@@ -7,24 +7,34 @@ using System.Threading.Tasks;
 
 namespace MealSaver.Models.ViewModels.User
 {
-    public enum UnitMeasurement
-    {
-        Kg,
-        g,
-        dL,
-        L
-    }
+    //public enum UnitMeasurement
+    //{
+    //    Kg,
+    //    g,
+    //    dL,
+    //    L
+    //}
     public class UserAddItemVM
     {
         [Display(Name = "Produkt")]
-        public SelectListItem[] FoodArray { get; set; }
+        [Required(ErrorMessage = "Välj vad du slängt")]
+        public SelectListItem[] FoodItem { get; set; }
         [Range(1,3)]
         public int SelectedFoodValue { get; set; }
 
+        [Display(Name = "Måttenhet")]
+        public SelectListItem[] ItemWeight { get; set; }
+        [Range(1, 3)]
+        public int SelectedWeightValue { get; set; }
+
+        //public UnitMeasurement Unit { get; set; }
+
         [Display(Name = "Mängd")]
-        public double ItemAmount { get; set; }
-        public UnitMeasurement Unit { get; set; }
+        [Required(ErrorMessage = "Välj hur mycket du slängt")]
+        
+        public double Amount { get; set; }
+
+        [Display(Name = "Datum")]
         public DateTime DateOfInput { get; set; }
     }
-
 }
