@@ -60,6 +60,8 @@
     <Folder Include="Properties" />
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
+    <Folder Include="FoodObj" />
+    <Folder Include="FoodObj\Tables" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\AspNetRoles.sql" />
@@ -69,5 +71,7 @@
     <Build Include="dbo\Tables\AspNetUserLogins.sql" />
     <Build Include="dbo\Tables\AspNetUserRoles.sql" />
     <Build Include="dbo\Tables\AspNetUserTokens.sql" />
+    <Build Include="FoodObj\FoodObj.sql" />
+    <Build Include="FoodObj\Tables\Products.sql" />
   </ItemGroup>
 </Project>
