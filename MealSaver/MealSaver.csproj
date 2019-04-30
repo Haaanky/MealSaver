@@ -13,6 +13,8 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\lib\jquery\" />
+    <Folder Include="wwwroot\lib\popper.js\" />
   </ItemGroup>
 
 </Project>

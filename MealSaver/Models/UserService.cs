@@ -23,5 +23,23 @@ namespace MealSaver.Models
             this.signInManager = signInManager;
             this.roleManager = roleManager;
         }
+        public async Task<IdentityResult> TryRegisterAsync(UserSignUpVM userSignUpVM)
+        {
+            return await userManager.CreateAsync(new MyIdentityUser { UserName = userSignUpVM.Username }, userSignUpVM.Password);
+        }
+
+        internal async Task<SignInResult> TryLoginAsync(UserLoginVM userLoginVM)
+        {
+            return await signInManager.PasswordSignInAsync(
+                userLoginVM.Username,
+                userLoginVM.Password,
+                isPersistent: false,
+                lockoutOnFailure: false
+                );
+        }
+        internal async Task LogoutAsync()
+        {
+            await signInManager.SignOutAsync();
+        }
     }
 }

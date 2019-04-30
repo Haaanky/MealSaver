@@ -17,7 +17,59 @@
     <div class="bg-circle-4 bg-circle"></div>
 </header>
 
-<partial name="_PartialInspiration" model="Model" /> <br />
-<partial name="_PartialHowItWorks" model="Model" /> <br />
-<partial name="_PartialWhyUseWasteland" model="Model" /> <br />
+<body>
+    <section>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="p-5">
+                        <img class="img-fluid rounded-circle" src="~/images/01.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="p-5">
+                        <h2 class="display-4">Inspiration</h2>
+                        <partial name="_PartialInspiration" model="Model" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="p-5">
+                        <img class="img-fluid rounded-circle" src="~/images/02.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="p-5">
+                        <h2 class="display-4">Hur funkar det?</h2>
+                        <partial name="_PartialHowItWorks" model="Model" /> <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="p-5">
+                        <img class="img-fluid rounded-circle" src="~/images/03.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="p-5">
+                        <h2 class="display-4">Varför Wasteland?</h2>
+                        <partial name="_PartialWhyUseWasteland" model="Model" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
 
