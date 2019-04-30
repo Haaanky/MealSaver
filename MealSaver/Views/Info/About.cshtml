@@ -1,20 +1,23 @@
 ﻿@model InfoAboutVM[]
-    <div class="about">
-        <h1>Om Mealsaver</h1>
+<div class="about">
+    <h1>Om Mealsaver</h1>
 
-        <h2> Rädda bra mat från att slängas</h2>
-        <p> ⅓ av all mat som produceras slängs. Med wasteland-appen kan du optimera dina matinköp. Det är bra både för miljön och din plånbok.</p>
+    <h2> Rädda bra mat från att slängas</h2>
+    <p> ⅓ av all mat som produceras slängs. Med wasteland-appen kan du optimera dina matinköp. Det är bra både för miljön och din plånbok.</p>
 
-        <h3>Wastelands grundare:</h3>
+    <h3>Wastelands grundare:</h3>
+    <div class="d-flex justify-content-around ">
         @foreach (var item in Model)
         {
-            <img src="@item.Image" width="300" />
-            <h2>@item.Name</h2>
-            <p>@item.Description</p>
-
+            <div class="p-2 bd-highlight">
+                <img src="@item.Image" width="300" />
+                <h2>@item.Name</h2>
+                <p>@item.Description</p>
+            </div>
         }
-
-        @*<a asp-controller="info" asp-action="contact">Kontakta oss</a>*@
     </div>
+
+    @*<a asp-controller="info" asp-action="contact">Kontakta oss</a>*@
+</div>
 
 

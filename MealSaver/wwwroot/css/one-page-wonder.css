@@ -37,7 +37,7 @@ h6 {
 .navbar-custom {
     padding-top: 1rem;
     padding-bottom: 1rem;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 4, 0, 0.7); /*not bg*/
 }
 
     .navbar-custom .navbar-brand {
@@ -59,10 +59,8 @@ header.masthead {
     overflow: hidden;
     padding-top: calc(7rem + 72px);
     padding-bottom: 7rem;
-    background: -webkit-gradient(linear, left bottom, left top, from(#ff6a00), to(#ee0979));
-    background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%);
-    /*background: -webkit-gradient(linear, left bottom, left top, from(#ff6a00), to(#ee0979));
-    background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%);*/
+    background: -webkit-gradient(linear, left bottom, left top, from(#ff6a00), to(#ee0979)); /*not bg*/
+    background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%); /*not bg*/
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: scroll;
@@ -86,11 +84,8 @@ header.masthead {
         z-index: 0;
         position: absolute;
         border-radius: 100%;
-        background: -webkit-gradient(linear, left bottom, left top, from(#ee0979), to(#ff6a00));
-        background: linear-gradient(0deg, #ee0979 0%, #ff6a00 100%);
-        /*Original
-      background: -webkit-gradient(linear, left bottom, left top, from(#ee0979), to(#ff6a00));
-  background: linear-gradient(0deg, #ee0979 0%, #ff6a00 100%);*/
+        background: -webkit-gradient(linear, left bottom, left top, from(#ee0979), to(#ff6a00));/*not bg*/
+        background: linear-gradient(0deg, #ee0979 0%, #ff6a00 100%); /*not bg*/
     }
 
     header.masthead .bg-circle-1 {
