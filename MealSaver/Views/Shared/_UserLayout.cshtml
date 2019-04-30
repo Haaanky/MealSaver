@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
     <link rel="stylesheet" href="~/lib/bootstrap-4.3.1/dist/css/bootstrap.css" type="text/css" />
     <link href="~/css/one-page-wonder.css" rel="stylesheet">
     <link href="~/css/one-page-wonder.min.css" rel="stylesheet">
@@ -25,13 +27,13 @@
                             <a class="nav-link" asp-controller="home" asp-action="index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="home" asp-action="index">Inspiration</a>
+                            <a class="nav-link" href="~/#inspiration">Inspiration</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="home" asp-action="index">Så funkar det</a>
+                            <a class="nav-link" href="~/#howItWorks">Så funkar det</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="home" asp-action="index">Varför Wasteland</a>
+                            <a class="nav-link" href="~/#whyWasteland">Varför Wasteland</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="item" asp-action="Overview">@Context.User.Identity.Name</a> @**find firstname of current user in database and print it out*@
