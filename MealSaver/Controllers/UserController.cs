@@ -82,7 +82,14 @@ namespace MealSaver.Controllers
 
             //return RedirectToAction(nameof(Login)); // Ändra så att man blir inloggad direkt och hamnar på overview
 
-            UserLoginVM userLoginVM = userSignUpVM;
+            UserLoginVM userLoginVM = userSignUpVM; // Använder en implicit operator i UserLoginVM klassen, motsvarar:
+            /*
+                UserLoginVM userLoginVM = new UserLoginVM 
+                {
+                    Username = userSignUpVM.Username,
+                    Password = userSignUpVM.Password
+                }
+             */
             await userService.TryLoginAsync(userLoginVM);
             return Redirect("oversikt");
         }
