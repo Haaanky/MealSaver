@@ -44,7 +44,7 @@ namespace MealSaver.Controllers
                 return View(userLoginVM);
             }
             if (string.IsNullOrWhiteSpace(userLoginVM.ReturnUrl))
-                return RedirectToAction(nameof(Overview));
+                return Redirect("oversikt");
 
             return Redirect(userLoginVM.ReturnUrl);
         }
@@ -54,7 +54,7 @@ namespace MealSaver.Controllers
         public async Task<IActionResult> Logout()
         {
             await userService.LogoutAsync();
-            return Redirect("");
+            return Redirect("/");
         }
 
         [HttpGet]
@@ -80,12 +80,15 @@ namespace MealSaver.Controllers
                 return View(userSignUpVM);
             }
 
-            return RedirectToAction(nameof(Login));
+            //return RedirectToAction(nameof(Login)); // Ändra så att man blir inloggad direkt och hamnar på overview
+
+            UserLoginVM userLoginVM = userSignUpVM;
+            await userService.TryLoginAsync(userLoginVM);
+            return Redirect("oversikt");
         }
 
         [HttpGet]
         [Route("oversikt")]
-        [AllowAnonymous] //ta bort när vi är klara
         public IActionResult Overview()
         {
             return View();
@@ -93,7 +96,6 @@ namespace MealSaver.Controllers
 
         [HttpGet]
         [Route("lagga-till")]
-        [AllowAnonymous] //ta bort när vi är klara
         public IActionResult AddItem()
         {
             var viewModel = new UserAddItemVM
@@ -121,7 +123,6 @@ namespace MealSaver.Controllers
 
         [HttpPost]
         [Route("lagga-till")]
-        [AllowAnonymous] //ta bort när vi är klara
         public IActionResult AddItem(UserAddItemVM userAddItemVM)
         {
             return RedirectToAction(nameof(AddItem));
