@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MealSaver.Models.ViewModels.User
+namespace MealSaver.Models.ViewModels.Item
 {
     //public enum UnitMeasurement
     //{
@@ -14,8 +14,10 @@ namespace MealSaver.Models.ViewModels.User
     //    dL,
     //    L
     //}
-    public class UserAddItemVM
+    public class ItemAddVM
     {
+        public int Id { get; set; }
+
         [Display(Name = "Produkt")]
         [Required(ErrorMessage = "Välj vad du slängt")]
         public SelectListItem[] FoodItem { get; set; }
@@ -36,5 +38,6 @@ namespace MealSaver.Models.ViewModels.User
 
         [Display(Name = "Datum")]
         public DateTime DateOfInput { get; set; }
+
     }
 }
