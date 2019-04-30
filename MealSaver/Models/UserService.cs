@@ -23,19 +23,5 @@ namespace MealSaver.Models
             this.signInManager = signInManager;
             this.roleManager = roleManager;
         }
-
-        //public void ShowDropdownItems()
-        //{
-        //    var viewModel = new UserAddItemVM
-        //    {
-        //        FoodArray = new SelectListItem[]
-        //        {
-        //            new SelectListItem {Value = 1, Text = "Välj", Selected = true},
-        //            new SelectListItem {Value = 2, Text = "Mjölk"},
-        //            new SelectListItem {Value = 3, Text = "Kött"},
-        //            new SelectListItem {Value = 4, Text = "Frukt"}
-        //        }
-        //    };
-        //}
     }
 }
