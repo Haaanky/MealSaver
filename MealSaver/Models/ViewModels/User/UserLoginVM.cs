@@ -18,12 +18,12 @@ namespace MealSaver.Models.ViewModels.User
         public string Password { get; set; }
         public string ReturnUrl { get; set; }
 
-        public static implicit operator UserLoginVM(UserSignUpVM v)
+        public static implicit operator UserLoginVM(UserSignUpVM userSignUpVM)
         {
             return new UserLoginVM
             {
-                Username = v.Username,
-                Password = v.Password
+                Username = userSignUpVM.Username,
+                Password = userSignUpVM.Password
             };
         }
     }

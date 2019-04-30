@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MealSaver.Models.Entities;
 using MealSaver.Models;
 using MealSaver.Models.ViewModels.Item;
 using Microsoft.AspNetCore.Authorization;
