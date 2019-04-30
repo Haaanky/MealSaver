@@ -1,6 +1,4 @@
-﻿@model UserOverviewVM
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 <head>
@@ -36,7 +34,7 @@
                             <a class="nav-link" asp-controller="home" asp-action="index">Varför Wasteland</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="item" asp-action="Overview">Översikt</a>
+                            <a class="nav-link" asp-controller="item" asp-action="Overview">@Context.User.Identity.Name</a> @**find firstname of current user in database and print it out*@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="user" asp-action="Logout">Logga ut</a>
