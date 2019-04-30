@@ -16,28 +16,26 @@ namespace MealSaver.Models.ViewModels.Item
     //}
     public class ItemAddVM
     {
-        public int Id { get; set; }
-
         [Display(Name = "Produkt")]
         [Required(ErrorMessage = "Välj vad du slängt")]
         public SelectListItem[] FoodItem { get; set; }
-        [Range(1,3)]
+        [Range(1,10)]
         public int SelectedFoodValue { get; set; }
 
         [Display(Name = "Måttenhet")]
-        public SelectListItem[] ItemWeight { get; set; }
-        [Range(1, 3)]
+        public SelectListItem[] ItemWeightMeasurement { get; set; }
+        [Range(1, 10)]
         public int SelectedWeightValue { get; set; }
 
         //public UnitMeasurement Unit { get; set; }
 
         [Display(Name = "Mängd")]
+        [Range(1, 999)]
         [Required(ErrorMessage = "Välj hur mycket du slängt")]
         
         public double Amount { get; set; }
 
         [Display(Name = "Datum")]
         public DateTime DateOfInput { get; set; }
-
     }
 }
