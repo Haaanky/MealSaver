@@ -45,25 +45,28 @@
     <div>
         @RenderBody()
     </div>
-    <footer>
-        <h5>Postadress</h5>
-        <p>
-            Miljögatan 14 <br />
-            12345 Miljöstad
-        </p>
-
-        <h5>Kontakt</h5>
-        <p>
-            E-post: mealsaver@mail.com <br />
-        </p>
-        <p>© All rights reserved: HEH corporation</p>
-        <a asp-controller="Info" asp-action="About">Om oss</a>
-        <a asp-controller="Info" asp-action="Contact">Kontakt</a>
     <footer class="py-5 bg-black">
-        <div class="container">
-            <p class="m-0 text-center text-white small">Copyright &copy; All rights reserved: HEH corporation</p>
-            <a class="m-0 d-flex justify-content-center text-white small" asp-controller="Info" asp-action="About">Om oss</a>
-            <a class="m-0 d-flex justify-content-center text-white small" asp-controller="Info" asp-action="Contact">Kontakt</a>
+        <div class="d-flex justify-content-around">
+            <div class="m-0 text-center text-white small p-2 bd-highlight">
+                <h5>Postadress</h5>
+                <p>
+                    Miljögatan 14 <br />
+                    12345 Miljöstad
+                </p>
+            </div>
+
+            <div class="m-0 text-center text-white small p-2 bd-highlight">
+                <h5>Kontakt</h5>
+                <p>
+                    E-post: mealsaver@mail.com <br />
+                </p>
+            </div>
+        </div>
+
+        <div class="m-0 text-center text-white small p-2 bd-highlight">
+            <a class="m-0 text-white" asp-controller="Info" asp-action="About">Om oss</a>
+            <a class="m-0 text-white" asp-controller="Info" asp-action="Contact">Kontakt</a>
+            <p>Copyright &copy; All rights reserved: HEH corporation</p>
         </div>
     </footer>
     <environment include="Development">
@@ -72,21 +75,21 @@
         <script src="~/lib/popper.js/"></script>
     </environment>
     <environment exclude="Development">
-        <script src="https://code.jquery.com/jquery-3.4.0.slim.min.js" 
+        <script src="https://code.jquery.com/jquery-3.4.0.slim.min.js"
                 asp-fallback-src="~/lib/jquery/jquery-3.4.0.min.js"
-                integrity="sha256-ZaXnYkHGqIhqTbJ6MB4l9Frs/r7U4jlx7ir8PJYBqbI=" 
+                integrity="sha256-ZaXnYkHGqIhqTbJ6MB4l9Frs/r7U4jlx7ir8PJYBqbI="
                 crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
                 asp-fallback-src="~/lib/popper.js/popper.min.js"
-                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
                 crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
                 asp-fallback-src="~/lib/bootstrap-4.3.1/dist/js/bootstrap.min.js"
-                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
                 crossorigin="anonymous"></script>
     </environment>
-        <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
 
-    @RenderSection("scripts", required: false)
+        @RenderSection("scripts", required: false)
 </body>
 </html>
