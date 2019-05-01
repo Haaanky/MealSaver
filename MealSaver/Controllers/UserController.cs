@@ -90,7 +90,9 @@ namespace MealSaver.Controllers
                     Password = userSignUpVM.Password
                 }
              */
-            await userService.TryLoginAsync(userLoginVM);
+            var success = await userService.TryLoginAsync(userLoginVM);
+            //if (success.Succeeded)
+                // create temp data
             return Redirect("oversikt");
         }
     }

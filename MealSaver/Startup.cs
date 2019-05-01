@@ -29,13 +29,11 @@ namespace MealSaver
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            //var connStringIdentity = configuration.GetConnectionString("defaultConnection");
-            var connStringIdentity = configuration["defaultConnection"];
-            //var connStringFoodObj = configuration.GetConnectionString("FoodObjSchema");
-            //var mySecret = configuration["defaultConnection"];
+            //var connStringIdentity = configuration.GetConnectionString("defaultConnection"); // not safe, stored in appsettings.json
+            var connString = configuration["defaultConnection"]; // safer, stored in user secrets, will later be stored in azure server secrets
 
             // Identity/User stuff below
-            services.AddDbContext<MyIdentityContext>(o => o.UseSqlServer(connStringIdentity));
+            services.AddDbContext<MyIdentityContext>(o => o.UseSqlServer(connString));
             services.AddIdentity<MyIdentityUser, IdentityRole>(o =>
             {
                 o.Password.RequireNonAlphanumeric = false;
@@ -48,7 +46,7 @@ namespace MealSaver
 
 
             // FoodObj database schema below 
-            //services.AddDbContext<FoodObjContext>(o => o.UseSqlServer(connStringFoodObj));
+            services.AddDbContext<FoodObjContext>(o => o.UseSqlServer(connString));
 
             // General purpose stuff below
             services.AddTransient<UserService>(); // lägg till de services vi kommer behöva ha flera instanser av

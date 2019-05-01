@@ -63,9 +63,9 @@ namespace MealSaver.Controllers
 
         [HttpPost]
         [Route("lagga-till")]
-        public IActionResult AddItem(ItemAddVM userAddItemVM)
+        public IActionResult Add(ItemAddVM userAddItemVM)
         {
-            return RedirectToAction(nameof(AddItem));
+            return RedirectToAction(nameof(Add));
         }
     }
 }

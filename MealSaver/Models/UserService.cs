@@ -1,4 +1,5 @@
-﻿using MealSaver.Models.ViewModels.User;
+﻿using MealSaver.Models.Entities;
+using MealSaver.Models.ViewModels.User;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
