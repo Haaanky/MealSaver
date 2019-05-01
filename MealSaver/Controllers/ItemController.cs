@@ -47,37 +47,66 @@ namespace MealSaver.Controllers
         //}
 
         [HttpGet]
-        [Route("lagga-till")]
-        public IActionResult Add()
+        public IActionResult Form()
         {
-            var viewModel = new ItemAddVM
-            {
-                //lägg till fler alternativ
-                FoodItem = new SelectListItem[]
-                {
-                    new SelectListItem {Value = "1", Text = "Välj", Selected = true},
-                    new SelectListItem {Value = "2", Text = "Mjölk"},
-                    new SelectListItem {Value = "3", Text = "Kött"},
-                    new SelectListItem {Value = "4", Text = "Frukt"}
-                },
-
-                ItemWeightMeasurement = new SelectListItem[]
-                {
-                    new SelectListItem {Value = "1", Text = "Välj", Selected = true},
-                    new SelectListItem {Value = "2", Text = "Kg"},
-                    new SelectListItem {Value = "3", Text = "g"},
-                    new SelectListItem {Value = "4", Text = "L"},
-                    new SelectListItem {Value = "5", Text = "dl"}
-                }
-            };
-            return View(viewModel);
+            return View();
         }
 
         [HttpPost]
-        [Route("lagga-till")]
-        public IActionResult Add(ItemAddVM userAddItemVM)
+        public async Task<IActionResult> Form(/*ItemAddVM userAddItemVM*/Item item)
         {
-            return RedirectToAction(nameof(Add));
+            await itemService.AddItem(item);
+
+            //return RedirectToAction(nameof(Add));
+            return View();
+        }
+
+        [HttpGet]
+        [Route("lagga-till")]
+        public IActionResult Add()
+        {
+            ItemAddVM itemAddVM = new ItemAddVM
+            {
+                FormVM = new ItemFormVM
+                {
+                    //lägg till fler alternativ
+                    FoodItem = new SelectListItem[]
+                    {
+                        new SelectListItem { Value = "1", Text = "Välj", Selected = true },
+                        new SelectListItem { Value = "2", Text = "Mjölk" },
+                        new SelectListItem { Value = "3", Text = "Kött" },
+                        new SelectListItem { Value = "4", Text = "Frukt" }
+                    },
+
+                    ItemWeightMeasurement = new SelectListItem[]
+                    {
+                        new SelectListItem { Value = "1", Text = "Välj", Selected = true },
+                        new SelectListItem { Value = "2", Text = "Kg" },
+                        new SelectListItem { Value = "3", Text = "g" },
+                        new SelectListItem { Value = "4", Text = "L" },
+                        new SelectListItem { Value = "5", Text = "dl" }
+                    }
+                },
+                ItemList = new ItemDisplayVM[]
+                {
+                    new ItemDisplayVM
+                    {
+                        Type = "Potatis",
+                        AmountKg = 5,
+                        Date = DateTime.Now.Date
+                    
+                    }
+                }
+                
+
+            };
+            return View(itemAddVM);
+        }
+
+        [HttpGet]
+        public IActionResult Display(ItemDisplayVM itemDisplayVM)
+        {
+            return View(itemDisplayVM);
         }
     }
 }
