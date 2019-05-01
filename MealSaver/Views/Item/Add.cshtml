@@ -1,47 +1,17 @@
 ﻿@model ItemAddVM
 @{
     ViewData["Title"] = "AddItem";
-    //Layout = "_UserLayout";
+    Layout = "_UserLayout";
 }
 <div>
-
     <h1>Lägg till slängd mat</h1>
 </div>
 
-<div class="dropdown">
-    @*<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Välj slängd mat
-        </a>
+<partial name=_PartialViewForm model=Model.FormVM />
 
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="#">Mjölkprodukter</a>
-            <a class="dropdown-item" href="#">Köttprodukter</a>
-            <a class="dropdown-item" href="#">Frukt</a>
-        </div>*@
-
-    <label asp-for="FoodItem"></label>
-    <select asp-for="SelectedFoodValue"
-            asp-items="Model.FoodItem"></select>
-    <span asp-validation-for="SelectedFoodValue"></span>
-    <br />
-    <label asp-for="Amount"></label>
-    <input asp-for="Amount" type="number" min="0" max="999" />
-    <span asp-validation-for="Amount"></span>
-    <br />
-    <label asp-for="ItemWeightMeasurement"></label>
-    <select asp-for="SelectedWeightValue"
-            asp-items="Model.ItemWeightMeasurement"></select>
-    <span asp-validation-for="SelectedWeightValue"></span>
-    <br />
-    <label asp-for="DateOfInput"></label>
-    <input asp-for="DateOfInput" value="@DateTime.Now.Date" type="date" />
-    <span asp-validation-for="DateOfInput"></span>
-    <br />
-    <input type="submit" value="Släng" />
-
-    @*@foreach (var item in Model)
-    {
-
-    }*@
+<div style="background-color: pink">
+    <p>Här ska du se en lista på vad du har slängt den senaste månaden.</p>
 </div>
+
+<partial name=_PartialItemList model=Model.ItemList />
 

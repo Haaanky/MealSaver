@@ -1,4 +1,4 @@
-﻿
+﻿@model UserSignUpVM
 @{
     ViewData["Title"] = "Overview";
     Layout = "_UserLayout";
@@ -6,6 +6,16 @@
 
 <h1>Overview</h1>
 
+@if (Model.Message != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <p style="text-align: center">
+            @Model.Message
+        </p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
 <a asp-controller="item" asp-action="add">Lägg till slängd mat</a>
-
-
