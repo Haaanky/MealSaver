@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using MealSaver.Models;
 using MealSaver.Models.ViewModels.User;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace MealSaver.Controllers
 {
@@ -14,10 +16,11 @@ namespace MealSaver.Controllers
     public class UserController : Controller
     {
         private readonly UserService userService;
-
-        public UserController(UserService userService)
+        IMemoryCache cache;
+        public UserController(UserService userService, IMemoryCache cache)
         {
             this.userService = userService;
+            this.cache = cache;
         }
 
         [HttpGet]
@@ -90,6 +93,11 @@ namespace MealSaver.Controllers
                     Password = userSignUpVM.Password
                 }
              */
+            await userService.TryLoginAsync(userLoginVM);
+            TempData["Message"] = $"Registeringen lyckades. Välkommen{userSignUpVM.FirstName}!";
+            HttpContext.Session.SetString("Name", userSignUpVM.FirstName);
+            //cache.Set("supportUserName", userSignUpVM.Username); 
+
             var success = await userService.TryLoginAsync(userLoginVM);
             //if (success.Succeeded)
                 // create temp data
