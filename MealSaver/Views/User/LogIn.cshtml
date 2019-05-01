@@ -5,8 +5,6 @@
 <div class="login">
     <h1>Logga in</h1>
     <form asp-controller="user" asp-action="login" asp-route-returnUrl="@Model.ReturnUrl">
-        @*TODO: lägg till denna ovan så att man routas vidare efter att ha fyllt i formuläret
-            asp-route-returnUrl="@Model.ReturnUrl"*@
         <label asp-for="Username"></label>
         <input asp-for="Username" />
         <span asp-validation-for="Username"></span>
