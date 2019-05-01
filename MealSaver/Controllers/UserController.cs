@@ -94,7 +94,7 @@ namespace MealSaver.Controllers
                 }
              */
             await userService.TryLoginAsync(userLoginVM);
-            TempData["Message"] = $"Registeringen lyckades. Välkommen{userSignUpVM.FirstName}!";
+            TempData["Message"] = $"Registeringen lyckades. Välkommen {userSignUpVM.FirstName}!";
             HttpContext.Session.SetString("Name", userSignUpVM.FirstName);
             //cache.Set("supportUserName", userSignUpVM.Username); 
 

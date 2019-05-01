@@ -1,15 +1,13 @@
-﻿@model Products[]
-@{
+﻿@model ItemDisplayVM[]
+
+@*@{
     ViewData["Title"] = "_PartialItemList";
-}
-    <div style="background-color: pink">
-        <p>Här ska du se en lista på vad du har slängt den senaste månaden.</p>
-        <ul>
+    Layout = "_UserLayout";
+}*@
+
+    <ul>
         @foreach (var item in Model)
         {
-            <li>
-                @item.AmountKg, @item.Type, @item.Date
-            </li>
+            <li>@item.Type</li>
         }
-        </ul>
-    </div>
+    </ul>
