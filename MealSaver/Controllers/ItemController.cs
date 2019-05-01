@@ -31,7 +31,7 @@ namespace MealSaver.Controllers
 
 
             userSignUpVM.FirstName = HttpContext.Session.GetString("Name");
-            userSignUpVM.Username = cache.Get<string>("supportEmail");
+            //userSignUpVM.Username = cache.Get<string>("supportEmail");
             userSignUpVM.Message = (string)TempData["Message"];
 
             return View(userSignUpVM);
@@ -97,8 +97,6 @@ namespace MealSaver.Controllers
                     
                     }
                 }
-                
-
             };
             return View(itemAddVM);
         }
