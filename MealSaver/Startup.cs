@@ -37,7 +37,7 @@ namespace MealSaver
             services.AddIdentity<MyIdentityUser, IdentityRole>(o =>
             {
                 o.Password.RequireNonAlphanumeric = false;
-                o.Password.RequiredLength = 6;
+                o.Password.RequiredLength = 2; // change to longer requirement before live
             })
             .AddEntityFrameworkStores<MyIdentityContext>()
             .AddDefaultTokenProviders();
