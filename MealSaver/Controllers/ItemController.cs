@@ -28,8 +28,7 @@ namespace MealSaver.Controllers
         [Route("oversikt")]
         public IActionResult Overview()
         {
-            var itemsArray = itemService.GetAllItems();
-            var itemOverviewVM = new ItemOverviewVM
+            var userSignUpVM = new UserSignUpVM
             {
                 //FirstName = HttpContext.Session.GetString("Name"),
                 //Username = cache.Get<string>("supportEmail"),
@@ -37,8 +36,7 @@ namespace MealSaver.Controllers
                 FirstName = HttpContext.User.Identity.Name
             };
 
-
-            return View(itemOverviewVM);
+            return View(userSignUpVM);
         }
 
 
