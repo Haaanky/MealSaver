@@ -39,9 +39,9 @@
     <br />
     <input type="submit" value="Släng" />
 
-    <partial name=_PartialItemList model=Model />
-             @*@foreach (var item in Model)
-             {
-             }*@
+    @*@foreach (var item in Model)
+    {
+    <partial name=_PartialItemList model=Products[] />
+    }*@
 </div>
 
