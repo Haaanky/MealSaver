@@ -26,5 +26,7 @@ namespace MealSaver.Models.ViewModels.User
         public string FirstName { get; set; }
         [Display(Name = "Efternamn")]
         public string LastName { get; set; }
+
+        public string Message { get; set; }
     }
 }

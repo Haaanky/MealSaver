@@ -56,11 +56,14 @@ namespace MealSaver
             services.AddTransient<ItemService>();
 
             services.AddMvc();
-
+            //services.AddSession();
+            services.AddSession();
+            services.AddMemoryCache();
         }
 
         public void Configure(IApplicationBuilder app)
         {
+            app.UseSession();
             app.UseDeveloperExceptionPage();
             app.UseAuthentication();
             app.UseMvcWithDefaultRoute();

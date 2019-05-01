@@ -8,21 +8,33 @@ using MealSaver.Models.ViewModels.Item;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using MealSaver.Models.ViewModels.User;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace MealSaver.Controllers
 {
     [Authorize]
     public class ItemController : Controller
     {
-        public ItemController(ItemService itemService)
+        IMemoryCache cache;
+        public ItemController(ItemService itemService, IMemoryCache cache)
         {
             this.itemService = itemService;
+            this.cache = cache;
         }
         [HttpGet]
         [Route("oversikt")]
         public IActionResult Overview()
         {
-            return View();
+            UserSignUpVM userSignUpVM = new UserSignUpVM();
+
+
+            userSignUpVM.FirstName = HttpContext.Session.GetString("Name");
+            userSignUpVM.Username = cache.Get<string>("supportEmail");
+            userSignUpVM.Message = (string)TempData["Message"];
+
+            return View(userSignUpVM);
         }
 
         private readonly ItemService itemService;
