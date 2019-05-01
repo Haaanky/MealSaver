@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 
 namespace MealSaver.Models.ViewModels.Item
 {
-    public class UserOverviewVM
+    public class ItemOverviewVM
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Message { get; set; }
+
     }
 }

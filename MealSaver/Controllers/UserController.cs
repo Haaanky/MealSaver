@@ -98,6 +98,9 @@ namespace MealSaver.Controllers
             HttpContext.Session.SetString("Name", userSignUpVM.FirstName);
             //cache.Set("supportUserName", userSignUpVM.Username); 
 
+            var success = await userService.TryLoginAsync(userLoginVM);
+            //if (success.Succeeded)
+                // create temp data
             return Redirect("oversikt");
         }
     }

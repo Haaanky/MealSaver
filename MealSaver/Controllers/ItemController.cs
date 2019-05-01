@@ -17,6 +17,7 @@ namespace MealSaver.Controllers
     [Authorize]
     public class ItemController : Controller
     {
+        private readonly ItemService itemService;
         IMemoryCache cache;
         public ItemController(ItemService itemService, IMemoryCache cache)
         {
@@ -27,17 +28,17 @@ namespace MealSaver.Controllers
         [Route("oversikt")]
         public IActionResult Overview()
         {
-            UserSignUpVM userSignUpVM = new UserSignUpVM();
-
-
-            userSignUpVM.FirstName = HttpContext.Session.GetString("Name");
-            //userSignUpVM.Username = cache.Get<string>("supportEmail");
-            userSignUpVM.Message = (string)TempData["Message"];
+            var userSignUpVM = new UserSignUpVM
+            {
+                //FirstName = HttpContext.Session.GetString("Name"),
+                //Username = cache.Get<string>("supportEmail"),
+                Message = (string)TempData["Message"],
+                FirstName = HttpContext.User.Identity.Name
+            };
 
             return View(userSignUpVM);
         }
 
-        private readonly ItemService itemService;
 
         //[Route("lagga-till")]
         //[HttpGet]
