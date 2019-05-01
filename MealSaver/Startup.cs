@@ -53,6 +53,8 @@ namespace MealSaver
             // General purpose stuff below
             services.AddTransient<UserService>(); // lägg till de services vi kommer behöva ha flera instanser av
             services.AddTransient<InfoService>();
+            services.AddTransient<ItemService>();
+
             services.AddMvc();
 
         }
