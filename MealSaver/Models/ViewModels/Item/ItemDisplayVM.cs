@@ -12,7 +12,7 @@ namespace MealSaver.Models.ViewModels.Item
         public DateTime Date { get; set; }
         public override string ToString()
         {
-            return $"{Type}, {AmountKg}, {Date}";
+            return $"{Type}, {AmountKg}, {Date.ToShortDateString()}";
         }
     }
 }
