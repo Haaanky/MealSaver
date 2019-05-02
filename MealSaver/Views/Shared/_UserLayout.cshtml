@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿@*<!DOCTYPE html>
 
 <html>
 <head>
@@ -11,9 +11,9 @@
     <link href="~/css/one-page-wonder.css" rel="stylesheet">
     <link href="~/css/one-page-wonder.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" type="text/css" />
-</head>
+</head>*@
 
-<body>
+@*<body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
             <div class="container">
@@ -35,19 +35,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="~/#whyWasteland">Varför Wasteland</a>
                         </li>
-                        <li class="nav-item dropdown show">
-                            <a class="nav-link dropdown-toggle" asp-controller="item" asp-action="Overview" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                @Context.User.Identity.Name
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" asp-controller="item" asp-action="Overview" >Översikt</a>
-                                <a class="dropdown-item" asp-controller="item" asp-action="add">Lägg till slängd mat</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="user" asp-action="Logout">Logga ut</a>
-                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -56,12 +44,12 @@
 
     <div id="body">
         @RenderSection("SectionName", required: false)
-        <section class="content-wrapper main-content clear-fix" , style="padding-top: 100px">
+        <section class="content-wrapper main-content clear-fix" , >
             @RenderBody()
         </section>
-    </div>
+    </div>*@
 
-    <footer class="py-5 bg-black">
+    @*<footer class="py-5 bg-black">
         <div class="d-flex justify-content-around">
             <div class="m-0 text-center text-white small p-2 bd-highlight">
                 <h5>Postadress</h5>
@@ -84,15 +72,15 @@
             <a class="m-0 text-white" asp-controller="Info" asp-action="Contact">Kontakt</a>
             <p>Copyright &copy; All rights reserved: HEH corporation</p>
         </div>
-    </footer>
+    </footer>*@
 
     @*----------------- scripts and stuff below this line ------------*@
 
-    <environment include="Development">
+    @*<environment include="Development">
         <script src="~/lib/jquery/jquery-3.4.0.min.js"></script>
-        <script src="~/lib/bootstrap-4.3.1/dist/js/bootstrap.bundle.js"></script>
+        <script src="~/lib/bootstrap-4.3.1/dist/js/bootstrap.bundle.js"></script>*@
         @*<script src="~/lib/popper.js/"></script>*@
-    </environment>
+    @*</environment>
     <environment exclude="Development">
         <script src="https://code.jquery.com/jquery-3.4.0.slim.min.js"
                 asp-fallback-src="~/lib/jquery/jquery-3.4.0.min.js"
@@ -109,10 +97,11 @@
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
-    @RenderSection("scripts", required: false)
+    @RenderSection("scripts", required: false)*@
 
-    @*<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>*@
-</body>
-</html>
+    @*
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>*@
+@*</body>
+</html>*@

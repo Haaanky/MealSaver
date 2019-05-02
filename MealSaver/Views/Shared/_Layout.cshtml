@@ -1,4 +1,5 @@
-﻿
+﻿@*@model UserLoginVM*@
+
 <!DOCTYPE html>
 
 <html>
@@ -26,30 +27,81 @@
                         <a class="nav-link" asp-controller="home" asp-action="index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#inspiration">Inspiration</a>
+                        <a class="nav-link" href="~/#inspiration">Inspiration</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#howItWorks">Så funkar det</a>
+                        <a class="nav-link" href="~/#howItWorks">Så funkar det</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#whyWasteland">Varför Wasteland</a>
+                        <a class="nav-link" href="~/#whyWasteland">Varför Wasteland</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="user" asp-action="Login">Logga in</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="user" asp-action="Signup">Registrera</a>
-                    </li>
+                    @if (!((Context.User != null) && Context.User.Identity.IsAuthenticated))
+
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="user" asp-action="Login">Logga in</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Login
+                            </a>
+                            @*<div class="dropdown-menu">
+                                <form class="px-4 py-3" asp-controller="user" asp-action="login">
+                                    <div class="form-group">
+                                        <label asp-for="Username"></label>
+                                        <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com" asp-for="Username" />
+                                        <span asp-validation-for="Username"></span>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Password"></label>
+                                        <input asp-for="Password" type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                                        <span asp-validation-for="Password"></span>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                                        <label class="form-check-label" for="dropdownCheck">
+                                            Kom ihåg mig
+                                        </label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Logga in</button>
+                                </form>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-controller="user" asp-action="Signup">Registrera</a>
+                                <a class="dropdown-item" href="#">Forgot password?</a>
+                            </div>*@
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="user" asp-action="Signup">Registrera</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item dropdown show">
+                            <a class="nav-link dropdown-toggle" asp-controller="item" asp-action="Overview" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @Context.User.Identity.Name
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" asp-controller="item" asp-action="Overview">Översikt</a>
+                                <a class="dropdown-item" asp-controller="item" asp-action="add">Lägg till slängd mat</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="user" asp-action="Logout">Logga ut</a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
     </nav>
-    <div id="body">
+    <div>
         @RenderSection("SectionName", required: false)
-        <section class="content-wrapper main-content clear-fix">
+        <section class="content-wrapper main-content clear-fix" style="padding-top: 100px">
             @RenderBody()
         </section>
     </div>
+
     <footer class="py-5 bg-black">
         <div class="d-flex justify-content-around">
             <div class="m-0 text-center text-white small p-2 bd-highlight">
