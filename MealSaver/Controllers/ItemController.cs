@@ -98,8 +98,6 @@ namespace MealSaver.Controllers
                     
                     }
                 }
-                
-
             };
             return View(itemAddVM);
         }

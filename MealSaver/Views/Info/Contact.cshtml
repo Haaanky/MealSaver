@@ -1,10 +1,10 @@
 ﻿@model InfoContactVM
-<div class="contact">
     <h1>Kontakta oss</h1>
     <p>Vi är intresserade att veta vad du har på hjärtat. Besök oss, mejla eller skriv din fråga i kontaktformuläret!</p>
+<div class="form-group">
     <form asp-controller="info" asp-action="contact" method="post">
         <label asp-for="Name"></label>
-        <input asp-for="Name" />
+        <input asp-for="Name" type="text" />
         <span asp-validation-for="Name"></span>
         <br />
         <label asp-for="Email"></label>
