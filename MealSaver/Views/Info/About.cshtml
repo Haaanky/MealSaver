@@ -1,11 +1,14 @@
 ﻿@model InfoAboutVM[]
-    <div class="about">
+    <div class="about text-lg-center container">
         <h1>Om Mealsaver</h1>
+        <br />
 
-            <h2 class="masthead-heading mb-0"> Rädda bra mat från att slängas</h2>
-            <p> ⅓ av all mat som produceras slängs. Med Mealsaver kan du optimera dina matinköp. Det är bra både för miljön och din plånbok.</p>
+        <h2 class="masthead-heading mb-0"> Rädda bra mat från att slängas</h2>
+        <br />
+        <p> ⅓ av all mat som produceras slängs. Med Mealsaver kan du optimera dina matinköp. Det är bra både för miljön och din plånbok.</p>
+        <br />
 
-            <h3>Wastelands grundare:</h3>
+        <h3>Wastelands grundare:</h3>
 
         <div class="d-flex justify-content-around ">
             @foreach (var item in Model)
