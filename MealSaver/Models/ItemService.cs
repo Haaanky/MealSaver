@@ -9,44 +9,55 @@ namespace MealSaver.Models
 {
     public class ItemService
     {
-        public ItemService(FoodObjContext context)
+        public ItemService(FoodObjContext foodObjContext)
         {
-            this.context = context;
+            this.foodObjContext = foodObjContext;
         }
 
-        private readonly FoodObjContext context;
+        private readonly FoodObjContext foodObjContext;
 
-        public async Task AddItem(Item item)
+        public async Task AddItem(Item item, string currentUserID)
         {
-            switch (item.ItemWeightMeasurement)
+            switch (item.SelectedWeightValue)
             {
-                case "g": item.Amount /= 1000; break;
-                case "dl": item.Amount /= 10; break;
+                case 3: item.Amount /= 1000; break;
+                case 5: item.Amount /= 10; break;
                 default:
                     break;
             }
-            context.Products.Add(new Products
+            switch (item.SelectedFoodValue)
             {
-                Type = item.FoodItem,
+                case 1: item.Type = "Välj"; break;
+                case 2: item.Type = "Mjölk"; break;
+                case 3: item.Type = "Kött"; break;
+                case 4: item.Type = "Frukt"; break;
+                default:
+                    break;
+            }
+            foodObjContext.Products.Add(new Products
+            {
+
+                Type = item.Type,
                 AmountKg = item.Amount,
                 Date = item.DateOfInput,
-                //UserId =  //lägg till så att vi kan koppla slängd mat till användaren 
+                UserId = currentUserID //lägg till så att vi kan koppla slängd mat till användaren 
             });
-            await context.SaveChangesAsync();
+            await foodObjContext.SaveChangesAsync();
         }
     
-            public Item[] GetAllItems()
+            public ItemDisplayVM[] GetAllItems(string currentUserID)
             {
-                return context.Products
+                return foodObjContext.Products
                     .OrderByDescending(o => o.Date)
-                    .Select(o => new Item
+                    .Where(o => o.UserId == currentUserID)
+                    .Select(o => new ItemDisplayVM
                     {
                         //Type = o.Type,
                         //AmountKg = o.AmountKg,
                         //Date = o.Date
-                        FoodItem  = o.Type,
-                        Amount = o.AmountKg,
-                        DateOfInput = o.Date,
+                        Type  = o.Type,
+                        AmountKg = o.AmountKg,
+                        Date = o.Date,
                         
                     })
                     .ToArray();
