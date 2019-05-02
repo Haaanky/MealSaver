@@ -12,5 +12,17 @@
     <p>Här ska du se en lista på vad du har slängt den senaste månaden.</p>
 </div>
 
-<partial name=_PartialItemList model=Model.ItemList />
+@*<partial name=_PartialItemList model=Model.ItemList />*@
 
+@if (Model.ItemList.Length <= 0)
+{
+    <p>
+        Du har inte slängt någonting, bra jobbat @Context.User.Identity.Name!
+    </p>
+}
+else
+{
+    <ul>
+        <partial name=_PartialItemList model=Model.ItemList />
+    </ul>
+}
