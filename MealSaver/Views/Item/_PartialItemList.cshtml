@@ -5,9 +5,12 @@
     Layout = "_UserLayout";
 }*@
 
-    <ul>
-        @foreach (var item in Model)
-        {
-            <li>@item.Type</li>
-        }
-    </ul>
+    <div class="text-lg-center container">
+        <h2>Så här mycket har du slängt den senaste veckan:</h2>
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>@item.Type</li>
+            }
+        </ul>
+    </div>
