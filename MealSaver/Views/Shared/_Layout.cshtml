@@ -1,6 +1,4 @@
-﻿@*@model UserLoginVM*@
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 <head>
@@ -36,7 +34,6 @@
                         <a class="nav-link" href="~/#whyWasteland">Varför Wasteland</a>
                     </li>
                     @if (!((Context.User != null) && Context.User.Identity.IsAuthenticated))
-
                     {
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="user" asp-action="Login">Logga in</a>
@@ -45,31 +42,7 @@
                             <a class="nav-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Login
                             </a>
-                            @*<div class="dropdown-menu">
-                                <form class="px-4 py-3" asp-controller="user" asp-action="login">
-                                    <div class="form-group">
-                                        <label asp-for="Username"></label>
-                                        <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com" asp-for="Username" />
-                                        <span asp-validation-for="Username"></span>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label asp-for="Password"></label>
-                                        <input asp-for="Password" type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
-                                        <span asp-validation-for="Password"></span>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                                        <label class="form-check-label" for="dropdownCheck">
-                                            Kom ihåg mig
-                                        </label>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Logga in</button>
-                                </form>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-controller="user" asp-action="Signup">Registrera</a>
-                                <a class="dropdown-item" href="#">Forgot password?</a>
-                            </div>*@
+                            @await Component.InvokeAsync("Login")
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="user" asp-action="Signup">Registrera</a>

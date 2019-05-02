@@ -37,5 +37,9 @@ namespace MealSaver.Controllers
         {
             return PartialView("_PartialWhyUseWasteland");
         }
+        public IActionResult PartialLogin()
+        {
+            return PartialView("PartialLogin");
+        }
     }
 }

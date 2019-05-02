@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MealSaver.Models;
+using MealSaver.Models.ViewModels.Info;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MealSaver.Controllers
@@ -24,7 +25,16 @@ namespace MealSaver.Controllers
         [Route("om-mealsaver")]
         public IActionResult About()
         {
-            return View(sv.GetallFounders());
+            InfoAboutVM infoAboutVM = new InfoAboutVM() {
+                ListVM = sv.GetallFounders(),
+                LoginVM = new Models.ViewModels.User.UserLoginVM()
+            };
+            //sv.GetallFounders()
+            return View(infoAboutVM);
+        }
+        public IActionResult PartialLogin()
+        {
+            return PartialView("PartialLogin");
         }
     }
 }
