@@ -7,7 +7,7 @@
         <div class="masthead-content">
             <div class="container">
                 <h1 class="masthead-heading mb-0">Welcome</h1>
-                <h2 class="masthead-subheading mb-0">to the Wasteland</h2>
+                <h2 class="masthead-subheading mb-0">to the WasteLand</h2>
                 <a asp-controller="home" asp-action="index" class="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a>
             </div>
         </div>
@@ -35,6 +35,16 @@
             </div>
         </section>
 
+        @*@{
+            var myChart = new Chart(width: 600, height: 400)
+                .AddTitle("Chart Title")
+                .AddSeries(
+                    name: "Employee",
+                    xValue: new[] { "Peter", "Andrew", "Julie", "Mary", "Dave" },
+                    yValues: new[] { "2", "6", "4", "5", "3" })
+                .Write();
+        }*@
+
         <div class="card w-50 mx-auto">
             <div class="card-header">
                 Citat
@@ -58,10 +68,10 @@
         </section>
 
         <section id="howItWorks">
-                <div class="p-5">
-                    <h2 class="display-4">Hur funkar det?</h2>
-                    <partial name="_PartialHowItWorks" model="Model" /> <br />
-                </div>
+            <div class="p-5">
+                <h2 class="display-4">Hur funkar det?</h2>
+                <partial name="_PartialHowItWorks" model="Model" /> <br />
+            </div>
         </section>
     </body>
 }

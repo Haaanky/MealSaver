@@ -46,10 +46,11 @@ namespace MealSaver.Controllers
                 ModelState.AddModelError(nameof(UserLoginVM.Username), "Login failed");
                 return View(userLoginVM);
             }
-            if (string.IsNullOrWhiteSpace(userLoginVM.ReturnUrl))
-                return Redirect("oversikt");
+            if (!string.IsNullOrWhiteSpace(userLoginVM.ReturnUrl))
+                return Redirect(userLoginVM.ReturnUrl);
 
-            return Redirect(userLoginVM.ReturnUrl);
+            return RedirectToAction(nameof(ItemController.Overview), "Item");
+
         }
 
         [HttpGet]
