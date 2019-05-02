@@ -2,18 +2,20 @@
 @{
     ViewData["Title"] = "LogIn";
 }
-<div class="login">
+<div class="login text-lg-center container">
     <h1>Logga in</h1>
     <form asp-controller="user" asp-action="login" asp-route-returnUrl="@Model.ReturnUrl">
-        <label asp-for="Username"></label>
-        <input asp-for="Username" />
-        <span asp-validation-for="Username"></span>
-        <br />
-        <label asp-for="Password"></label>
-        <input asp-for="Password" />
-        <span asp-validation-for="Password"></span>
-        <br />
-        <input type="submit" value="Logga in" />
+        <div class="form-group align-items-center">
+            <label asp-for="Username"></label>
+            <input asp-for="Username" type="email" class="form-control"/>
+            <span asp-validation-for="Username"></span>
+            <br />
+            <label asp-for="Password"></label>
+            <input asp-for="Password" type="password" class="form-control"/>
+            <span asp-validation-for="Password"></span>
+            <br />
+            <button type="submit" class="btn btn-primary">Logga in</button>
+        </div>
     </form>
     <div asp-validation-summary="All"></div>
 </div>
