@@ -14,12 +14,19 @@ namespace MealSaver.Models.ViewModels.User
         [DataType(DataType.EmailAddress)]
         public string Username { get; set; }
         [Required]
+        [Display(Name = "Lösenord")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
         [Required]
-        [Display(Name ="Repeat Password")]
+        [Display(Name ="Upprepa lösenord")]
         [DataType(DataType.Password)]
         [Compare(nameof(Password))]
         public string PasswordRepeat { get; set; }
+        [Display(Name = "Förnamn")]
+        public string FirstName { get; set; }
+        [Display(Name = "Efternamn")]
+        public string LastName { get; set; }
+
+        public string Message { get; set; }
     }
 }

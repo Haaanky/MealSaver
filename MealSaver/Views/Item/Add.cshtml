@@ -1,0 +1,16 @@
+﻿@model ItemAddVM
+@{
+    ViewData["Title"] = "AddItem";
+}
+<div>
+    <h1>Lägg till slängd mat</h1>
+</div>
+
+<partial name=_PartialViewForm model=Model.FormVM />
+
+<div style="background-color: pink">
+    <p>Här ska du se en lista på vad du har slängt den senaste månaden.</p>
+</div>
+
+<partial name=_PartialItemList model=Model.ItemList />
+

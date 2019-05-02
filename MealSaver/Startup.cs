@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MealSaver.Models;
 using Microsoft.Extensions.Configuration;
+using MealSaver.Models.Entities;
 
 namespace MealSaver
 {
@@ -28,30 +29,43 @@ namespace MealSaver
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            var connString = configuration.GetConnectionString("defaultConnection");
+            //var connStringIdentity = configuration.GetConnectionString("defaultConnection"); // not safe, stored in appsettings.json
+            var connString = configuration["defaultConnection"]; // safer, stored in user secrets, will later be stored in azure server secrets
 
+            // Identity/User stuff below
             services.AddDbContext<MyIdentityContext>(o => o.UseSqlServer(connString));
             services.AddIdentity<MyIdentityUser, IdentityRole>(o =>
             {
                 o.Password.RequireNonAlphanumeric = false;
-                o.Password.RequiredLength = 6;
+                o.Password.RequiredLength = 2; // change to longer requirement before live
             })
             .AddEntityFrameworkStores<MyIdentityContext>()
             .AddDefaultTokenProviders();
 
-            services.ConfigureApplicationCookie(o => o.LoginPath = "/home/login"); // välja vart login ska vara
+            services.ConfigureApplicationCookie(o => o.LoginPath = "/logga-in"); // välja vart login ska vara
 
+
+            // FoodObj database schema below 
+            services.AddDbContext<FoodObjContext>(o => o.UseSqlServer(connString));
+
+            // General purpose stuff below
             services.AddTransient<UserService>(); // lägg till de services vi kommer behöva ha flera instanser av
             services.AddTransient<InfoService>();
-            services.AddMvc();
+            services.AddTransient<ItemService>();
 
+            services.AddMvc();
+            //services.AddSession();
+            services.AddSession();
+            services.AddMemoryCache();
         }
 
         public void Configure(IApplicationBuilder app)
         {
+            app.UseSession();
             app.UseDeveloperExceptionPage();
             app.UseAuthentication();
             app.UseMvcWithDefaultRoute();
+            app.UseStaticFiles();
         }
     }
 }
