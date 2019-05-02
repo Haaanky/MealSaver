@@ -10,10 +10,10 @@ namespace MealSaver.Controllers
 {
     public class InfoController : Controller
     {
-        InfoService sv;
-        public InfoController(InfoService service)
+        InfoService infoService;
+        public InfoController(InfoService infoService)
         {
-            sv = service;
+            this.infoService = infoService;
         }
 
         [Route("kontakt")]
@@ -25,16 +25,7 @@ namespace MealSaver.Controllers
         [Route("om-mealsaver")]
         public IActionResult About()
         {
-            InfoAboutVM infoAboutVM = new InfoAboutVM() {
-                ListVM = sv.GetallFounders(),
-                LoginVM = new Models.ViewModels.User.UserLoginVM()
-            };
-            //sv.GetallFounders()
-            return View(infoAboutVM);
-        }
-        public IActionResult PartialLogin()
-        {
-            return PartialView("PartialLogin");
+            return View(infoService.GetallFounders());
         }
     }
 }

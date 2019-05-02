@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using MealSaver.Models.ViewModels.User;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Caching.Memory;
+using System.Security.Claims;
 
 namespace MealSaver.Controllers
 {
@@ -50,22 +51,26 @@ namespace MealSaver.Controllers
         [HttpGet]
         public IActionResult Form()
         {
-            return View();
+            return Redirect("/");
+            //return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Form(/*ItemAddVM userAddItemVM*/Item item)
         {
-            await itemService.AddItem(item);
+            var currentUserID = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            await itemService.AddItem(item, currentUserID);
 
-            //return RedirectToAction(nameof(Add));
-            return View();
+            return Redirect("/");
+            //return View();
         }
 
         [HttpGet]
         [Route("lagga-till")]
         public IActionResult Add()
         {
+            var currentUserID = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
             ItemAddVM itemAddVM = new ItemAddVM
             {
                 FormVM = new ItemFormVM
@@ -88,18 +93,17 @@ namespace MealSaver.Controllers
                         new SelectListItem { Value = "5", Text = "dl" }
                     }
                 },
-                ItemList = new ItemDisplayVM[]
-                {
-                    new ItemDisplayVM
-                    {
-                        Type = "Potatis",
-                        AmountKg = 5,
-                        Date = DateTime.Now.Date
+                ItemList = itemService.GetAllItems(currentUserID)
+                //new ItemDisplayVM[]
+                //{
+                //    new ItemDisplayVM
+                //    {
+                //        Type = "Potatis",
+                //        AmountKg = 5,
+                //        Date = DateTime.Now.Date
                     
-                    }
-                }
-                
-
+                //    }
+                //}
             };
             return View(itemAddVM);
         }

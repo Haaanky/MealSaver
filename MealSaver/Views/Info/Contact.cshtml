@@ -1,33 +1,38 @@
 ﻿@model InfoContactVM
-<div class="contact">
-    <h1>Kontakta oss</h1>
-    <p>Vi är intresserade att veta vad du har på hjärtat. Besök oss, mejla eller skriv din fråga i kontaktformuläret!</p>
-    <form asp-controller="info" asp-action="contact" method="post">
-        <label asp-for="Name"></label>
-        <input asp-for="Name" />
-        <span asp-validation-for="Name"></span>
-        <br />
-        <label asp-for="Email"></label>
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
-        <br />
-        <label asp-for="Description"></label>
-        <input asp-for="Description" />
-        <span asp-validation-for="Description"></span>
-        <br />
-        <input type="submit" value="Submit" />
-    </form>
-</div>
 
-<div>
-    <h5>Postadress</h5>
-    <p>
-        Miljögatan 14 <br />
-        12345 Miljöstad
-    </p>
+    <div class="text-lg-center container">
+        <h1>Kontakta oss</h1>
+        <p>Vi är intresserade att veta vad du har på hjärtat. Besök oss, mejla eller skriv din fråga i kontaktformuläret!</p>
+        <form asp-controller="info" asp-action="contact" method="post">
+            <div class="form-group align-items-center" @*width="300px" *@>
 
-    <h5>Mejla oss</h5>
-    <p>
-        E-post: mealsaver@mail.com <br />
-    </p>
-</div>
+                <label asp-for="Name"></label>
+                <input asp-for="Name" type="text" class="form-control" />
+                <span asp-validation-for="Name"></span>
+                <br />
+                <label asp-for="Email"></label>
+                <input asp-for="Email" type="email" class="form-control" />
+                <span asp-validation-for="Email"></span>
+                <br />
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description"></span>
+                <br />
+                <button type="submit" class="btn btn-primary">Skicka</button>
+            </div>
+        </form>
+        <br />
+        <div>
+            <h5>Postadress</h5>
+            <p>
+                Miljögatan 14 <br />
+                12345 Miljöstad
+            </p>
+
+            <h5>Mejla oss</h5>
+            <p>
+                E-post: mealsaver@mail.com <br />
+            </p>
+        </div>
+
+    </div>

@@ -1,3 +1,8 @@
 ﻿/*.signup, .login, .contact, .about {
     padding-top: 100px;
 }*/
+
+.item-form {
+    /*max-width: 200px;*/
+    /*display:flex;*/
+}
