@@ -51,7 +51,7 @@ namespace MealSaver.Controllers
         [HttpGet]
         public IActionResult Form()
         {
-            return Redirect("/");
+            return Redirect("/lagga-till");
             //return View();
         }
 
@@ -61,7 +61,7 @@ namespace MealSaver.Controllers
             var currentUserID = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
             await itemService.AddItem(item, currentUserID);
 
-            return Redirect("/");
+            return Redirect("/lagga-till");
             //return View();
         }
 
@@ -78,19 +78,19 @@ namespace MealSaver.Controllers
                     //lägg till fler alternativ
                     FoodItem = new SelectListItem[]
                     {
-                        new SelectListItem { Value = "1", Text = "Välj", Selected = true },
-                        new SelectListItem { Value = "2", Text = "Mjölk" },
-                        new SelectListItem { Value = "3", Text = "Kött" },
-                        new SelectListItem { Value = "4", Text = "Frukt" }
+                        new SelectListItem { Value = "0", Text = "Välj", Disabled = true, Selected = true },
+                        new SelectListItem { Value = "1", Text = "Mjölk" },
+                        new SelectListItem { Value = "2", Text = "Kött" },
+                        new SelectListItem { Value = "3", Text = "Frukt" }
                     },
 
                     ItemWeightMeasurement = new SelectListItem[]
                     {
-                        new SelectListItem { Value = "1", Text = "Välj", Selected = true },
-                        new SelectListItem { Value = "2", Text = "Kg" },
-                        new SelectListItem { Value = "3", Text = "g" },
-                        new SelectListItem { Value = "4", Text = "L" },
-                        new SelectListItem { Value = "5", Text = "dl" }
+                        new SelectListItem { Value = "0", Text = "Välj", Disabled = true, Selected = true },
+                        new SelectListItem { Value = "1", Text = "Kg" },
+                        new SelectListItem { Value = "2", Text = "g" },
+                        new SelectListItem { Value = "3", Text = "L" },
+                        new SelectListItem { Value = "4", Text = "dl" }
                     }
                 },
                 ItemList = itemService.GetAllItems(currentUserID)
@@ -101,7 +101,7 @@ namespace MealSaver.Controllers
                 //        Type = "Potatis",
                 //        AmountKg = 5,
                 //        Date = DateTime.Now.Date
-                    
+
                 //    }
                 //}
             };

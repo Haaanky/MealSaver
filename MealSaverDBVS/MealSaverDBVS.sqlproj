@@ -73,5 +73,9 @@
     <Build Include="dbo\Tables\AspNetUserTokens.sql" />
     <Build Include="FoodObj\FoodObj.sql" />
     <Build Include="FoodObj\Tables\Products.sql" />
+    <Build Include="FoodObj\Tables\ContactForm.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="MealSaverDBVS.refactorlog" />
   </ItemGroup>
 </Project>

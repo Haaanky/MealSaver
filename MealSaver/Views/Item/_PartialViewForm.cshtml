@@ -1,47 +1,31 @@
 ﻿@model ItemFormVM
 
-    <div class="text-lg-center container">
-        <h1>Lägg till slängd mat</h1>
-        <div class="dropdown item-form">
-
-            <form asp-controller="item" asp-action="form">
-                <div class="form-group align-items-center">
-                    <label asp-for="FoodItem"></label>
-                    <select asp-for="SelectedFoodValue"
-                            asp-items="Model.FoodItem" class="form-control"></select>
-                    <span asp-validation-for="SelectedFoodValue"></span>
-                    <br />
-                    <label asp-for="Amount"></label>
-                    <input asp-for="Amount" type="number" min="0" max="999" class="form-control" />
-                    <span asp-validation-for="Amount"></span>
-                    <br />
-                    <label asp-for="ItemWeightMeasurement"></label>
-                    <select asp-for="SelectedWeightValue"
-                            asp-items="Model.ItemWeightMeasurement" class="form-control"></select>
-                    <span asp-validation-for="SelectedWeightValue"></span>
-                    <br />
-                    <label asp-for="DateOfInput"></label>
-                    <input asp-for="DateOfInput" value="@DateTime.Now.Date" type="date" class="form-control" />
-                    <span asp-validation-for="DateOfInput"></span>
-                    <br />
-
-                    <button type="submit" class="btn btn-primary">Släng</button>
-                </div>
-            </form>
-
-        </div>
-    </div>
-
-    @*<form asp-controller="user" asp-action="login" asp-route-returnUrl="@Model.ReturnUrl">
+<div class="text-lg-center container">
+    <h1>Lägg till slängd mat</h1>
+    <div class="dropdown item-form">
+        <form asp-controller="item" asp-action="form">
             <div class="form-group align-items-center">
-                <label asp-for="Username"></label>
-                <input asp-for="Username" type="email" class="form-control" />
-                <span asp-validation-for="Username"></span>
+                <label asp-for="FoodItem"></label>
+                <select asp-for="SelectedFoodValue"
+                        asp-items="Model.FoodItem" class="form-control" ></select>
+                <span asp-validation-for="SelectedFoodValue"></span>
                 <br />
-                <label asp-for="Password"></label>
-                <input asp-for="Password" type="password" class="form-control" />
-                <span asp-validation-for="Password"></span>
+                <label asp-for="Amount"></label>
+                <input asp-for="Amount" type="number" min="0" max="999" class="form-control" />
+                <span asp-validation-for="Amount"></span>
                 <br />
-                <button type="submit" class="btn btn-primary">Logga in</button>
+                <label asp-for="ItemWeightMeasurement"></label>
+                <select asp-for="SelectedWeightValue"
+                        asp-items="Model.ItemWeightMeasurement" class="form-control"></select>
+                <span asp-validation-for="SelectedWeightValue"></span>
+                <br />
+                <label asp-for="DateOfInput"></label>
+                <input asp-for="DateOfInput.Date" type="date" class="form-control" />
+                <span asp-validation-for="DateOfInput"></span>
+                <br />
+
+                <button type="submit" class="btn btn-primary">Släng</button>
             </div>
-        </form>*@
+        </form>
+    </div>
+</div>

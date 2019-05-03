@@ -7,13 +7,19 @@ using System.Threading.Tasks;
 
 namespace MealSaver.Models.ViewModels.Item
 {
-    //public enum UnitMeasurement
-    //{
-    //    Kg,
-    //    g,
-    //    dL,
-    //    L
-    //}
+    public enum UnitMeasurement
+    {
+        Kg,
+        g,
+        dL,
+        L
+    }
+    public enum ProductType
+    {
+        Mjölk,
+        Kött,
+        Frukt
+    }
     public class ItemFormVM
     {
         [Display(Name = "Produkt")]
@@ -27,15 +33,13 @@ namespace MealSaver.Models.ViewModels.Item
         [Range(1, 10)]
         public int SelectedWeightValue { get; set; }
 
-        //public UnitMeasurement Unit { get; set; }
-
         [Display(Name = "Mängd")]
-        [Range(1, 999)]
+        [Range(0.1, 999)]
         [Required(ErrorMessage = "Välj hur mycket du slängt")]
         
         public double Amount { get; set; }
 
         [Display(Name = "Datum")]
-        public DateTime DateOfInput { get; set; }
+        public DateTime DateOfInput { get; set; } = DateTime.Now.Date;
     }
 }

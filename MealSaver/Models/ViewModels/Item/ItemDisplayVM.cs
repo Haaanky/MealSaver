@@ -8,11 +8,12 @@ namespace MealSaver.Models.ViewModels.Item
     public class ItemDisplayVM
     {
         public string Type { get; set; }
-        public double AmountKg { get; set; }
+        public double Amount { get; set; }
+        public string UnitOfMeasurement { get; set; }
         public DateTime Date { get; set; }
         public override string ToString()
         {
-            return $"{Type}, {AmountKg}, {Date}";
+            return $"{Type}, {Amount}, {UnitOfMeasurement}, {Date.ToShortDateString()}";
         }
     }
 }

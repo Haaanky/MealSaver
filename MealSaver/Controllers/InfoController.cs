@@ -17,11 +17,18 @@ namespace MealSaver.Controllers
         }
 
         [Route("kontakt")]
+        [HttpGet]
         public IActionResult Contact()
         {
             return View();
         }
-
+        [Route("kontakt")]
+        [HttpPost]
+        public async Task<IActionResult> Contact(InfoContactVM infoContactVM)
+        {
+            await infoService.AddContactFormToDBAsync(infoContactVM);
+            return RedirectToAction(nameof(Contact));
+        }
         [Route("om-mealsaver")]
         public IActionResult About()
         {
