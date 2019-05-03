@@ -20,10 +20,12 @@ namespace MealSaver
     public class Startup
     {
         private readonly IConfiguration configuration;
+        private readonly IHostingEnvironment env;
 
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             this.configuration = configuration;
+            this.env = env;
         }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -53,19 +55,41 @@ namespace MealSaver
             services.AddTransient<InfoService>();
             services.AddTransient<ItemService>();
 
-            services.AddMvc();
-            //services.AddSession();
+            services.AddMvc(o =>
+            {
+                if (env.IsProduction())
+                {
+                    o.Filters.Add(new RequireHttpsAttribute());
+                }
+            });
+            services.AddHttpsRedirection(o => 
+            {
+                o.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
+                o.HttpsPort = 5001;
+
+            });
             services.AddSession();
             services.AddMemoryCache();
         }
 
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/error/servererror");
+                app.UseHsts();
+            }
+                app.UseStatusCodePagesWithRedirects("/error/httpError/{0}");
+
             app.UseSession();
-            app.UseDeveloperExceptionPage();
             app.UseAuthentication();
             app.UseMvcWithDefaultRoute();
             app.UseStaticFiles();
+            app.UseHttpsRedirection();
         }
     }
 }
