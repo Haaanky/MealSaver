@@ -47,7 +47,7 @@ namespace MealSaver.Models
 
                 Type = item.Type,
                 Amount = item.Amount,
-                Date = item.DateOfInput,
+                Date = item.DateOfInput.Date,
                 UnitOfMeasurement = item.UnitOfMeasurement,
                 UserId = currentUserID //lägg till så att vi kan koppla slängd mat till användaren 
             });
