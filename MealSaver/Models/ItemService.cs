@@ -18,13 +18,13 @@ namespace MealSaver.Models
 
         public async Task AddItem(Item item, string currentUserID)
         {
-            switch (item.SelectedWeightValue)
-            {
-                case 3: item.Amount /= 1000; break;
-                case 5: item.Amount /= 10; break;
-                default:
-                    break;
-            }
+            //switch (item.SelectedWeightValue) // lägg till denna när vi ska skriva ut datan i diagram eller andra visuella hjälpmedel
+            //{
+            //    case 3: item.Amount /= 1000; break;
+            //    case 5: item.Amount /= 10; break;
+            //    default:
+            //        break;
+            //}
             switch (item.SelectedFoodValue)
             {
                 case 1: item.Type = "Välj"; break;
@@ -34,12 +34,23 @@ namespace MealSaver.Models
                 default:
                     break;
             }
+            switch (item.SelectedWeightValue)
+            {
+                case 1: item.UnitOfMeasurement = "Välj"; break;
+                case 2: item.UnitOfMeasurement = "Kg"; break;
+                case 3: item.UnitOfMeasurement = "g"; break;
+                case 4: item.UnitOfMeasurement = "L"; break;
+                case 5: item.UnitOfMeasurement = "dL"; break;
+                default:
+                    break;
+            }
             foodObjContext.Products.Add(new Products
             {
 
                 Type = item.Type,
-                AmountKg = item.Amount,
+                Amount = item.Amount,
                 Date = item.DateOfInput,
+                UnitOfMeasurement = item.UnitOfMeasurement,
                 UserId = currentUserID //lägg till så att vi kan koppla slängd mat till användaren 
             });
             await foodObjContext.SaveChangesAsync();
@@ -56,7 +67,7 @@ namespace MealSaver.Models
                         //AmountKg = o.AmountKg,
                         //Date = o.Date
                         Type  = o.Type,
-                        AmountKg = o.AmountKg,
+                        Amount = o.Amount,
                         Date = o.Date,
                         
                     })
