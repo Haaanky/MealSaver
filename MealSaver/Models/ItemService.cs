@@ -27,20 +27,18 @@ namespace MealSaver.Models
             //}
             switch (item.SelectedFoodValue)
             {
-                case 1: item.Type = "Välj"; break;
-                case 2: item.Type = "Mjölk"; break;
-                case 3: item.Type = "Kött"; break;
-                case 4: item.Type = "Frukt"; break;
+                case 1: item.Type = "Mjölk"; break;
+                case 2: item.Type = "Kött"; break;
+                case 3: item.Type = "Frukt"; break;
                 default:
                     break;
             }
             switch (item.SelectedWeightValue)
             {
-                case 1: item.UnitOfMeasurement = "Välj"; break;
-                case 2: item.UnitOfMeasurement = "Kg"; break;
-                case 3: item.UnitOfMeasurement = "g"; break;
-                case 4: item.UnitOfMeasurement = "L"; break;
-                case 5: item.UnitOfMeasurement = "dL"; break;
+                case 1: item.UnitOfMeasurement = "Kg"; break;
+                case 2: item.UnitOfMeasurement = "g"; break;
+                case 3: item.UnitOfMeasurement = "L"; break;
+                case 4: item.UnitOfMeasurement = "dL"; break;
                 default:
                     break;
             }
@@ -69,7 +67,7 @@ namespace MealSaver.Models
                         Type  = o.Type,
                         Amount = o.Amount,
                         Date = o.Date,
-                        
+                        UnitOfMeasurement = o.UnitOfMeasurement
                     })
                     .ToArray();
             }

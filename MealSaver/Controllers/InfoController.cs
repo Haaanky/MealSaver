@@ -24,9 +24,9 @@ namespace MealSaver.Controllers
         }
         [Route("kontakt")]
         [HttpPost]
-        public IActionResult Contact(InfoContactVM infoContactVM)
+        public async Task<IActionResult> Contact(InfoContactVM infoContactVM)
         {
-
+            await infoService.AddContactFormToDBAsync(infoContactVM);
             return RedirectToAction(nameof(Contact));
         }
         [Route("om-mealsaver")]

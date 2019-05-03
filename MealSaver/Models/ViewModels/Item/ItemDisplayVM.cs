@@ -9,10 +9,11 @@ namespace MealSaver.Models.ViewModels.Item
     {
         public string Type { get; set; }
         public double Amount { get; set; }
+        public string UnitOfMeasurement { get; set; }
         public DateTime Date { get; set; }
         public override string ToString()
         {
-            return $"{Type}, {Amount}, {Date.ToShortDateString()}";
+            return $"{Type}, {Amount}, {UnitOfMeasurement}, {Date.ToShortDateString()}";
         }
     }
 }
