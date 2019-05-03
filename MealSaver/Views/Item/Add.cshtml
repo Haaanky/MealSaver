@@ -7,21 +7,22 @@
 
 @*<partial name=_PartialItemList model=Model.ItemList />*@
 <div class="text-lg-center container">
-@if (Model.ItemList.Length <= 0)
-{
-    <p>
-        Du har inte slängt någonting, bra jobbat @Context.User.Identity.Name!
-    </p>
-}
-else
-{
-    <ul>
-        <partial name=_PartialItemList model=Model.ItemList />
-    </ul>
-}
-
+    @if (Model.ItemList.Length <= 0)
+    {
+        <p>
+            Du har inte slängt någonting, bra jobbat @Context.User.Identity.Name!
+        </p>
+    }
+    else
+    {
+        <ul>
+            <partial name=_PartialItemList model=Model.ItemList />
+        </ul>
+    }
+</div>
 @section scripts
 {
+<partial name="_PartialValidationScripts" />
     <script>
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
@@ -39,7 +40,7 @@ else
                 label: 'Slängd mat i g',
                     data: [@for (int i = 0; i < itemList.Length; i++)
                     {
-                        @Html.Raw(itemList[i].AmountKg*1000 + (i<itemList.Length-1? ", ": string.Empty))
+                        @Html.Raw(itemList[i].Amount*1000 + (i<itemList.Length-1? ", ": string.Empty))
                     }],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
