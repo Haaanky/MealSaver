@@ -10,5 +10,9 @@ namespace MealSaver.Models.ViewModels.Item
         public string Type { get; set; }
         public double AmountKg { get; set; }
         public DateTime Date { get; set; }
+        public override string ToString()
+        {
+            return $"{Type}, {AmountKg}, {Date.ToShortDateString()}";
+        }
     }
 }

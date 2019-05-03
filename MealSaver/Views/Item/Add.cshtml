@@ -5,8 +5,6 @@
 
 <partial name=_PartialViewForm model=Model.FormVM />
 
-
-
 @*<partial name=_PartialItemList model=Model.ItemList />*@
 <div class="text-lg-center container">
 @if (Model.ItemList.Length <= 0)
@@ -21,4 +19,7 @@ else
         <partial name=_PartialItemList model=Model.ItemList />
     </ul>
 }
-</div>
+
+@section scripts {
+    <partial name="_PartialValidationScripts" />
+}

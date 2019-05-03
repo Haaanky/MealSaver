@@ -28,6 +28,7 @@ namespace MealSaver.Models
         //}
 
         public double Amount { get; set; }
+        public string UnitOfMeasurement { get; set; }
         //public string UserId { get; set; }
         public DateTime DateOfInput { get; set; }
         //public string ItemWeightMeasurement { get; set; }

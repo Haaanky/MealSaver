@@ -51,7 +51,7 @@ namespace MealSaver.Controllers
         [HttpGet]
         public IActionResult Form()
         {
-            return Redirect("/");
+            return Redirect("/lagga-till");
             //return View();
         }
 
@@ -61,7 +61,7 @@ namespace MealSaver.Controllers
             var currentUserID = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
             await itemService.AddItem(item, currentUserID);
 
-            return Redirect("/");
+            return Redirect("/lagga-till");
             //return View();
         }
 
