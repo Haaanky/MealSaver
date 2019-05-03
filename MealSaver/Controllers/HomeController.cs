@@ -19,6 +19,8 @@ namespace MealSaver.Controllers
         [Route("")]
         public IActionResult Index()
         {
+            //throw new Exception("Fel! Error Error Error");
+
             return View();
         }
 

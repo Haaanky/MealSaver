@@ -1,4 +1,4 @@
-﻿
+﻿@model int
 
 <!DOCTYPE html>
 
@@ -8,7 +8,24 @@
     <title>HttpError</title>
 </head>
 <body>
-    <h1>HttpError</h1>
+    <div class="container p-5">
+        <div class="row align-items-center justify-content-center">
+            <div>
+                <div style="width:200px">
+                    <img class="img-fluid rounded" src="~/images/trash.png" alt="<p>Trashcan</q></p>">
+                </div>
+            </div>
+            <div>
+                <div class="justify-content-center" style="padding:20px">
+                    <h1>Error: @Model</h1>
+                    <p>Sidan du letar efter finns inte.</p>
+                    <a asp-controller="home" asp-action="index">Tillbaka till startsidan</a>                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 </body>
 </html>
