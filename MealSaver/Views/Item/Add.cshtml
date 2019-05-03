@@ -5,7 +5,6 @@
 
 <partial name=_PartialViewForm model=Model.FormVM />
 
-@*<partial name=_PartialItemList model=Model.ItemList />*@
 <div class="text-lg-center container">
     @if (Model.ItemList.Length <= 0)
     {
@@ -20,9 +19,10 @@
         </ul>
     }
 </div>
+
 @section scripts
 {
-<partial name="_PartialValidationScripts" />
+    <partial name="_PartialValidationScripts" />
     <script>
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
