@@ -62,12 +62,12 @@ namespace MealSaver
                     o.Filters.Add(new RequireHttpsAttribute());
                 }
             });
-            services.AddHttpsRedirection(o => 
-            {
-                o.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
-                o.HttpsPort = 5001;
+            //services.AddHttpsRedirection(o => 
+            //{
+            //    o.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
+            //    o.HttpsPort = 5001;
 
-            });
+            //});
             services.AddSession();
             services.AddMemoryCache();
         }
@@ -81,7 +81,7 @@ namespace MealSaver
             else
             {
                 app.UseExceptionHandler("/error/servererror");
-                app.UseHsts();
+                //app.UseHsts();
             }
                 app.UseStatusCodePagesWithRedirects("/error/httpError/{0}");
 
@@ -89,7 +89,7 @@ namespace MealSaver
             app.UseAuthentication();
             app.UseMvcWithDefaultRoute();
             app.UseStaticFiles();
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
         }
     }
 }
