@@ -62,7 +62,7 @@ namespace MealSaver
                     o.Filters.Add(new RequireHttpsAttribute());
                 }
             });
-            services.AddHttpsRedirection(o => 
+            services.AddHttpsRedirection(o =>
             {
                 o.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
                 o.HttpsPort = 5001;
@@ -83,7 +83,7 @@ namespace MealSaver
                 app.UseExceptionHandler("/error/servererror");
                 app.UseHsts();
             }
-                app.UseStatusCodePagesWithRedirects("/error/httpError/{0}");
+            app.UseStatusCodePagesWithRedirects("/error/httpError/{0}");
 
             app.UseSession();
             app.UseAuthentication();
