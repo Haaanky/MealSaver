@@ -17,11 +17,18 @@ namespace MealSaver.Controllers
         }
 
         [Route("kontakt")]
+        [HttpGet]
         public IActionResult Contact()
         {
             return View();
         }
+        [Route("kontakt")]
+        [HttpPost]
+        public IActionResult Contact(InfoContactVM infoContactVM)
+        {
 
+            return RedirectToAction(nameof(Contact));
+        }
         [Route("om-mealsaver")]
         public IActionResult About()
         {
