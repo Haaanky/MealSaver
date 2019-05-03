@@ -7,7 +7,7 @@
             <div class="form-group align-items-center">
                 <label asp-for="FoodItem"></label>
                 <select asp-for="SelectedFoodValue"
-                        asp-items="Model.FoodItem" class="form-control"></select>
+                        asp-items="Model.FoodItem" class="form-control" ></select>
                 <span asp-validation-for="SelectedFoodValue"></span>
                 <br />
                 <label asp-for="Amount"></label>
@@ -20,7 +20,7 @@
                 <span asp-validation-for="SelectedWeightValue"></span>
                 <br />
                 <label asp-for="DateOfInput"></label>
-                <input asp-for="DateOfInput" value="@DateTime.Now.Date" type="date" class="form-control" />
+                <input asp-for="DateOfInput.Date" type="date" class="form-control" />
                 <span asp-validation-for="DateOfInput"></span>
                 <br />
 
