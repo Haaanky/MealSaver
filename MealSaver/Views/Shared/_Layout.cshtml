@@ -15,7 +15,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Wasteland</a>
+            <a class="navbar-brand" asp-controller="home" asp-action="index">Wasteland</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -75,7 +75,7 @@
         </section>
     </div>
 
-    <footer class="py-5 bg-black">
+    <footer class="footer py-5 bg-black navbar-fixed-bottom">
         <div class="d-flex justify-content-around">
             <div class="m-0 text-center text-white small p-2 bd-highlight">
                 <h5>Postadress</h5>
@@ -92,11 +92,15 @@
                 </p>
             </div>
         </div>
-
+        
         <div class="m-0 text-center text-white small p-2 bd-highlight">
-            <a class="m-0 text-white" asp-controller="Info" asp-action="About">Om oss</a>
-            <a class="m-0 text-white" asp-controller="Info" asp-action="Contact">Kontakt</a>
-            <p>Copyright &copy; All rights reserved: HEH corporation</p>
+            <div class="d-flex justify-content-center">
+                <a class="m-0 text-white" asp-controller="Info" asp-action="About"><h6 style="padding-right:20px">Om oss </h6></a>
+                <a class="m-0 text-white" asp-controller="Info" asp-action="Contact"><h6>Kontakt</h6></a>
+            </div>
+            <div>
+                <p>Copyright &copy; All rights reserved: HEH corporation</p>
+            </div>
         </div>
     </footer>
     <environment include="Development">
