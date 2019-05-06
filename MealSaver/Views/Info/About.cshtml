@@ -1,0 +1,29 @@
+﻿@model InfoAboutVM[]
+
+<div class="about text-lg-center container">
+    <h1>Om Mealsaver</h1>
+    <br />
+
+    <h2 class="masthead-heading mb-0"> Rädda bra mat från att slängas</h2>
+    <br />
+    <p> ⅓ av all mat som produceras slängs. Med WasteLand kan du optimera dina matinköp. Det är bra både för miljön och din plånbok.</p>
+    <br />
+
+    <h3>Wastelands grundare:</h3>
+
+    <div class="d-flex justify-content-around ">
+        @foreach (var item in Model)
+        {
+            <div class="p-2 bd-highlight">
+                <img src="@item.Image" width="300" />
+                <h2>@item.Name</h2>
+                <p>@item.Description</p>
+            </div>
+        }
+    </div>
+
+
+    @*<a asp-controller="info" asp-action="contact">Kontakta oss</a>*@
+</div>
+
+

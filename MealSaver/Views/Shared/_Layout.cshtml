@@ -2,12 +2,129 @@
 
 <html>
 <head>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/bootstrap-4.3.1/dist/css/bootstrap.css" type="text/css" />
+    <link href="~/css/one-page-wonder.css" rel="stylesheet">
+    <link href="~/css/one-page-wonder.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/styles.css" type="text/css" />
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" asp-controller="home" asp-action="index">Wasteland</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="home" asp-action="index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/#inspiration">Inspiration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/#howItWorks">Så funkar det</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/#whyWasteland">Varför Wasteland</a>
+                    </li>
+                    @if (!((Context.User != null) && Context.User.Identity.IsAuthenticated))
+                    {
+                        @*<li class="nav-item">
+                            <a class="nav-link" asp-controller="user" asp-action="Login">Logga in</a>
+                        </li>*@
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Logga in
+                            </a>
+                            @await Component.InvokeAsync("Login")
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="user" asp-action="Signup">Registrera</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item dropdown show">
+                            <a class="nav-link dropdown-toggle" asp-controller="item" asp-action="Overview" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @Context.User.Identity.Name
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" asp-controller="item" asp-action="Overview">Översikt</a>
+                                <a class="dropdown-item" asp-controller="item" asp-action="add">Lägg till slängd mat</a>
+                                @*<a class="dropdown-item" href="#">Something else here</a>*@
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="user" asp-action="Logout">Logga ut</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div>
-        @RenderBody()
+        @RenderSection("SectionName", required: false)
+        <section class="content-wrapper main-content clear-fix" style="padding-top: 100px">
+            @RenderBody()
+        </section>
     </div>
+
+    <footer class="footer py-5 bg-black navbar-fixed-bottom">
+        <div class="d-flex justify-content-around">
+            <div class="m-0 text-center text-white small p-2 bd-highlight">
+                <h5>Postadress</h5>
+                <p>
+                    Miljögatan 14 <br />
+                    12345 Miljöstad
+                </p>
+            </div>
+
+            <div class="m-0 text-center text-white small p-2 bd-highlight">
+                <h5>Kontakt</h5>
+                <p>
+                    E-post: mealsaver@mail.com <br />
+                </p>
+            </div>
+        </div>
+        
+        <div class="m-0 text-center text-white small p-2 bd-highlight">
+            <div class="d-flex justify-content-center">
+                <a class="m-0 text-white" asp-controller="Info" asp-action="About"><h6 style="padding-right:20px">Om oss </h6></a>
+                <a class="m-0 text-white" asp-controller="Info" asp-action="Contact"><h6>Kontakt</h6></a>
+            </div>
+            <div>
+                <p>Copyright &copy; All rights reserved: HEH corporation</p>
+            </div>
+        </div>
+    </footer>
+    <environment include="Development">
+        <script src="~/lib/jquery/jquery-3.4.0.js"></script>
+        <script src="~/lib/bootstrap-4.3.1/dist/js/bootstrap.bundle.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://code.jquery.com/jquery-3.4.0.slim.min.js"
+                asp-fallback-src="~/lib/jquery/jquery-3.4.0.min.js"
+                integrity="sha256-ZaXnYkHGqIhqTbJ6MB4l9Frs/r7U4jlx7ir8PJYBqbI="
+                crossorigin="anonymous"></script>
+        @*<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                asp-fallback-src="~/lib/popper.js/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                crossorigin="anonymous"></script>*@
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap-4.3.1/dist/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    </environment>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("scripts", required: false)
 </body>
 </html>

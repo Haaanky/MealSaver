@@ -1,0 +1,136 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+@section SectionName{
+    <header class="masthead text-center text-white">
+        <div class="masthead-content">
+            <div class="container">
+                @*<h1 class="masthead-heading mb-0">Welcome</h1>
+                    <h2 class="masthead-subheading mb-0">to the WasteLand</h2>*@
+
+                <h1 class="masthead-heading mb-0">Welcome to WasteLand</h1>
+                <p style="font-size: larger">En tredjedel av all mat som produceras i Sverige varje år slängs - ett riktigt WasteLand. Det vill vi ändra på. Vill du?</p>
+                <a asp-controller="home" asp-action="index" class="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a>
+            </div>
+        </div>
+        <div class="bg-circle-1 bg-circle"></div>
+        <div class="bg-circle-2 bg-circle"></div>
+        <div class="bg-circle-3 bg-circle"></div>
+        <div class="bg-circle-4 bg-circle"></div>
+
+    </header>
+    <body>
+        @*<section id="whyWasteland">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 order-lg-2">
+                            <div class="p-5">
+                                <img class="img-fluid rounded-circle" src="~/images/14076.jpg" alt="<p>WWF's goal is to: <q>Build a future where people live in harmony with nature.</q></p>">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 order-lg-1">
+                            <div class="p-5">
+                                <h2 class="display-4">Varför Wasteland?</h2>
+                                <partial name="_PartialWhyUseWasteland" model="Model" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>*@
+        <section id="whyWasteland">
+            <div class="container p-5">
+                <div class="row align-items-center justify-content-center">
+                    <div>
+                        <div class="justify-content-center">
+                            <partial name="_PartialWhyUseWasteland" model="Model" />
+                        </div>
+                    </div>
+                    <div>
+                        @*<div class="p-5">
+                            <img class="img-fluid rounded" src="~/images/14076copy.jpg" alt="<p>WWF's goal is to: <q>Build a future where people live in harmony with nature.</q></p>">
+                        </div>*@
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img class="d-block w-100" src="~/images/14076copy.jpg" alt="First slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="~/images/14055copy.jpg" alt="Second slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="~/images/O7MF460copy.jpg" alt="Third slide">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        @*@{
+                var myChart = new Chart(width: 600, height: 400)
+                    .AddTitle("Chart Title")
+                    .AddSeries(
+                        name: "Employee",
+                        xValue: new[] { "Peter", "Andrew", "Julie", "Mary", "Dave" },
+                        yValues: new[] { "2", "6", "4", "5", "3" })
+                    .Write();
+            }*@
+        <div class="card w-50 mx-auto">
+            @*<div class="card-header">
+                    Citat
+                </div>*@
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <cite title="Source Title">
+                        "Wasteland har förändrat mitt liv och mina konsumtionsvanor..."
+                    </cite>
+                    <footer class="blockquote-footer">Henrik, <cite title="Source Title">Stockholm</cite></footer>
+                </blockquote>
+            </div>
+        </div>
+
+        <section id="howItWorks">
+            <div class="p-5">
+                <partial name="_PartialHowItWorks" model="Model" /> <br />
+            </div>
+        </section>
+
+        <section id="savedFood">
+            <div class="p-5">
+                <partial name="_PartialSavedFood" model="Model" /> <br />
+
+            </div>
+        </section>
+
+
+
+        <section id="inspiration">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="p-5">
+                        <partial name="_PartialInspiration" model="Model" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </body>
+}
