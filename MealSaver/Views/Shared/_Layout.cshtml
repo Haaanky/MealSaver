@@ -36,8 +36,8 @@
                     @if (!((Context.User != null) && Context.User.Identity.IsAuthenticated))
                     {
                         @*<li class="nav-item">
-                            <a class="nav-link" asp-controller="user" asp-action="Login">Logga in</a>
-                        </li>*@
+                                <a class="nav-link" asp-controller="user" asp-action="Login">Logga in</a>
+                            </li>*@
                         <li class="nav-item">
                             <a class="nav-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Logga in
@@ -68,41 +68,44 @@
             </div>
         </div>
     </nav>
-    <div>
-        @RenderSection("SectionName", required: false)
-        <section class="content-wrapper main-content clear-fix" style="padding-top: 100px">
-            @RenderBody()
-        </section>
-    </div>
+
+    @RenderSection("SectionName", required: false)
+    <section class="content-wrapper main-content clear-fix" style="padding-top: 100px">
+        @RenderBody()
+    </section>
+
 
     <footer class="footer py-5 bg-black navbar-fixed-bottom">
-        <div class="d-flex justify-content-around">
-            <div class="m-0 text-center text-white small p-2 bd-highlight">
-                <h5>Postadress</h5>
-                <p>
-                    Miljögatan 14 <br />
-                    12345 Miljöstad
-                </p>
+        <div class="container-fluid">
+            <div class="justify-content-around">
+                <div class="m-0 text-center text-white small p-2 bd-highlight">
+                    <h5>Postadress</h5>
+                    <p>
+                        Miljögatan 14 <br />
+                        12345 Miljöstad
+                    </p>
+                </div>
+
+                <div class="m-0 text-center text-white small p-2 bd-highlight">
+                    <h5>Kontakt</h5>
+                    <p>
+                        E-post: mealsaver@mail.com <br />
+                    </p>
+                </div>
             </div>
 
             <div class="m-0 text-center text-white small p-2 bd-highlight">
-                <h5>Kontakt</h5>
-                <p>
-                    E-post: mealsaver@mail.com <br />
-                </p>
+                <div class="d-flex justify-content-center">
+                    <a class="m-0 text-white" asp-controller="Info" asp-action="About"><h6 style="padding-right:20px">Om oss </h6></a>
+                    <a class="m-0 text-white" asp-controller="Info" asp-action="Contact"><h6>Kontakt</h6></a>
+                </div>
+                <div>
+                    <p><a class="m-0 text-white" asp-controller="Info" asp-action="Credits">Omnämnanden</a></p>
+                    <br />
+                    <p>Copyright &copy; All rights reserved: HEH corporation</p>
+                </div>
             </div>
         </div>
-        
-        <div class="m-0 text-center text-white small p-2 bd-highlight">
-            <div class="d-flex justify-content-center">
-                <a class="m-0 text-white" asp-controller="Info" asp-action="About"><h6 style="padding-right:20px">Om oss </h6></a>
-                <a class="m-0 text-white" asp-controller="Info" asp-action="Contact"><h6>Kontakt</h6></a>
-            <a class="m-0 text-white" asp-controller="Info" asp-action="Credits">Omnämnanden</a>
-            </div>
-            <div>
-                <p>Copyright &copy; All rights reserved: HEH corporation</p>
-            </div>
-            </div>
     </footer>
     <environment include="Development">
         <script src="~/lib/jquery/jquery-3.4.0.js"></script>
@@ -115,9 +118,9 @@
                 integrity="sha256-ZaXnYkHGqIhqTbJ6MB4l9Frs/r7U4jlx7ir8PJYBqbI="
                 crossorigin="anonymous"></script>
         @*<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-                asp-fallback-src="~/lib/popper.js/popper.min.js"
-                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-                crossorigin="anonymous"></script>*@
+            asp-fallback-src="~/lib/popper.js/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>*@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
                 asp-fallback-src="~/lib/bootstrap-4.3.1/dist/js/bootstrap.min.js"
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
