@@ -103,10 +103,15 @@ namespace MealSaver.Controllers
                 //    }
                 //}
             };
-            for (int i = 0; i < itemAddVM.FormVM.FoodItem.Count; i++)
+
+            var tmpArr = new List<string>();
+            foreach (ProductType foo in Enum.GetValues(typeof(ProductType)))
             {
-                string[] tmpArr = (string[])Enum.GetValues(typeof(UnitMeasurement));
-                itemAddVM.FormVM.FoodItem.Add(new SelectListItem { Value = i.ToString(), Text = tmpArr[i] });
+                tmpArr.Add(foo.ToString());
+            }
+            for (int i = 0; i < tmpArr.Count; i++)
+            {
+                itemAddVM.FormVM.FoodItem.Add(new SelectListItem { Value = (i + 1).ToString(), Text = tmpArr[i].ToString() });
             };
             return View(itemAddVM);
         }
