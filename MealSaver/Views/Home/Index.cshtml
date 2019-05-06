@@ -7,7 +7,7 @@
         <div class="masthead-content">
             <div class="container">
                 @*<h1 class="masthead-heading mb-0">Welcome</h1>
-        <h2 class="masthead-subheading mb-0">to the WasteLand</h2>*@
+                    <h2 class="masthead-subheading mb-0">to the WasteLand</h2>*@
 
                 <h1 class="masthead-heading mb-0">Welcome to WasteLand</h1>
                 <p style="font-size: larger">En tredjedel av all mat som produceras i Sverige varje år slängs - ett riktigt WasteLand. Det vill vi ändra på. Vill du?</p>
@@ -30,8 +30,8 @@
         <div class="bg-circle-2 bg-circle"></div>
         <div class="bg-circle-3 bg-circle"></div>
         <div class="bg-circle-4 bg-circle"></div>
-
     </header>
+
     <body>
         @*<section id="whyWasteland">
                 <div class="container">
@@ -53,16 +53,15 @@
         <section id="whyWasteland">
             <div class="container p-5">
                 <div class="row align-items-center justify-content-center">
-                    <div>
-                        <div class="justify-content-center">
-                            <partial name="_PartialWhyUseWasteland" model="Model" />
-                        </div>
+
+                    <div class="justify-content-center">
+                        <partial name="_PartialWhyUseWasteland" model="Model" />
                     </div>
                     <div>
                         <br />
                         @*<div class="p-5">
-                            <img class="img-fluid rounded" src="~/images/14076copy.jpg" alt="<p>WWF's goal is to: <q>Build a future where people live in harmony with nature.</q></p>">
-                        </div>*@
+                                <img class="img-fluid rounded" src="~/images/14076copy.jpg" alt="<p>WWF's goal is to: <q>Build a future where people live in harmony with nature.</q></p>">
+                            </div>*@
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -94,16 +93,14 @@
             </div>
         </section>
 
-
-
         @*@{
-                var myChart = new Chart(width: 600, height: 400)
-                    .AddTitle("Chart Title")
-                    .AddSeries(
-                        name: "Employee",
-                        xValue: new[] { "Peter", "Andrew", "Julie", "Mary", "Dave" },
-                        yValues: new[] { "2", "6", "4", "5", "3" })
-                    .Write();
+            var myChart = new Chart(width: 600, height: 400)
+            .AddTitle("Chart Title")
+            .AddSeries(
+            name: "Employee",
+            xValue: new[] { "Peter", "Andrew", "Julie", "Mary", "Dave" },
+            yValues: new[] { "2", "6", "4", "5", "3" })
+            .Write();
             }*@
         <div class="card w-50 mx-auto">
             @*<div class="card-header">
