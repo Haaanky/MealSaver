@@ -3,21 +3,23 @@
     ViewData["Title"] = "AddItem";
 }
 
-<partial name=_PartialViewForm model=Model.FormVM />
+<div class="d-flex">
+    <partial name=_PartialViewForm model=Model.FormVM />
 
-<div class="text-lg-center container">
-    @if (Model.ItemList.Length <= 0)
-    {
-        <p>
-            Du har inte slängt någonting, bra jobbat @Context.User.Identity.Name!
-        </p>
-    }
-    else
-    {
-        <ul>
-            <partial name=_PartialItemList model=Model.ItemList />
-        </ul>
-    }
+    <div class="text-lg-center container">
+        @if (Model.ItemList.Length <= 0)
+        {
+            <p>
+                Det verkar som att du inte har slängt någonting ännu, bra jobbat @Context.User.Identity.Name!
+            </p>
+        }
+        else
+        {
+            <ul>
+                <partial name=_PartialItemList model=Model.ItemList />
+            </ul>
+        }
+    </div>
 </div>
 
 @section scripts
@@ -28,20 +30,35 @@
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                //labels: ['Red', 'Blue'],
-                @{ var itemList = Model.ItemList;}
-                labels: [@for (int i = 0; i < itemList.Length; i++)
+                labels: ['Mjölk', 'Kött', 'Frukt'],
+                @*labels: [@for (int i = 0; i < itemList.Length; i++)
                 {
                     @Html.Raw("'" + itemList[i].Type + "'" + (i<itemList.Length-1? ", ": string.Empty))
-                }],
-
+                }],*@
 
                 datasets: [{
                 label: 'Slängd mat i g',
-                    data: [@for (int i = 0; i < itemList.Length; i++)
-                    {
-                        @Html.Raw(itemList[i].Amount*1000 + (i<itemList.Length-1? ", ": string.Empty))
-                    }],
+                    data: [@{
+                        double mjölkAmount = 0;
+                        double köttAmount = 0;
+                        double fruktAmount = 0;
+
+                        foreach (var item in Model.ItemList)
+                        {
+                            if (item.Type == "Mjölk")
+                            {
+                                mjölkAmount += item.Amount;
+                            }
+                            else if (item.Type == "Kött")
+                            {
+                                köttAmount += item.Amount;
+                            }
+                            else if (item.Type == "Frukt")
+                            {
+                                fruktAmount += item.Amount;
+                            }
+                        }
+                        }@mjölkAmount, @köttAmount, @fruktAmount],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',

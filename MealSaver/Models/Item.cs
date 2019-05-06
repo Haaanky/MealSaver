@@ -6,29 +6,26 @@ using System.Threading.Tasks;
 
 namespace MealSaver.Models
 {
+    public enum UnitMeasurement
+    {
+        Kg,
+        g,
+        dL,
+        L
+    }
+    public enum ProductType
+    {
+        Mjölk,
+        Kött,
+        Frukt,
+        Grönsaker,
+        Bröd
+    }
     public class Item
     {
-        public string Type { get; set; }
-        //private string type;
-
-        //public string Type
-        //{
-        //    get { return type; }
-        //    set {
-        //        switch (SelectedFoodValue)
-        //        {
-        //            case 1: type = "Välj"; break;
-        //            case 2: type = "Mjölk"; break;
-        //            case 3: type = "Kött"; break;
-        //            case 4: type = "Frukt"; break;
-        //            default:
-        //                break;
-        //        }
-        //    }
-        //}
-
+        public ProductType Type { get; set; }
         public double Amount { get; set; }
-        public string UnitOfMeasurement { get; set; }
+        public UnitMeasurement UnitOfMeasurement { get; set; }
         public DateTime DateOfInput { get; set; }
         public int SelectedFoodValue { get; set; }
         public int SelectedWeightValue { get; set; }

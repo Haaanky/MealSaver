@@ -29,30 +29,29 @@ namespace MealSaver.Controllers
         [Route("oversikt")]
         public IActionResult Overview()
         {
-            var userSignUpVM = new UserSignUpVM
+            var prodArr = itemService.GetAllItems(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            double totalAmount = 0;
+
+            foreach (var item in prodArr)
             {
-                //FirstName = HttpContext.Session.GetString("Name"),
-                //Username = cache.Get<string>("supportEmail"),
+                totalAmount += item.Amount;
+            }
+
+            var itemOverviewVM = new ItemOverviewVM
+            {
                 Message = (string)TempData["Message"],
-                FirstName = HttpContext.User.Identity.Name
+                FirstName = HttpContext.User.Identity.Name,
+                TotalAmount = totalAmount,
+                ItemList = prodArr
             };
 
-            return View(userSignUpVM);
+            return View(itemOverviewVM);
         }
-
-
-        //[Route("lagga-till")]
-        //[HttpGet]
-        //public IActionResult Index()
-        //{
-        //    return View(itemService.GetAllItems());
-        //}
 
         [HttpGet]
         public IActionResult Form()
         {
             return Redirect("/lagga-till");
-            //return View();
         }
 
         [HttpPost]
@@ -62,7 +61,6 @@ namespace MealSaver.Controllers
             await itemService.AddItem(item, currentUserID);
 
             return Redirect("/lagga-till");
-            //return View();
         }
 
         [HttpGet]
@@ -76,21 +74,21 @@ namespace MealSaver.Controllers
                 FormVM = new ItemFormVM
                 {
                     //lägg till fler alternativ
-                    FoodItem = new SelectListItem[]
+                    FoodItem = new List<SelectListItem>
                     {
-                        new SelectListItem { Value = "0", Text = "Välj", Disabled = true, Selected = true },
-                        new SelectListItem { Value = "1", Text = "Mjölk" },
-                        new SelectListItem { Value = "2", Text = "Kött" },
-                        new SelectListItem { Value = "3", Text = "Frukt" }
+                        new SelectListItem { Value = "0", Text = "Välj", Disabled = true, Selected = true }/*,*/
+                        //new SelectListItem { Value = "1", Text = ProductType.Mjölk.ToString() },
+                        //new SelectListItem { Value = "2", Text = ProductType.Kött.ToString() },
+                        //new SelectListItem { Value = "3", Text = ProductType.Frukt.ToString() }
                     },
 
                     ItemWeightMeasurement = new SelectListItem[]
                     {
                         new SelectListItem { Value = "0", Text = "Välj", Disabled = true, Selected = true },
-                        new SelectListItem { Value = "1", Text = "Kg" },
-                        new SelectListItem { Value = "2", Text = "g" },
-                        new SelectListItem { Value = "3", Text = "L" },
-                        new SelectListItem { Value = "4", Text = "dl" }
+                        new SelectListItem { Value = "1", Text = UnitMeasurement.Kg.ToString() },
+                        new SelectListItem { Value = "2", Text = UnitMeasurement.g.ToString() },
+                        new SelectListItem { Value = "3", Text = UnitMeasurement.L.ToString() },
+                        new SelectListItem { Value = "4", Text = UnitMeasurement.dL.ToString() }
                     }
                 },
                 ItemList = itemService.GetAllItems(currentUserID)
@@ -104,6 +102,16 @@ namespace MealSaver.Controllers
 
                 //    }
                 //}
+            };
+
+            var tmpArr = new List<string>();
+            foreach (ProductType foo in Enum.GetValues(typeof(ProductType)))
+            {
+                tmpArr.Add(foo.ToString());
+            }
+            for (int i = 0; i < tmpArr.Count; i++)
+            {
+                itemAddVM.FormVM.FoodItem.Add(new SelectListItem { Value = (i + 1).ToString(), Text = tmpArr[i].ToString() });
             };
             return View(itemAddVM);
         }
