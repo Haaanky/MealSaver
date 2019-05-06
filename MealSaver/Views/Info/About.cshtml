@@ -12,10 +12,10 @@
 
         <h3>Wastelands grundare:</h3>
 
-        <div class="d-flex justify-content-around ">
+        <div class="d-flex justify-content-around flex-wrap">
             @foreach (var item in Model)
             {
-                <div class="p-2 bd-highlight">
+                <div class="p-2 bd-highlight" style="max-width: 300px">
                     <img src="@item.Image" width="300" />
                     <h2>@item.Name</h2>
                     <p>@item.Description</p>
