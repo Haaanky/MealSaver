@@ -11,7 +11,7 @@ namespace MealSaver.Models.ViewModels.Item
     {
         [Display(Name = "Produkt")]
         [Required(ErrorMessage = "Välj vad du slängt")]
-        public SelectListItem[] FoodItem { get; set; }
+        public List<SelectListItem> FoodItem { get; set; }
         [Range(1,10)]
         public int SelectedFoodValue { get; set; }
 

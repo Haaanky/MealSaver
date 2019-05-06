@@ -5,27 +5,27 @@
     <div class="dropdown item-form">
         <form asp-controller="item" asp-action="form">
             <div class="form-group align-items-center">
-                <div class="col-3">
+                <div class="col-4 justify-content-center align-items-center container">
                     <label asp-for="FoodItem"></label>
                     <select asp-for="SelectedFoodValue"
                             asp-items="Model.FoodItem" class="form-control"></select>
                     <span asp-validation-for="SelectedFoodValue"></span>
                 </div>
                 <br />
-                <div class="col-3">
+                <div class="col-4 justify-content-center align-items-center container">
                     <label asp-for="Amount"></label>
                     <input asp-for="Amount" type="number" min="0.1" max="999" class="form-control" />
                     <span asp-validation-for="Amount"></span>
                     <br />
                 </div>
-                <div class="col-3">
+                <div class="col-4 justify-content-center align-items-center container">
                     <label asp-for="ItemWeightMeasurement"></label>
                     <select asp-for="SelectedWeightValue"
                             asp-items="Model.ItemWeightMeasurement" class="form-control"></select>
                     <span asp-validation-for="SelectedWeightValue"></span>
                     <br />
                 </div>
-                <div class="col-3">
+                <div class="col-4 justify-content-center align-items-center container">
 
                     <label asp-for="DateOfInput"></label>
                     <input asp-for="DateOfInput" type="date" class="form-control" />

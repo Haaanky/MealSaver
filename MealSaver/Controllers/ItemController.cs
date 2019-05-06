@@ -41,7 +41,8 @@ namespace MealSaver.Controllers
             {
                 Message = (string)TempData["Message"],
                 FirstName = HttpContext.User.Identity.Name,
-                TotalAmount = totalAmount
+                TotalAmount = totalAmount,
+                ItemList = prodArr
             };
 
             return View(itemOverviewVM);
@@ -73,12 +74,12 @@ namespace MealSaver.Controllers
                 FormVM = new ItemFormVM
                 {
                     //lägg till fler alternativ
-                    FoodItem = new SelectListItem[]
+                    FoodItem = new List<SelectListItem>
                     {
-                        new SelectListItem { Value = "0", Text = "Välj", Disabled = true, Selected = true },
-                        new SelectListItem { Value = "1", Text = ProductType.Mjölk.ToString() },
-                        new SelectListItem { Value = "2", Text = ProductType.Kött.ToString() },
-                        new SelectListItem { Value = "3", Text = ProductType.Frukt.ToString() }
+                        new SelectListItem { Value = "0", Text = "Välj", Disabled = true, Selected = true }/*,*/
+                        //new SelectListItem { Value = "1", Text = ProductType.Mjölk.ToString() },
+                        //new SelectListItem { Value = "2", Text = ProductType.Kött.ToString() },
+                        //new SelectListItem { Value = "3", Text = ProductType.Frukt.ToString() }
                     },
 
                     ItemWeightMeasurement = new SelectListItem[]
@@ -101,6 +102,11 @@ namespace MealSaver.Controllers
 
                 //    }
                 //}
+            };
+            for (int i = 0; i < itemAddVM.FormVM.FoodItem.Count; i++)
+            {
+                string[] tmpArr = (string[])Enum.GetValues(typeof(UnitMeasurement));
+                itemAddVM.FormVM.FoodItem.Add(new SelectListItem { Value = i.ToString(), Text = tmpArr[i] });
             };
             return View(itemAddVM);
         }
