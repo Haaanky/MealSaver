@@ -1,15 +1,9 @@
-﻿/*.signup, .login, .contact, .about {
-    padding-top: 100px;
-}*/
-
-.item-form {
-    /*max-width: 200px;*/
-    /*display:flex;*/
-}
-/*.sloganBox{
-    padding: 20px;
-}*/
-
-body > footer > div.m-0.text-center.text-white.small.p-2.bd-highlight > div.d-flex.justify-content-center > a:nth-child(2) > p{
+﻿body > footer > div.m-0.text-center.text-white.small.p-2.bd-highlight > div.d-flex.justify-content-center > a:nth-child(2) > p{
     padding-left:20px;
+}
+
+
+.arrow {
+    max-width: 50px;
+    max-height: 50px;
 }

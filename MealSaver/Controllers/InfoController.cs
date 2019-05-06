@@ -34,5 +34,9 @@ namespace MealSaver.Controllers
         {
             return View(infoService.GetallFounders());
         }
+        public IActionResult Credits()
+        {
+            return View();
+        }
     }
 }
