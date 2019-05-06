@@ -17,7 +17,8 @@ namespace MealSaver.Models
     {
         Mjölk,
         Kött,
-        Frukt
+        Frukt,
+        Grönsaker
     }
     public class Item
     {
