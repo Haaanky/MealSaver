@@ -3,24 +3,29 @@
     <div class="text-lg-center container">
         <h1>Kontakta oss</h1>
         <p>Vi är intresserade att veta vad du har på hjärtat. Besök oss, mejla eller skriv din fråga i kontaktformuläret!</p>
-        @*<form asp-controller="info" asp-action="contact" method="post">
+        <form asp-controller="info" asp-action="contact" method="post">
             <div class="form-group align-items-center">
-
-                <label asp-for="Name"></label>
-                <input asp-for="Name" type="text" class="form-control" />
-                <span asp-validation-for="Name"></span>
+                <div class ="col-4 justify-content-center align-items-center container">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" type="text" class="form-control" />
+                    <span asp-validation-for="Name"></span>
+                </div>
                 <br />
-                <label asp-for="Email"></label>
-                <input asp-for="Email" type="email" class="form-control" />
-                <span asp-validation-for="Email"></span>
+                <div class ="col-4 justify-content-center align-items-center container">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" type="email" class="form-control" />
+                    <span asp-validation-for="Email"></span>
+                </div>
                 <br />
-                <label asp-for="Description"></label>
-                <textarea asp-for="Description" class="form-control"></textarea>
-                <span asp-validation-for="Description"></span>
+                <div class ="col-4 justify-content-center align-items-center container">
+                    <label asp-for="Description"></label>
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                    <span asp-validation-for="Description"></span>
+                </div>
                 <br />
                 <button type="submit" class="btn btn-primary">Skicka</button>
             </div>
-        </form>*@
+        </form>
         <br />
         <div>
             <h5>Postadress</h5>
