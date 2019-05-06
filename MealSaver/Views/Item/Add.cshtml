@@ -3,21 +3,23 @@
     ViewData["Title"] = "AddItem";
 }
 
-<partial name=_PartialViewForm model=Model.FormVM />
+<div class="d-flex">
+    <partial name=_PartialViewForm model=Model.FormVM />
 
-<div class="text-lg-center container">
-    @if (Model.ItemList.Length <= 0)
-    {
-        <p>
-            Du har inte slängt någonting, bra jobbat @Context.User.Identity.Name!
-        </p>
-    }
-    else
-    {
-        <ul>
-            <partial name=_PartialItemList model=Model.ItemList />
-        </ul>
-    }
+    <div class="text-lg-center container">
+        @if (Model.ItemList.Length <= 0)
+        {
+            <p>
+                Det verkar som att du inte har slängt någonting ännu, bra jobbat @Context.User.Identity.Name!
+            </p>
+        }
+        else
+        {
+            <ul>
+                <partial name=_PartialItemList model=Model.ItemList />
+            </ul>
+        }
+    </div>
 </div>
 
 @section scripts
