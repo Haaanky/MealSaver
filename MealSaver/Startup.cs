@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using MealSaver.Models;
 using Microsoft.Extensions.Configuration;
 using MealSaver.Models.Entities;
+using System.Globalization;
 
 namespace MealSaver
 {
@@ -32,14 +33,15 @@ namespace MealSaver
         public void ConfigureServices(IServiceCollection services)
         {
             //var connStringIdentity = configuration.GetConnectionString("defaultConnection"); // not safe, stored in appsettings.json
-            var connString = configuration["defaultConnection"]; // safer, stored in user secrets, will later be stored in azure server secrets
+            //var connString = configuration["defaultConnection"]; // safer, stored in user secrets, will later be stored in azure server secrets
+            var connString = configuration.GetConnectionString("defaultConnection");
 
             // Identity/User stuff below
             services.AddDbContext<MyIdentityContext>(o => o.UseSqlServer(connString));
             services.AddIdentity<MyIdentityUser, IdentityRole>(o =>
             {
                 o.Password.RequireNonAlphanumeric = false;
-                o.Password.RequiredLength = 2; // change to longer requirement before live
+                o.Password.RequiredLength = 6; // change to longer requirement before live
             })
             .AddEntityFrameworkStores<MyIdentityContext>()
             .AddDefaultTokenProviders();
@@ -62,14 +64,18 @@ namespace MealSaver
                     o.Filters.Add(new RequireHttpsAttribute());
                 }
             });
-            //services.AddHttpsRedirection(o => 
-            //{
-            //    o.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
-            //    o.HttpsPort = 5001;
+            services.AddHttpsRedirection(o =>
+            {
+                o.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
+                o.HttpsPort = 5001;
 
-            //});
+            });
             services.AddSession();
             services.AddMemoryCache();
+
+            var cultureInfo = new CultureInfo("sv-SE");
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -81,15 +87,15 @@ namespace MealSaver
             else
             {
                 app.UseExceptionHandler("/error/servererror");
-                //app.UseHsts();
+                app.UseHsts();
             }
-                app.UseStatusCodePagesWithRedirects("/error/httpError/{0}");
+            app.UseStatusCodePagesWithRedirects("/error/httpError/{0}");
 
             app.UseSession();
             app.UseAuthentication();
             app.UseMvcWithDefaultRoute();
             app.UseStaticFiles();
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
         }
     }
 }

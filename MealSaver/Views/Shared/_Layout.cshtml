@@ -97,11 +97,12 @@
             <div class="d-flex justify-content-center">
                 <a class="m-0 text-white" asp-controller="Info" asp-action="About"><h6 style="padding-right:20px">Om oss </h6></a>
                 <a class="m-0 text-white" asp-controller="Info" asp-action="Contact"><h6>Kontakt</h6></a>
+            <a class="m-0 text-white" asp-controller="Info" asp-action="Credits">Omnämnanden</a>
             </div>
             <div>
                 <p>Copyright &copy; All rights reserved: HEH corporation</p>
             </div>
-        </div>
+            </div>
     </footer>
     <environment include="Development">
         <script src="~/lib/jquery/jquery-3.4.0.js"></script>
@@ -113,14 +114,15 @@
                 asp-fallback-src="~/lib/jquery/jquery-3.4.0.min.js"
                 integrity="sha256-ZaXnYkHGqIhqTbJ6MB4l9Frs/r7U4jlx7ir8PJYBqbI="
                 crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        @*<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
                 asp-fallback-src="~/lib/popper.js/popper.min.js"
                 integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-                crossorigin="anonymous"></script>
+                crossorigin="anonymous"></script>*@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
                 asp-fallback-src="~/lib/bootstrap-4.3.1/dist/js/bootstrap.min.js"
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
                 crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
