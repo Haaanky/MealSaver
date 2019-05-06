@@ -1,9 +1,10 @@
-﻿@model UserSignUpVM
+﻿@model ItemOverviewVM
 @{
     ViewData["Title"] = "Overview";
 }
 
 <h1>Översikt</h1>
+@Model.TotalAmount
 
 @if (Model.Message != null)
 {

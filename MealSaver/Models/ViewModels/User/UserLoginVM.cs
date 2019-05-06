@@ -8,11 +8,12 @@ namespace MealSaver.Models.ViewModels.User
 {
     public class UserLoginVM
     {
-        [Required]
+        [Required(ErrorMessage = "E-posten matchar inte")]
         [Display(Name ="E-mail")]
         [EmailAddress]
         public string Username { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Lösenordet matchar inte")]
         [Display(Name ="Lösenord")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
