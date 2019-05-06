@@ -1,8 +1,8 @@
 ﻿<div class="d-flex justify-content-center">
-    <h2 class="display-4">Inspiration</h2>
+    <h2 class="display-4 text-center">Inspiration</h2>
 </div>
 <div class="d-flex flex-wrap justify-content-center">
-    <div class="card text-white bg-primary m-2" style="max-width: 18rem;">
+    <div class="card text-white bg-primary m-2" style="width: 18rem; min-height: 13rem">
         <div class="card-header">Bäst före</div>
         <div class="card-body">
             @*<h5 class="card-title">Primary card title</h5>*@
@@ -11,7 +11,7 @@
             </p>
         </div>
     </div>
-    <div class="card text-white bg-secondary m-2" style="max-width: 18rem;">
+    <div class="card text-white bg-secondary m-2" style="width: 18rem; min-height: 13rem">
         <div class="card-header">Handla och planera</div>
         <div class="card-body">
             @*<h5 class="card-title">Secondary card title</h5>*@
@@ -20,21 +20,25 @@
             </p>
         </div>
     </div>
-    <div class="card text-white bg-success m-2" style="width: 18rem; height: 13rem">
-        <div class="card-header">Testa ditt klimatavtryck</div>
-        <div class="card-body">
-            @*<h5 class="card-title">Success card title</h5>*@
-            <p class="card-text" /> Testa ditt klimatavtryck med <a href="https://www.wwf.se/klimat/klimatkalkylatorn" target="_blank">WWF:s klimatkalkylator</a> <br>(öppnas i nytt fönster)</p>
+    <div class="card bg-light text-primary m-2" style="width: 18rem; min-height: 13rem">
+        <img class="card-img-top" src="~/images/wwf-logo.png" alt="Card image" style="opacity: .5">
+        <div class="card-img-overlay">
+            <h4 class="card-header">WWF:s klimatkalkylator</h4>
+            <br />
+            <a href="#" class="btn btn-primary">Testa ditt klimatavtryck</a>
+            @*<p class="card-text">(öppnas i nytt fönster)</p>*@
         </div>
     </div>
-    <div class="card text-white bg-danger m-2" style="max-width: 18rem;">
+    <div class="card text-white bg-danger m-2" style="width: 18rem; min-height: 13rem">
         <div class="card-header">Laga</div>
         <div class="card-body">
-            @*<h5 class="card-title">Danger card title</h5>*@
-            <p class="card-text">Du kan minska matsvinnet mycket bara genom hur du lagar och framförallt planerar din matlagning. Håll koll på vad du har för råvaror som behöver lagas innan de blir dåliga. Googla de råvaror du har så hittar du massa smaskiga recept.</p>
+            <div class="card-text">
+                @*<h5 class="card-title">Danger card title</h5>*@
+                <p class="card-text">Du kan minska matsvinnet mycket bara genom hur du lagar och framförallt planerar din matlagning. Håll koll på vad du har för råvaror som behöver lagas innan de blir dåliga. Googla de råvaror du har så hittar du massa smaskiga recept.</p>
+            </div>
         </div>
     </div>
-    <div class="card text-white bg-warning m-2" style="max-width: 18rem;">
+    <div class="card text-white bg-warning m-2" style="width: 18rem; min-height: 13rem">
         <div class="card-header">Recept</div>
         <div class="card-body">
             @*<h5 class="card-title">Warning card title</h5>*@
@@ -47,30 +51,31 @@
             </ul>
         </div>
     </div>
-    <div class="card text-white bg-info m-2" style="max-width: 18rem;">
+    <div class="card text-white bg-info m-2" style="width: 18rem; min-height: 13rem">
         <div class="card-header">Överflöd</div>
         <div class="card-body">
             @*<h5 class="card-title">Info card title</h5>*@
             <p class="card-text">Har du för mycket av något som du inte vet vad du ska göra av? Fundera på om du kan förlänga hållbarheten genom att frysa ner, tillreda safta eller sylta. En burk vinbärsgelè kan bli en fin present!</p>
         </div>
     </div>
-    <div class="card bg-light m-2" style="max-width: 18rem;">
-        <div class="card-header">Odla</div>
-        <div class="card-body">
-            @*<h5 class="card-title">Light card title</h5>*@
-            <p class="card-text">Att odla sin egen mat är enklare än det låter. Att odla i pallkrage på tomten, balkonglåda, på kolonilott eller i urban miljö är lätt, billigt och ekologiskt! Att äta mat som man odlat själv gör dessutom att man uppskattar maten mer. </p>
+    <div class="card text-white bg-success m-2" style="width: 18rem; min-height: 13rem">
+        <img class="card-img-top" src="~/images/tomatoes-3702942_1920copy.jpg" alt="Card image" style="opacity: .5">
+        <div class="card-img-overlay">
+            <h4 class="card-header">Odla</h4>
+            <p class="card-text">Att odla sin egen mat är enklare än det låter. Att odla i pallkrage på tomten, balkonglåda, på kolonilott eller i urban miljö är lätt, billigt och ekologiskt! Att äta mat som man odlat själv gör dessutom att man uppskattar maten mer.</p>
         </div>
     </div>
-    <div class="card text-white bg-dark m-2" style="max-width: 18rem;">
+    <div class="card text-white bg-dark m-2" style="width: 18rem; min-height: 13rem">
         <div class="card-header">Förvara</div>
         <div class="card-body">
             @*<h5 class="card-title">Dark card title</h5>*@
             <p class="card-text">Att förvara maten rätt är både bra för plånboken och roligt! Nyckelorden är: var sak på sin plats, tätslutande förpackningar mot luft och solljus, högakta hygien och respektera råvarans livscykel. </p>
         </div>
     </div>
-    <div class="card text-white bg-primary m-2" style="max-width: 18rem;">
-        <div class="card-header">Källsortera</div>
-        <div class="card-body">
+    <div class="card bg-light text-dark m-2" style="width: 18rem; min-height: 13rem">
+        <img class="card-img-top" src="~/images/40261copy.jpg" alt="Card image" style="opacity: .2">
+        <div class="card-img-overlay">
+            <div class="card-header">Källsortera</div>
             @*<h5 class="card-title">Primary card title</h5>*@
             <p class="card-text">
                 Matavfall är oundvikligt när vi köper och lagar mat. Men vad bör och ska vi egentligen slänga? Mat som både luktar och smakar illa ska vi förstås inte äta. Genom god planering, förvaring, tillagning och att utmana definitionen av vad som är dålig mat kan vi i längden slänga mindre mat.

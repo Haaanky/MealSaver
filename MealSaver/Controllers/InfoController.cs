@@ -5,15 +5,19 @@ using System.Threading.Tasks;
 using MealSaver.Models;
 using MealSaver.Models.ViewModels.Info;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace MealSaver.Controllers
 {
     public class InfoController : Controller
     {
         InfoService infoService;
-        public InfoController(InfoService infoService)
+        private readonly IConfiguration _configuration;
+
+        public InfoController(InfoService infoService, IConfiguration _configuration)
         {
             this.infoService = infoService;
+            this._configuration = _configuration;
         }
 
         [Route("kontakt")]
@@ -26,6 +30,16 @@ namespace MealSaver.Controllers
         [HttpPost]
         public async Task<IActionResult> Contact(InfoContactVM infoContactVM)
         {
+            if (!ModelState.IsValid)
+                return RedirectToAction(nameof(Contact));
+            if (!InfoService.ReCaptchaPassed(
+            Request.Form["g-recaptcha-response"], // that's how you get it from the Request object
+            _configuration.GetSection("GoogleReCaptcha:secret").Value
+            ))
+            {
+                ModelState.AddModelError(string.Empty, "You failed the CAPTCHA, stupid robot. Go play some 1x1 on SFs instead.");
+                return RedirectToAction(nameof(Contact));
+            }
             await infoService.AddContactFormToDBAsync(infoContactVM);
             return RedirectToAction(nameof(Contact));
         }
@@ -33,6 +47,10 @@ namespace MealSaver.Controllers
         public IActionResult About()
         {
             return View(infoService.GetallFounders());
+        }
+        public IActionResult Credits()
+        {
+            return View();
         }
     }
 }
