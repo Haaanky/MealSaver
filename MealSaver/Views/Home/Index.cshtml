@@ -7,11 +7,23 @@
         <div class="masthead-content">
             <div class="container">
                 @*<h1 class="masthead-heading mb-0">Welcome</h1>
-                    <h2 class="masthead-subheading mb-0">to the WasteLand</h2>*@
+        <h2 class="masthead-subheading mb-0">to the WasteLand</h2>*@
 
                 <h1 class="masthead-heading mb-0">Welcome to WasteLand</h1>
                 <p style="font-size: larger">En tredjedel av all mat som produceras i Sverige varje år slängs - ett riktigt WasteLand. Det vill vi ändra på. Vill du?</p>
-                <a asp-controller="home" asp-action="index" class="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a>
+
+
+                @if (!((Context.User != null) && Context.User.Identity.IsAuthenticated))
+                {
+                    <a asp-controller="user" asp-action="signup" class="btn btn-primary btn-xl rounded-pill mt-5">Registrera</a>
+                    <a asp-controller="info" asp-action="about" class="btn btn-primary btn-xl rounded-pill mt-5">Om oss</a>
+                }
+                else
+                {
+                    <a asp-controller="item" asp-action="add" class="btn btn-primary btn-xl rounded-pill mt-5">Lägg till mat</a>
+                    <a asp-controller="info" asp-action="about" class="btn btn-primary btn-xl rounded-pill mt-5">Om oss</a>
+                }
+
             </div>
         </div>
         <div class="bg-circle-1 bg-circle"></div>
@@ -47,6 +59,7 @@
                         </div>
                     </div>
                     <div>
+                        <br />
                         @*<div class="p-5">
                             <img class="img-fluid rounded" src="~/images/14076copy.jpg" alt="<p>WWF's goal is to: <q>Build a future where people live in harmony with nature.</q></p>">
                         </div>*@
