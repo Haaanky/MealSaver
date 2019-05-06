@@ -6,13 +6,17 @@
     <h1>Logga in</h1>
     <form asp-controller="user" asp-action="login" asp-route-returnUrl="@Model.ReturnUrl">
         <div class="form-group align-items-center">
-            <label asp-for="Username"></label>
-            <input asp-for="Username" type="email" class="form-control"/>
-            <span asp-validation-for="Username"></span>
+            <div class ="col-4 justify-content-center align-items-center container">
+                <label asp-for="Username"></label>
+                <input asp-for="Username" type="email" class="form-control" />
+                <span asp-validation-for="Username"></span>
+            </div>
             <br />
-            <label asp-for="Password"></label>
-            <input asp-for="Password" type="password" class="form-control"/>
-            <span asp-validation-for="Password"></span>
+            <div class = "col-4 justify-content-center align-items-center container">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password"></span>
+            </div>
             <br />
             <button type="submit" class="btn btn-primary">Logga in</button>
         </div>
