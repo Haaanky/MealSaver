@@ -54,31 +54,40 @@
                             switch (item.Type)
                             {
                                 case ProductType.Fisk:
+                                    fiskAmount += item.Amount;
                                     break;
                                 case ProductType.Frukt:
+                                    fruktAmount += item.Amount;
                                     break;
                                 case ProductType.Färdigmat:
+                                    färdigmatAmount += item.Amount;
                                     break;
                                 case ProductType.Grönsaker:
+                                    grönsakerAmount += item.Amount;
                                     break;
                                 case ProductType.Konserver:
+                                    konserverAmount += item.Amount;
                                     break;
                                 case ProductType.Kött:
+                                    köttAmount += item.Amount;
                                     break;
                                 case ProductType.Mejeriprodukter:
                                     mejeriprodukterAmount += item.Amount;
                                     break;
                                 case ProductType.Rotfrukter:
+                                    rotfrukterAmount += item.Amount;
                                     break;
                                 case ProductType.Spannmål:
+                                    spannmålAmount += item.Amount;
                                     break;
                                 case ProductType.Övrigt:
+                                    övrigtAmount += item.Amount;
                                     break;
                                 default:
                                     break;
                             }
                         }
-                        }@fiskAmount, @köttAmount, @fruktAmount],
+                        }@fiskAmount, @fruktAmount, @färdigmatAmount, @grönsakerAmount, @konserverAmount, @köttAmount, @mejeriprodukterAmount, @rotfrukterAmount, @spannmålAmount, @övrigtAmount],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
