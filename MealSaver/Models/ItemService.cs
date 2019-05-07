@@ -82,7 +82,7 @@ namespace MealSaver.Models
                 .Where(o => o.UserId == currentUserID)
                 .Select(o => new ItemDisplayVM
                 {
-                    Type = o.Type,
+                    Type = Enum.Parse<ProductType>(o.Type),
                     Amount = o.Amount,
                     Date = o.Date,
                     UnitOfMeasurement = Enum.Parse<UnitMeasurement>(o.UnitOfMeasurement)

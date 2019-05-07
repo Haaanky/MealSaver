@@ -16,17 +16,17 @@ namespace MealSaver.Models
     }
     public enum ProductType
     {
-        Mejeriprodukter,
-        Kött,
         Fisk,
-        [Display(Name ="Bröd och Spannmål")]
-        Spannmål,
         [Display(Name ="Frukt och Bär")]
         Frukt,
-        Grönsaker,
-        Rotfrukter,
-        Konserver,
         Färdigmat,
+        Grönsaker,
+        Konserver,
+        Kött,
+        Mejeriprodukter,
+        Rotfrukter,
+        [Display(Name ="Bröd och Spannmål")]
+        Spannmål,
         Övrigt
     }
     public class Item

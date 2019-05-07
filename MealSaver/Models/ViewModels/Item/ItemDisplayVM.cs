@@ -8,7 +8,7 @@ namespace MealSaver.Models.ViewModels.Item
     public class ItemDisplayVM
     {
 
-        public string Type { get; set; }
+        public ProductType Type { get; set; }
         public double Amount { get; set; }
         public UnitMeasurement UnitOfMeasurement { get; set; }
         public DateTime Date { get; set; }
