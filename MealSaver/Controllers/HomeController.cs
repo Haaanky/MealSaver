@@ -46,5 +46,10 @@ namespace MealSaver.Controllers
         {
             return PartialView("PartialLogin");
         }
+        [Route("SocialMedia")]
+        public IActionResult PartialSocialMedia()
+        {
+            return PartialView("_PartialSocialMedia");
+        }
     }
 }
