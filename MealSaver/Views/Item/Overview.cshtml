@@ -18,45 +18,96 @@
     </div>
 }
 
-<canvas id="myChart" width="400" height="100"></canvas>
+<canvas id="myChart" width="400" height="150"></canvas>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
 <script>
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'pie',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: ['Fisk', 'Frukt', 'Färdigmat', 'Grönsaker', 'Konserver', 'Kött', 'Mejeriprodukter', 'Rotfrukter', 'Spannmål', 'Övrigt'],
             datasets: [{
                 label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                data: [@{
+                        double fiskAmount = 0;
+                        double fruktAmount = 0;
+                        double färdigmatAmount = 0;
+                        double grönsakerAmount = 0;
+                        double konserverAmount = 0;
+                        double köttAmount = 0;
+                        double mejeriprodukterAmount = 0;
+                        double rotfrukterAmount = 0;
+                        double spannmålAmount = 0;
+                        double övrigtAmount = 0;
+
+                        foreach (var item in Model.ItemList)
+                        {
+                            switch (item.Type)
+                            {
+                                case ProductType.Fisk:
+                                    fiskAmount += item.Amount;
+                                    break;
+                                case ProductType.Frukt:
+                                    fruktAmount += item.Amount;
+                                    break;
+                                case ProductType.Färdigmat:
+                                    färdigmatAmount += item.Amount;
+                                    break;
+                                case ProductType.Grönsaker:
+                                    grönsakerAmount += item.Amount;
+                                    break;
+                                case ProductType.Konserver:
+                                    konserverAmount += item.Amount;
+                                    break;
+                                case ProductType.Kött:
+                                    köttAmount += item.Amount;
+                                    break;
+                                case ProductType.Mejeriprodukter:
+                                    mejeriprodukterAmount += item.Amount;
+                                    break;
+                                case ProductType.Rotfrukter:
+                                    rotfrukterAmount += item.Amount;
+                                    break;
+                                case ProductType.Spannmål:
+                                    spannmålAmount += item.Amount;
+                                    break;
+                                case ProductType.Övrigt:
+                                    övrigtAmount += item.Amount;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        }@fiskAmount, @fruktAmount, @färdigmatAmount, @grönsakerAmount, @konserverAmount, @köttAmount, @mejeriprodukterAmount, @rotfrukterAmount, @spannmålAmount, @övrigtAmount],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 204, 255, 0.2)',
                     'rgba(75, 192, 192, 0.2)',
                     'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(0, 102, 0, 0.2)',
+                    'rgba(204, 0, 102, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 204, 255, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(0, 102, 0, 1)',
+                    'rgba(204, 0, 102, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(0, 0, 0, 1)'
                 ],
                 borderWidth: 1
             }]
         },
         options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
         }
     });
 </script>
