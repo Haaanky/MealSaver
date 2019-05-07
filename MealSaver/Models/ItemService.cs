@@ -20,7 +20,7 @@ namespace MealSaver.Models
         {
             switch (item.SelectedFoodValue)
             {
-                case 1: item.Type = ProductType.Mjölk; break;
+                case 1: item.Type = ProductType.Mejeriprodukter; break;
                 case 2: item.Type = ProductType.Kött; break;
                 case 3: item.Type = ProductType.Frukt; break;
                 default:

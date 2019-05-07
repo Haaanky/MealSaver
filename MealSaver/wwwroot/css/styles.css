@@ -7,3 +7,7 @@
     max-width: 50px;
     max-height: 50px;
 }
+
+body > section > div > form > div > div.g-recaptcha.col-4.justify-content-center.align-items-center.container > div {
+    margin-left: 18px;
+}

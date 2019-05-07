@@ -37,8 +37,8 @@ namespace MealSaver.Controllers
             _configuration.GetSection("GoogleReCaptcha:secret").Value
             ))
             {
-                ModelState.AddModelError(string.Empty, "You failed the CAPTCHA, stupid robot. Go play some 1x1 on SFs instead.");
-                return RedirectToAction(nameof(Contact));
+                ModelState.AddModelError(nameof(infoContactVM.ReCAPTCHA), "You failed the CAPTCHA, stupid robot.");
+                return View(infoContactVM);
             }
             await infoService.AddContactFormToDBAsync(infoContactVM);
             return RedirectToAction(nameof(Contact));

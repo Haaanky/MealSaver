@@ -15,11 +15,13 @@ namespace MealSaver.Models
     }
     public enum ProductType
     {
-        Mjölk,
+        Mejeriprodukter,
         Kött,
         Frukt,
         Grönsaker,
-        Bröd
+        Bröd,
+        Rotfrukter,
+        Övrigt
     }
     public class Item
     {
