@@ -7,3 +7,20 @@
     max-width: 50px;
     max-height: 50px;
 }
+
+.bigScreen {
+    display: block;
+}
+
+.smallScreen {
+    display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+    .bigScreen {
+        display: none;
+    }
+    .smallScreen {
+        display: block;
+    }
+}
