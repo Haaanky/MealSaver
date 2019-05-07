@@ -45,18 +45,43 @@
 
                         foreach (var item in Model.ItemList)
                         {
-                            if (item.Type == "Mjölk")
+                            switch (item.Type)
                             {
-                                mjölkAmount += item.Amount;
+                                case ProductType.Fisk:
+                                    break;
+                                case ProductType.Frukt:
+                                    break;
+                                case ProductType.Färdigmat:
+                                    break;
+                                case ProductType.Grönsaker:
+                                    break;
+                                case ProductType.Konserver:
+                                    break;
+                                case ProductType.Kött:
+                                    break;
+                                case ProductType.Mejeriprodukter:
+                                    mjölkAmount += item.Amount;
+                                    break;
+                                case ProductType.Rotfrukter:
+                                    break;
+                                case ProductType.Spannmål:
+                                    break;
+                                case ProductType.Övrigt:
+                                    break;
+                                default:
+                                    break;
                             }
-                            else if (item.Type == "Kött")
-                            {
-                                köttAmount += item.Amount;
-                            }
-                            else if (item.Type == "Frukt")
-                            {
-                                fruktAmount += item.Amount;
-                            }
+                            //if (item.Type == "Mjölk")
+                            //{
+                            //}
+                            //else if (item.Type == "Kött")
+                            //{
+                            //    köttAmount += item.Amount;
+                            //}
+                            //else if (item.Type == "Frukt")
+                            //{
+                            //    fruktAmount += item.Amount;
+                            //}
                         }
                         }@mjölkAmount, @köttAmount, @fruktAmount],
                     backgroundColor: [
