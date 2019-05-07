@@ -15,6 +15,7 @@
         }
         else
         {
+            <canvas id="myChart" width="400" height="100"></canvas>
             <ul>
                 <partial name=_PartialItemList model=Model.ItemList />
             </ul>
@@ -49,7 +50,7 @@
                         double spannmålAmount = 0;
                         double övrigtAmount = 0;
 
-                        foreach (var item in Model.ItemList)
+                        foreach (var item in Model.ItemListNormalized)
                         {
                             switch (item.Type)
                             {

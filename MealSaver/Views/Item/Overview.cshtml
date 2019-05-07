@@ -19,6 +19,7 @@
 }
 
 <canvas id="myChart" width="400" height="150"></canvas>
+@section scripts {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
 <script>
@@ -111,5 +112,6 @@
         }
     });
 </script>
+}
 
 <a asp-controller="item" asp-action="add">Lägg till slängd mat</a>

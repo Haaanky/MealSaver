@@ -25,6 +25,14 @@ namespace MealSaver.Controllers
             this.itemService = itemService;
             this.cache = cache;
         }
+
+        public void Test()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+
+            }
+        }
         [HttpGet]
         [Route("oversikt")]
         public IActionResult Overview()
@@ -42,7 +50,7 @@ namespace MealSaver.Controllers
                 Message = (string)TempData["Message"],
                 FirstName = HttpContext.User.Identity.Name,
                 TotalAmount = totalAmount,
-                ItemList = prodArr
+                ItemList = itemService.NormalizeDataNormalVM(prodArr)
             };
 
             return View(itemOverviewVM);
@@ -68,6 +76,8 @@ namespace MealSaver.Controllers
         public IActionResult Add()
         {
             var currentUserID = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var itemList = itemService.GetAllItems(currentUserID);
+            var itemListNormalized = itemService.NormalizeDataNormalVM(itemList);
 
             ItemAddVM itemAddVM = new ItemAddVM
             {
@@ -91,7 +101,8 @@ namespace MealSaver.Controllers
                         new SelectListItem { Value = "4", Text = UnitMeasurement.dL.ToString() }
                     }
                 },
-                ItemList = itemService.GetAllItems(currentUserID)
+                ItemList = itemList,
+                ItemListNormalized = itemListNormalized
                 //new ItemDisplayVM[]
                 //{
                 //    new ItemDisplayVM

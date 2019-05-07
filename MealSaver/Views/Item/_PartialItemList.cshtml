@@ -1,16 +1,14 @@
 ﻿@model ItemDisplayVM[]
-@*@{
-        ViewData["Title"] = "_PartialItemList";
-        Layout = "_UserLayout";
-    }*@
 
 <div class="text-lg-center container">
     <h2>Så här mycket har du slängt den senaste veckan:</h2>
-    <canvas id="myChart" width="400" height="100"></canvas>
     <ul>
         @foreach (var item in Model)
         {
             <li>@item</li>
         }
     </ul>
+</div>
+<div>
+    <a asp-controller="item" asp-action="overview" class="btn btn-primary btn-xl rounded-pill mt-5">Översikt</a>
 </div>

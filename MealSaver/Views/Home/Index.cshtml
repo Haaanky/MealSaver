@@ -1,32 +1,33 @@
-﻿@{
+﻿@model HomeIndexVM
+@{
     ViewData["Title"] = "Index";
 }
 
 @section SectionName{
-        <header class="masthead text-center text-white">
+    <header class="masthead text-center text-white">
 
-            <div class="masthead-content">
-                    <h1 class="masthead-heading mb-0 d-flex justify-content-center">Welcome to WasteLand</h1>
-                    <p style="font-size: larger">En tredjedel av all mat som produceras i Sverige varje år slängs - ett riktigt WasteLand. Det vill vi ändra på. Vill du?</p>
+        <div class="masthead-content">
+            <h1 class="masthead-heading mb-0 d-flex justify-content-center">Welcome to WasteLand</h1>
+            <p style="font-size: larger">En tredjedel av all mat som produceras i Sverige varje år slängs - ett riktigt WasteLand. Det vill vi ändra på. Vill du?</p>
 
 
-                    @if (!((Context.User != null) && Context.User.Identity.IsAuthenticated))
-                    {
-                        <a asp-controller="user" asp-action="signup" class="btn btn-primary btn-xl rounded-pill mt-5">Registrera</a>
-                        <a asp-controller="info" asp-action="about" class="btn btn-primary btn-xl rounded-pill mt-5">Om oss</a>
-                    }
-                    else
-                    {
-                        <a asp-controller="item" asp-action="add" class="btn btn-primary btn-xl rounded-pill mt-5">Lägg till mat</a>
-                        <a asp-controller="info" asp-action="about" class="btn btn-primary btn-xl rounded-pill mt-5">Om oss</a>
-                    }
-            </div>
+            @if (!((Context.User != null) && Context.User.Identity.IsAuthenticated))
+            {
+                <a asp-controller="user" asp-action="signup" class="btn btn-primary btn-xl rounded-pill mt-5">Registrera</a>
+                <a asp-controller="info" asp-action="about" class="btn btn-primary btn-xl rounded-pill mt-5">Om oss</a>
+            }
+            else
+            {
+                <a asp-controller="item" asp-action="add" class="btn btn-primary btn-xl rounded-pill mt-5">Lägg till mat</a>
+                <a asp-controller="info" asp-action="about" class="btn btn-primary btn-xl rounded-pill mt-5">Om oss</a>
+            }
+        </div>
 
-                <div class="bg-circle-1 bg-circle"></div>
-                <div class="bg-circle-2 bg-circle"></div>
-                <div class="bg-circle-3 bg-circle"></div>
-                <div class="bg-circle-4 bg-circle"></div>
-        </header>
+        <div class="bg-circle-1 bg-circle"></div>
+        <div class="bg-circle-2 bg-circle"></div>
+        <div class="bg-circle-3 bg-circle"></div>
+        <div class="bg-circle-4 bg-circle"></div>
+    </header>
     <body>
         @*<section id="whyWasteland">
                 <div class="container">
@@ -128,12 +129,113 @@
                 <partial name="_PartialInspiration" model="Model" /> <br />
             </div>
             @*<div class="container">
-            <div class="row align-items-center">
-                    <partial name="_PartialInspiration" model="Model" />
-            </div>
-        </div>*@
+                    <div class="row align-items-center">
+                            <partial name="_PartialInspiration" model="Model" />
+                    </div>
+                </div>*@
         </section>
-
-
     </body>
+}
+
+@section scripts {
+    <script>
+        (function ($) {
+            $.fn.countTo = function (options) {
+                options = options || {};
+
+                return $(this).each(function () {
+                    // set options for current element
+                    var settings = $.extend({}, $.fn.countTo.defaults, {
+                        from: $(this).data('from'),
+                        to: $(this).data('to'),
+                        speed: $(this).data('speed'),
+                        refreshInterval: $(this).data('refresh-interval'),
+                        decimals: $(this).data('decimals')
+                    }, options);
+
+                    // how many times to update the value, and how much to increment the value on each update
+                    var loops = Math.ceil(settings.speed / settings.refreshInterval),
+                        increment = (settings.to - settings.from) / loops;
+
+                    // references & variables that will change with each update
+                    var self = this,
+                        $self = $(this),
+                        loopCount = 0,
+                        value = settings.from,
+                        data = $self.data('countTo') || {};
+
+                    $self.data('countTo', data);
+
+                    // if an existing interval can be found, clear it first
+                    if (data.interval) {
+                        clearInterval(data.interval);
+                    }
+                    data.interval = setInterval(updateTimer, settings.refreshInterval);
+
+                    // initialize the element with the starting value
+                    render(value);
+
+                    function updateTimer() {
+                        value += increment;
+                        loopCount++;
+
+                        render(value);
+
+                        if (typeof (settings.onUpdate) == 'function') {
+                            settings.onUpdate.call(self, value);
+                        }
+
+                        if (loopCount >= loops) {
+                            // remove the interval
+                            $self.removeData('countTo');
+                            clearInterval(data.interval);
+                            value = settings.to;
+
+                            if (typeof (settings.onComplete) == 'function') {
+                                settings.onComplete.call(self, value);
+                            }
+                        }
+                    }
+
+                    function render(value) {
+                        var formattedValue = settings.formatter.call(self, value, settings);
+                        $self.html(formattedValue);
+                    }
+                });
+            };
+
+            $.fn.countTo.defaults = {
+                from: 0,               // the number the element should start at
+                to: 0,                 // the number the element should end at
+                speed: 1000,           // how long it should take to count between the target numbers
+                refreshInterval: 100,  // how often the element should be updated
+                decimals: 0,           // the number of decimal places to show
+                formatter: formatter,  // handler for formatting the value before rendering
+                onUpdate: null,        // callback method for every time the element is updated
+                onComplete: null       // callback method for when the element finishes updating
+            };
+
+            function formatter(value, settings) {
+                return value.toFixed(settings.decimals);
+            }
+        }(jQuery));
+
+        jQuery(function ($) {
+            // custom formatting example
+            $('.count-number').data('countToOptions', {
+                formatter: function (value, options) {
+                    return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
+                }
+            });
+
+            // start all the timers
+            $('.timer').each(count);
+
+            function count(options) {
+                var $this = $(this);
+                options = $.extend({}, options || {}, $this.data('countToOptions') || {});
+                $this.countTo(options);
+            }
+        });
+    </script>
 }
