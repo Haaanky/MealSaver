@@ -134,7 +134,7 @@ namespace MealSaver.Controllers
         }
 
         [HttpPost]
-        public IActionResult NewChart()
+        public IActionResult TypePieChart()
         {
             var currentUserID = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var type = "Type";
@@ -160,6 +160,48 @@ namespace MealSaver.Controllers
                 dr[type] = typeArr[i];
                 dr[amount] = itemService.GetTotalAmountForUser(currentUserID, typeArr[i]);
                 if (itemService.GetTotalAmountForUser(currentUserID, typeArr[i]) != 0)
+                {
+                    dt.Rows.Add(dr);
+                }
+            }
+
+            //Looping and extracting each DataColumn to List<Object>  
+            foreach (DataColumn dc in dt.Columns)
+            {
+                List<object> x = new List<object>();
+                x = (from DataRow drr in dt.Rows select drr[dc.ColumnName]).ToList();
+                iData.Add(x);
+            }
+            //Source data returned as JSON  
+            return Json(iData);
+        }
+
+        public IActionResult DateBarChart()
+        {
+            var currentUserID = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var date = "Date";
+            string amount = "Amount";
+
+            List<object> iData = new List<object>();
+            //Creating sample data  
+            DataTable dt = new DataTable();
+            dt.Columns.Add(date, System.Type.GetType("System.String"));
+            dt.Columns.Add(amount, System.Type.GetType("System.Int32"));
+
+            DataRow dr = dt.NewRow();
+
+            var dateArr = new List<DateTime>();
+            foreach (var item in itemService.GetAllDates(currentUserID))
+            {
+                dateArr.Add(item.Date);
+            }
+
+            for (int i = 0; i < dateArr.Count; i++)
+            {
+                dr = dt.NewRow();
+                dr[date] = dateArr[i];
+                dr[amount] = itemService.GetTotalAmountForUser(currentUserID, dateArr[i]);
+                if (itemService.GetTotalAmountForUser(currentUserID, dateArr[i]) != 0)
                 {
                     dt.Rows.Add(dr);
                 }

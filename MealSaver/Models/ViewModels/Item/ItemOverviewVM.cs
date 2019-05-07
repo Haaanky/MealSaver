@@ -11,7 +11,9 @@ namespace MealSaver.Models.ViewModels.Item
         public string LastName { get; set; }
         public string Message { get; set; }
         public double TotalAmount { get; set; }
-        public string UnitOfMeasurement { get; private set; }
+        public double Amount { get; set; }
+        public DateTime Date { get; set; }
+        public string UnitOfMeasurement { get; set; }
         public ItemDisplayNormalizedVM[] ItemList { get; set; }
     }
 }
