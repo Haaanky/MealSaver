@@ -2,10 +2,28 @@
 @{
     ViewData["Title"] = "Overview";
 }
-<div class="d-flex justify-content-center">
 
-<h1>Översikt</h1>
-</div>
+    <section>
+        <div class="d-flex justify-content-center">
+            <h1 class="text-center">Översikt</h1>
+        </div>
+        <div class="d-flex justify-content-center">
+            @if (Model.ItemList.Length <= 0)
+            {
+                <p>
+                    Det verkar som att du inte har slängt någonting ännu, bra jobbat @Context.User.Identity.Name!
+                </p>
+            }
+            else
+            {
+                <p> Hittils har du slängt @Model.TotalAmount kg mat. Har du funderat på att köpa mindre av det du slänger kanske?</p>
+
+            }
+            </div>
+            <div class="d-flex justify-content-center">
+                <a asp-controller="item" asp-action="add" class="btn btn-primary btn-xl rounded-pill mt-5">Lägg till slängd mat</a>
+            </div>
+</section>
 
 
 @if (Model.Message != null)
@@ -19,22 +37,108 @@
         </button>
     </div>
 }
-@if (Model.ItemList.Length <= 0)
-{
-    <p>
-        Det verkar som att du inte har slängt någonting ännu, bra jobbat @Context.User.Identity.Name!
-    </p>
-}
-else
-{
-    <p> Hittils har du slängt @Model.TotalAmount gram mat @Context.User.Identity.Name</p>
-    <canvas id="myChart" width="400" height="150"></canvas>
-}
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
-<script>
-    var ctx = document.getElementById('myChart').getContext('2d');
+@*<canvas id="myChart" width="400" height="150"></canvas>*@
+<section class="justify-content-center">
+    <div class="justify-content-center align-items-center container-fluid row">
+        <div style="font-family: Corbel; font-size: small ;text-align:center " class="col">
+            <div style="width:75%; height:75%">
+                <canvas id="myPie" style="padding: 0;margin: auto;display: block; "> </canvas>
+            </div>
+        </div>
+
+        <div style="font-family: Corbel; font-size: small ;text-align:center " class="col">
+            <div style="width:75%; height:75%">
+                <canvas id="myBar" style="padding: 0;margin: auto;display: block; "> </canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts
+{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+
+    <script>
+
+    $.ajax({
+        type: "POST",
+        url: "/Item/TypePieChart",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (chData) {
+            var aData = chData;
+            var aLabels = aData[0];
+            var aDatasets1 = aData[1];
+            var dataT = {
+                labels: aLabels,
+                datasets: [{
+                    label: "Food Data",
+                    data: aDatasets1,
+                    fill: false,
+                    backgroundColor: ["rgba(54, 162, 235, 0.2)", "rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)"],
+                    borderColor: ["rgb(54, 162, 235)", "rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"],
+                    borderWidth: 1
+                }]
+            };
+            var ctx = $("#myPie").get(0).getContext("2d");
+            var myNewChart = new Chart(ctx, {
+                type: 'pie',
+                data: dataT,
+                options: {
+                    responsive: true,
+                    title: { display: true, text: 'SÅ HÄR MYCKET SLÄNGER DU (KG)' },
+                    legend: { position: 'bottom' },
+                    //scales: {
+                    //    xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' } }],
+                    //    yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { stepSize: 50, beginAtZero: true } }]
+                    //},
+                }
+            });
+        }
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/Item/DateBarChart",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (chData) {
+            var aData = chData;
+            var aLabels = aData[0];
+            var aDatasets1 = aData[1];
+            var dataT = {
+                labels: aLabels,
+                datasets: [{
+                    label: "Kg",
+                    data: aDatasets1,
+                    fill: false,
+                    backgroundColor: ["rgba(54, 162, 235, 0.2)", "rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)"],
+                    borderColor: ["rgb(54, 162, 235)", "rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"],
+                    borderWidth: 1
+                }]
+            };
+            var ctx = $("#myBar").get(0).getContext("2d");
+            var myNewChart = new Chart(ctx, {
+                type: 'bar',
+                data: dataT,
+                options: {
+                    responsive: true,
+                    title: { display: true, text: 'SLÄNGD MAT ÖVER TID (KG)' },
+                    legend: { position: 'bottom' },
+                    scales: {
+                        xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' } }],
+                        yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { stepSize: 50, beginAtZero: true } }]
+                    },
+                }
+            });
+        }
+    });
+
+
+
+    @*var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'pie',
         data: {
@@ -42,94 +146,85 @@ else
             datasets: [{
                 label: '# of Votes',
                 data: [@{
-                        double fiskAmount = 0;
-                        double fruktAmount = 0;
-                        double färdigmatAmount = 0;
-                        double grönsakerAmount = 0;
-                        double konserverAmount = 0;
-                        double köttAmount = 0;
-                        double mejeriprodukterAmount = 0;
-                        double rotfrukterAmount = 0;
-                        double spannmålAmount = 0;
-                        double övrigtAmount = 0;
+                    double fiskAmount = 0;
+                    double fruktAmount = 0;
+                    double färdigmatAmount = 0;
+                    double grönsakerAmount = 0;
+                    double konserverAmount = 0;
+                    double köttAmount = 0;
+                    double mejeriprodukterAmount = 0;
+                    double rotfrukterAmount = 0;
+                    double spannmålAmount = 0;
+                    double övrigtAmount = 0;
 
-                        foreach (var item in Model.ItemList)
+                    foreach(var item in Model.ItemList)
                         {
-                            switch (item.Type)
-                            {
-                                case ProductType.Fisk:
-                                    fiskAmount += item.Amount;
-                                    break;
-                                case ProductType.Frukt:
-                                    fruktAmount += item.Amount;
-                                    break;
-                                case ProductType.Färdigmat:
-                                    färdigmatAmount += item.Amount;
-                                    break;
-                                case ProductType.Grönsaker:
-                                    grönsakerAmount += item.Amount;
-                                    break;
-                                case ProductType.Konserver:
-                                    konserverAmount += item.Amount;
-                                    break;
-                                case ProductType.Kött:
-                                    köttAmount += item.Amount;
-                                    break;
-                                case ProductType.Mejeriprodukter:
-                                    mejeriprodukterAmount += item.Amount;
-                                    break;
-                                case ProductType.Rotfrukter:
-                                    rotfrukterAmount += item.Amount;
-                                    break;
-                                case ProductType.Spannmål:
-                                    spannmålAmount += item.Amount;
-                                    break;
-                                case ProductType.Övrigt:
-                                    övrigtAmount += item.Amount;
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
+        switch (item.Type) {
+            case ProductType.Fisk:
+                fiskAmount += item.Amount;
+                break;
+            case ProductType.Frukt:
+                fruktAmount += item.Amount;
+                break;
+            case ProductType.Färdigmat:
+                färdigmatAmount += item.Amount;
+                break;
+            case ProductType.Grönsaker:
+                grönsakerAmount += item.Amount;
+                break;
+            case ProductType.Konserver:
+                konserverAmount += item.Amount;
+                break;
+            case ProductType.Kött:
+                köttAmount += item.Amount;
+                break;
+            case ProductType.Mejeriprodukter:
+                mejeriprodukterAmount += item.Amount;
+                break;
+            case ProductType.Rotfrukter:
+                rotfrukterAmount += item.Amount;
+                break;
+            case ProductType.Spannmål:
+                spannmålAmount += item.Amount;
+                break;
+            case ProductType.Övrigt:
+                övrigtAmount += item.Amount;
+                break;
+            default:
+                break;
+        }
+    }
                         }@fiskAmount, @fruktAmount, @färdigmatAmount, @grönsakerAmount, @konserverAmount, @köttAmount, @mejeriprodukterAmount, @rotfrukterAmount, @spannmålAmount, @övrigtAmount],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 204, 255, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(0, 102, 0, 0.2)',
-                    'rgba(204, 0, 102, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(0, 0, 0, 0.2)',
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 204, 255, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(0, 102, 0, 1)',
-                    'rgba(204, 0, 102, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(0, 0, 0, 1)'
-                ],
-                borderWidth: 1
+    backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 204, 255, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(0, 102, 0, 0.2)',
+        'rgba(204, 0, 102, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(0, 0, 0, 0.2)',
+    ],
+        borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 204, 255, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
+            'rgba(0, 102, 0, 1)',
+            'rgba(204, 0, 102, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(0, 0, 0, 1)'
+        ],
+            borderWidth: 1
             }]
         },
-        options: {
-            //scales: {
-            //    yAxes: [{
-            //        ticks: {
-            //            beginAtZero: true
-            //        }
-            //    }]
-            //}
-        }
-    });
-</script>
+    options: {
+    }
+    });*@
+    </script>
 }
 
-<a asp-controller="item" asp-action="add">Lägg till slängd mat</a>

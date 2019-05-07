@@ -1,39 +1,42 @@
 ﻿@model ItemFormVM
 
-<div class="text-lg-center container">
-    <h2>Lägg till slängd mat</h2>
-    <div class="dropdown item-form">
-        <form asp-controller="item" asp-action="form">
-            <div class="form-group align-items-center">
-                <div class="col-4 justify-content-center align-items-center container">
-                    <label asp-for="FoodItem"></label>
-                    <select asp-for="SelectedFoodValue"
-                            asp-items="Model.FoodItem" class="form-control"></select>
-                    <span asp-validation-for="SelectedFoodValue"></span>
-                </div>
-                <br />
-                <div class="col-4 justify-content-center align-items-center container">
-                    <label asp-for="Amount"></label>
-                    <input asp-for="Amount" type="number" min="0.1" max="999" class="form-control" />
-                    <span asp-validation-for="Amount"></span>
+    <div class="text-lg-center container">
+        <h2>Lägg till slängd mat</h2>
+        <div class="dropdown item-form">
+            <form asp-controller="item" asp-action="form">
+                <div class="form-group align-items-center">
+                    <div class="col-4 justify-content-center align-items-center container">
+                        <label asp-for="FoodItem"></label>
+                        <select asp-for="SelectedFoodValue"
+                                asp-items="Model.FoodItem" class="form-control"></select>
+                        <span asp-validation-for="SelectedFoodValue"></span>
+                    </div>
                     <br />
-                </div>
-                <div class="col-4 justify-content-center align-items-center container">
-                    <label asp-for="ItemWeightMeasurement"></label>
-                    <select asp-for="SelectedWeightValue"
-                            asp-items="Model.ItemWeightMeasurement" class="form-control"></select>
-                    <span asp-validation-for="SelectedWeightValue"></span>
-                    <br />
-                </div>
-                <div class="col-4 justify-content-center align-items-center container">
+                    <div class="col-4 justify-content-center align-items-center container">
+                        <label asp-for="Amount"></label>
+                        <input asp-for="Amount" type="number" min="0.1" max="999" class="form-control" />
+                        <span asp-validation-for="Amount"></span>
+                        <br />
+                    </div>
+                    <div class="col-4 justify-content-center align-items-center container">
+                        <label asp-for="ItemWeightMeasurement"></label>
+                        <select asp-for="SelectedWeightValue"
+                                asp-items="Model.ItemWeightMeasurement" class="form-control"></select>
+                        <span asp-validation-for="SelectedWeightValue"></span>
+                        <br />
+                    </div>
+                    <div class="col-4 justify-content-center align-items-center container">
 
-                    <label asp-for="DateOfInput"></label>
-                    <input asp-for="DateOfInput" type="date" class="form-control" />
-                    <span asp-validation-for="DateOfInput"></span>
-                    <br />
+                        <label asp-for="DateOfInput"></label>
+                        <input asp-for="DateOfInput" type="date" class="form-control" />
+                        <span asp-validation-for="DateOfInput"></span>
+                        <br />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Släng</button>
                 </div>
-                <button type="submit" class="btn btn-primary">Släng</button>
-            </div>
-        </form>
+            </form>
+        </div>
+        <div>
+            <p><a asp-controller="item" asp-action="overview" class="btn btn-primary btn-xl rounded-pill mt-5">Översikt</a></p>
+        </div>
     </div>
-</div>

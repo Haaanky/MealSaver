@@ -68,6 +68,12 @@ namespace MealSaver.Models
                 .Where(o => o.UserId == userId && o.Type == productType.ToString())
                 .Sum(o => o.Amount);
         }
+        internal double GetTotalAmountForUser(string userId, DateTime dateTime)
+        {
+            return foodObjContext.Products
+                .Where(o => o.UserId == userId && o.Date == dateTime)
+                .Sum(o => o.Amount);
+        }
 
         internal double GetTotalAmount()
         {
@@ -122,6 +128,21 @@ namespace MealSaver.Models
                 }
             }
             return items;
+        }
+
+        internal List<ItemOverviewVM> GetAllDates(string currentUserID)
+        {
+            var prodArr = foodObjContext.Products
+                .OrderBy(o => o.Date)
+                .Where(o => o.UserId == currentUserID)
+                .Select(o => new ItemOverviewVM
+                {
+                    Date = o.Date
+                })
+                .Distinct()
+                .ToList();
+            //prodArr = NormalizeData(prodArr);
+            return prodArr;
         }
     }
 }
