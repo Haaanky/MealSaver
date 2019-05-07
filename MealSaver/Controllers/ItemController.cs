@@ -99,7 +99,6 @@ namespace MealSaver.Controllers
                 //        Type = "Potatis",
                 //        AmountKg = 5,
                 //        Date = DateTime.Now.Date
-
                 //    }
                 //}
             };
