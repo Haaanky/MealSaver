@@ -20,12 +20,20 @@ namespace MealSaver.Models
         {
             switch (item.SelectedFoodValue)
             {
-                case 1: item.Type = ProductType.Mjölk; break;
-                case 2: item.Type = ProductType.Kött; break;
-                case 3: item.Type = ProductType.Frukt; break;
+                case 1: item.Type = ProductType.Fisk; break;
+                case 2: item.Type = ProductType.Frukt; break;
+                case 3: item.Type = ProductType.Färdigmat; break;
+                case 4: item.Type = ProductType.Grönsaker; break;
+                case 5: item.Type = ProductType.Konserver; break;
+                case 6: item.Type = ProductType.Kött; break;
+                case 7: item.Type = ProductType.Mejeriprodukter; break;
+                case 8: item.Type = ProductType.Rotfrukter; break;
+                case 9: item.Type = ProductType.Spannmål; break;
+                case 10: item.Type = ProductType.Övrigt; break;
                 default:
                     break;
             }
+
             switch (item.SelectedWeightValue)
             {
                 case 1: item.UnitOfMeasurement = UnitMeasurement.Kg; break;
@@ -52,6 +60,12 @@ namespace MealSaver.Models
         {
             return foodObjContext.Products
                 .Where(o => o.UserId == userId /*&& o.Type == "Frukt"*/)
+                .Sum(o => o.Amount);
+        }
+        internal double GetTotalAmountForUser(string userId, ProductType productType)
+        {
+            return foodObjContext.Products
+                .Where(o => o.UserId == userId && o.Type == productType.ToString())
                 .Sum(o => o.Amount);
         }
 

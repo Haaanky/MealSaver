@@ -7,3 +7,24 @@
     max-width: 50px;
     max-height: 50px;
 }
+
+.bigScreen {
+    display: block;
+}
+
+.smallScreen {
+    display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+    .bigScreen {
+        display: none;
+    }
+    .smallScreen {
+        display: block;
+    }
+}
+
+body > section > div > form > div > div.g-recaptcha.col-4.justify-content-center.align-items-center.container > div {
+    margin-left: 18px;
+}

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,11 +16,18 @@ namespace MealSaver.Models
     }
     public enum ProductType
     {
-        Mjölk,
+        Mejeriprodukter,
         Kött,
+        Fisk,
+        [Display(Name ="Bröd och Spannmål")]
+        Spannmål,
+        [Display(Name ="Frukt och Bär")]
         Frukt,
         Grönsaker,
-        Bröd
+        Rotfrukter,
+        Konserver,
+        Färdigmat,
+        Övrigt
     }
     public class Item
     {

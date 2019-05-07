@@ -27,6 +27,8 @@
             <br />
             <div class="g-recaptcha col-4 justify-content-center align-items-center container" data-sitekey=@Configuration["GoogleReCaptcha:key"]></div>
             <br />
+            <span asp-validation-for="ReCAPTCHA"></span>
+            <br />
             <button type="submit" class="btn btn-primary">Skicka</button>
         </div>
     </form>
@@ -46,5 +48,14 @@
 
 </div>
 @section scripts {
+    <partial name="_PartialValidationScripts" />
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        window.onload = function () {
+            var $recaptcha = document.querySelector('#g-recaptcha-response');
+            if ($recaptcha) {
+                $recaptcha.setAttribute("required", "required");
+            };
+        }
+    </script>
 }
