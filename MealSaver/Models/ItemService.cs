@@ -50,7 +50,7 @@ namespace MealSaver.Models
                 Type = item.Type.ToString(),
                 UnitOfMeasurement = item.UnitOfMeasurement.ToString(),
                 Amount = item.Amount,
-                Date = item.DateOfInput.Date,
+                Date = item.DateOfInput,
                 UserId = currentUserID //lägg till så att vi kan koppla slängd mat till användaren 
             });
             await foodObjContext.SaveChangesAsync();
