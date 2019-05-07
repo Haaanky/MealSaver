@@ -4,6 +4,6 @@
     [Type] NVARCHAR(64) NOT NULL, 
     [Amount] FLOAT NOT NULL, 
     [UnitOfMeasurement] NVARCHAR(16) NOT NULL,
-    [Date] DATE NOT NULL, 
+    [Date] DATETIME NOT NULL, 
     [UserID] NVARCHAR(450) REFERENCES dbo.AspNetUsers(Id) NOT NULL
 )

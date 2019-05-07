@@ -1,0 +1,30 @@
+﻿<div class="socialMedia d-flex justify-content-center">
+    @*<div class="facebook p-3">
+            <div id="fb-root"></div>
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/sv_SE/sdk.js#xfbml=1&version=v3.3&appId=243987815652225&autoLogAppEvents=1"></script>
+            <div class="fb-share-button" data-href="https://mealsaver.azurewebsites.net/" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Dela</a></div>
+        </div>*@
+    <div class="facebook p-3">
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/sv_SE/sdk.js#xfbml=1&version=v3.3&appId=243987815652225"></script>
+        <div class="fb-like" data-href="https://mealsaver.azurewebsites.net/" data-width="50" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+    </div>
+    <div class="align-self-center p-3">
+        <a href="https://twitter.com/WasteLand?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow WasteLand</a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+    <div class="align-self-center p-3">
+        <a href="https://twitter.com/intent/tweet?button_hashtag=WasteLand&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #WasteLand</a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+    <div class="align-self-center p-3">
+        <script src="https://apis.google.com/js/platform.js"></script>
+        <div class="g-ytsubscribe" data-channel="WasteLand" data-layout="default" data-count="default"></div>
+    </div>
+    @*<div class="align-self-center p-3">
+        <a data-pin-do="buttonBookmark" href="https://www.pinterest.com/pin/create/button/"></a>
+    </div>*@
+    <div class="p-3">
+        <a asp-controller="info" asp-action="contact" class="btn btn-dark btn-sm rounded-pill">E-mail</a>
+    </div>
+</div>

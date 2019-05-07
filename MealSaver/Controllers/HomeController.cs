@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MealSaver.Models;
+using MealSaver.Models.ViewModels.Home;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MealSaver.Controllers
@@ -10,18 +11,20 @@ namespace MealSaver.Controllers
     public class HomeController : Controller
     {
         private readonly UserService userService;
+        private readonly ItemService itemService;
 
-        public HomeController(UserService userService)
+        public HomeController(UserService userService, ItemService itemService)
         {
             this.userService = userService;
+            this.itemService = itemService;
         }
 
         [Route("")]
         public IActionResult Index()
         {
             //throw new Exception("Fel! Error Error Error");
-
-            return View();
+            var homeIndexVM = new HomeIndexVM { TotalWaste = itemService.GetTotalAmount()};
+            return View(homeIndexVM);
         }
 
         [Route("Inspiration")]
@@ -42,6 +45,11 @@ namespace MealSaver.Controllers
         public IActionResult PartialLogin()
         {
             return PartialView("PartialLogin");
+        }
+        [Route("SocialMedia")]
+        public IActionResult PartialSocialMedia()
+        {
+            return PartialView("_PartialSocialMedia");
         }
     }
 }
