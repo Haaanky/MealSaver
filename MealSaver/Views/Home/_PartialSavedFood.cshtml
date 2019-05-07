@@ -1,11 +1,15 @@
-﻿<div class="d-flex justify-content-center">
+﻿@model HomeIndexVM
+<div class="d-flex justify-content-center">
     <h3 class="display-4">Våra användare har räddat mat som motsvarar:</h3>
 </div>
 <div class="d-flex flex-wrap justify-content-center">
     <div class="card text-white bg-secondary m-2 d-flex justify-content-between" style="width: 10rem; height: auto;">
         <div class="card-body">
+            <h2 class="timer count-title count-number" data-to="@(Math.Round(Model.TotalWaste / 1000))" data-speed="1500"></h2>
+
             <p class="card-text text-center">
-                500 kor
+
+                @*@(Math.Round(Model.TotalWaste / 1000))*@ @*500*@ kor
                 <br />
                 🐄
             </p>
@@ -13,8 +17,9 @@
     </div>
     <div class="card text-white bg-secondary m-2 d-flex justify-content-between" style="width: 10rem; height: auto;">
         <div class="card-body">
+            <h2 class="timer count-title count-number" data-to="@Model.TotalWaste" data-speed="1500"></h2>
             <p class="card-text text-center">
-                10 000 morötter
+                @*@Model.TotalWaste*@ @*10 000*@ morötter
                 <br />
                 🥕
             </p>
@@ -23,8 +28,10 @@
 
     <div class="card text-white bg-secondary m-2 d-flex justify-content-between" style="width: 10rem; height: auto;">
         <div class="card-body">
+            @*<h2 class="timer count-title count-number" data-to="@(Math.Round(Model.TotalWaste / 1000000, 6))" data-speed="1500" decimals="9"></h2>*@
+            <h2>@(Model.TotalWaste / 100000)</h2>
             <p class="card-text text-center">
-                2 blåvalar
+                @*2*@ blåvalar
                 <br />
                 🐋
             </p>

@@ -16,6 +16,7 @@
     </div>
 </section>
 
+
 @if (Model.Message != null)
 {
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -26,6 +27,17 @@
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
+}
+@if (Model.ItemList.Length <= 0)
+{
+    <p>
+        Det verkar som att du inte har slängt någonting ännu, bra jobbat @Context.User.Identity.Name!
+    </p>
+}
+else
+{
+    <p> Hittils har du slängt @Model.TotalAmount gram mat @Context.User.Identity.Name</p>
+    <canvas id="myChart" width="400" height="150"></canvas>
 }
 
 @*<canvas id="myChart" width="400" height="150"></canvas>*@

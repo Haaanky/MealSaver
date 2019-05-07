@@ -51,7 +51,7 @@ namespace MealSaver.Models
                 UnitOfMeasurement = item.UnitOfMeasurement.ToString(),
                 Amount = item.Amount,
                 Date = item.DateOfInput,
-                UserId = currentUserID //lägg till så att vi kan koppla slängd mat till användaren 
+                UserId = currentUserID
             });
             await foodObjContext.SaveChangesAsync();
         }
@@ -88,22 +88,40 @@ namespace MealSaver.Models
                     UnitOfMeasurement = Enum.Parse<UnitMeasurement>(o.UnitOfMeasurement)
                 })
                 .ToArray();
+            //prodArr = NormalizeData(prodArr);
             return prodArr;
         }
 
-        public ItemDisplayVM[] NormalizeData(ItemDisplayVM[] arr)
+        //public ItemDisplayVM[] NormalizeData(ItemDisplayVM[] arr)
+        //{
+        //    foreach (var item in arr) // normalize database amount to kg/L
+        //    {
+        //        switch (item.UnitOfMeasurement)
+        //        {
+        //            case UnitMeasurement.g: item.Amount /= 1000; break;
+        //            case UnitMeasurement.dL: item.Amount /= 10; break;
+        //            default:
+        //                break;
+        //        }
+        //    }
+        //    return arr;
+        //}
+        public ItemDisplayNormalizedVM[] NormalizeDataNormalVM(ItemDisplayVM[] arr)
         {
-            foreach (var item in arr) // normalize database amount to kg/L
+            ItemDisplayNormalizedVM[] items = new ItemDisplayNormalizedVM[arr.Length];
+            for (int i = 0; i < arr.Length; i++) // normalize database amount to kg/L
             {
-                switch (item.UnitOfMeasurement)
+                ItemDisplayVM item = (ItemDisplayVM)arr[i];
+                items[i] = new ItemDisplayNormalizedVM { Amount = item.Amount, Type = item.Type, UnitOfMeasurement = item.UnitOfMeasurement};
+                switch (items[i].UnitOfMeasurement)
                 {
-                    case UnitMeasurement.g: item.Amount /= 1000; break;
-                    case UnitMeasurement.dL: item.Amount /= 10; break;
+                    case UnitMeasurement.g: items[i].Amount /= 1000; break;
+                    case UnitMeasurement.dL: items[i].Amount /= 10; break;
                     default:
                         break;
                 }
             }
-            return arr;
+            return items;
         }
     }
 }

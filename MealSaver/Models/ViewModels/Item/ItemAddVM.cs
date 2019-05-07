@@ -9,5 +9,6 @@ namespace MealSaver.Models.ViewModels.Item
     {
         public ItemFormVM FormVM { get; set; }
         public ItemDisplayVM[] ItemList { get; set; }
+        public ItemDisplayNormalizedVM[] ItemListNormalized { get; set; }
     }
 }
