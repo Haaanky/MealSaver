@@ -12,6 +12,7 @@ using MealSaver.Models.ViewModels.User;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Caching.Memory;
 using System.Security.Claims;
+using System.Data;
 
 namespace MealSaver.Controllers
 {
@@ -119,6 +120,49 @@ namespace MealSaver.Controllers
         public IActionResult Display(ItemDisplayVM itemDisplayVM)
         {
             return View(itemDisplayVM);
+        }
+
+        [HttpPost]
+        public IActionResult NewChart()
+        {
+            var currentUserID = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var type = "Type";
+            string amount = "Amount";
+
+            List<object> iData = new List<object>();
+            //Creating sample data  
+            DataTable dt = new DataTable();
+            dt.Columns.Add(type, System.Type.GetType("System.String"));
+            dt.Columns.Add(amount, System.Type.GetType("System.Int32"));
+
+            DataRow dr = dt.NewRow();
+
+            var typeArr = new List<ProductType>();
+            foreach (ProductType item in Enum.GetValues(typeof(ProductType)))
+            {
+                typeArr.Add(item);
+            }
+
+            for (int i = 0; i < typeArr.Count; i++)
+            {
+                dr = dt.NewRow();
+                dr[type] = typeArr[i];
+                dr[amount] = itemService.GetTotalAmountForUser(currentUserID, typeArr[i]);
+                if (itemService.GetTotalAmountForUser(currentUserID, typeArr[i]) != 0)
+                {
+                    dt.Rows.Add(dr);
+                }
+            }
+
+            //Looping and extracting each DataColumn to List<Object>  
+            foreach (DataColumn dc in dt.Columns)
+            {
+                List<object> x = new List<object>();
+                x = (from DataRow drr in dt.Rows select drr[dc.ColumnName]).ToList();
+                iData.Add(x);
+            }
+            //Source data returned as JSON  
+            return Json(iData);
         }
     }
 }
