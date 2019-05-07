@@ -41,7 +41,8 @@ namespace MealSaver.Controllers
             {
                 Message = (string)TempData["Message"],
                 FirstName = HttpContext.User.Identity.Name,
-                TotalAmount = totalAmount
+                TotalAmount = totalAmount,
+                ItemList = prodArr
             };
 
             return View(itemOverviewVM);
@@ -73,12 +74,12 @@ namespace MealSaver.Controllers
                 FormVM = new ItemFormVM
                 {
                     //lägg till fler alternativ
-                    FoodItem = new SelectListItem[]
+                    FoodItem = new List<SelectListItem>
                     {
-                        new SelectListItem { Value = "0", Text = "Välj", Disabled = true, Selected = true },
-                        new SelectListItem { Value = "1", Text = ProductType.Mjölk.ToString() },
-                        new SelectListItem { Value = "2", Text = ProductType.Kött.ToString() },
-                        new SelectListItem { Value = "3", Text = ProductType.Frukt.ToString() }
+                        new SelectListItem { Value = "0", Text = "Välj", Disabled = true, Selected = true }/*,*/
+                        //new SelectListItem { Value = "1", Text = ProductType.Mjölk.ToString() },
+                        //new SelectListItem { Value = "2", Text = ProductType.Kött.ToString() },
+                        //new SelectListItem { Value = "3", Text = ProductType.Frukt.ToString() }
                     },
 
                     ItemWeightMeasurement = new SelectListItem[]
@@ -101,6 +102,16 @@ namespace MealSaver.Controllers
 
                 //    }
                 //}
+            };
+
+            var tmpArr = new List<string>();
+            foreach (ProductType foo in Enum.GetValues(typeof(ProductType)))
+            {
+                tmpArr.Add(foo.ToString());
+            }
+            for (int i = 0; i < tmpArr.Count; i++)
+            {
+                itemAddVM.FormVM.FoodItem.Add(new SelectListItem { Value = (i + 1).ToString(), Text = tmpArr[i].ToString() });
             };
             return View(itemAddVM);
         }

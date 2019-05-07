@@ -1,8 +1,11 @@
 ﻿using MealSaver.Models.Entities;
 using MealSaver.Models.ViewModels.Info;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace MealSaver.Models
@@ -23,6 +26,7 @@ namespace MealSaver.Models
 
         internal async Task AddContactFormToDBAsync(InfoContactVM infoContactVM)
         {
+            var x = infoContactVM.Sitekey;
             await foodObjContext.ContactForm.AddAsync(new ContactForm {
                 Email = infoContactVM.Email,
                 Name = infoContactVM.Name,
@@ -36,6 +40,24 @@ namespace MealSaver.Models
             return founders
                 .Select(o => new InfoAboutVM { Id = o.Id, Name = o.Name, Description = o.Description, Image = o.Image })
                 .ToArray();
+        }
+        public static bool ReCaptchaPassed(string gRecaptchaResponse, string secret)
+        {
+            var httpClient = new HttpClient();
+            var res = httpClient.GetAsync($"https://www.google.com/recaptcha/api/siteverify?secret={secret}&response={gRecaptchaResponse}").Result;
+            if (res.StatusCode != HttpStatusCode.OK)
+            {
+                return false;
+            }
+
+            string JSONres = res.Content.ReadAsStringAsync().Result;
+            dynamic JSONdata = JObject.Parse(JSONres);
+            if (JSONdata.success != "true")
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

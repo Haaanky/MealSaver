@@ -48,16 +48,15 @@
         <section id="whyWasteland">
             <div class="container p-5">
                 <div class="row align-items-center justify-content-center">
-                    <div>
-                        <div class="justify-content-center">
-                            <partial name="_PartialWhyUseWasteland" model="Model" />
-                        </div>
+
+                    <div class="justify-content-center">
+                        <partial name="_PartialWhyUseWasteland" model="Model" />
                     </div>
                     <div>
                         <br />
                         @*<div class="p-5">
-                            <img class="img-fluid rounded" src="~/images/14076copy.jpg" alt="<p>WWF's goal is to: <q>Build a future where people live in harmony with nature.</q></p>">
-                        </div>*@
+                                <img class="img-fluid rounded" src="~/images/14076copy.jpg" alt="<p>WWF's goal is to: <q>Build a future where people live in harmony with nature.</q></p>">
+                            </div>*@
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -90,13 +89,13 @@
         </section>
 
         @*@{
-                var myChart = new Chart(width: 600, height: 400)
-                    .AddTitle("Chart Title")
-                    .AddSeries(
-                        name: "Employee",
-                        xValue: new[] { "Peter", "Andrew", "Julie", "Mary", "Dave" },
-                        yValues: new[] { "2", "6", "4", "5", "3" })
-                    .Write();
+            var myChart = new Chart(width: 600, height: 400)
+            .AddTitle("Chart Title")
+            .AddSeries(
+            name: "Employee",
+            xValue: new[] { "Peter", "Andrew", "Julie", "Mary", "Dave" },
+            yValues: new[] { "2", "6", "4", "5", "3" })
+            .Write();
             }*@
         <div class="card w-50 mx-auto">
             @*<div class="card-header">

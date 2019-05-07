@@ -17,5 +17,7 @@ namespace MealSaver.Models.ViewModels.Info
         public string Email { get; set; }
         [Display(Name = "Din fråga")]
         public string Description { get; set; }
+        public string ReCAPTCHA { get; set; }
+        public string Sitekey { get; set; }
     }
 }
