@@ -57,3 +57,15 @@ body > section > div > form > div > div.g-recaptcha.col-4.justify-content-center
     display: table;
     color: #4ad1e5;
 }
+
+.home-divider {
+    background-color: rgba(251, 84, 27, 0.12156862745098039);
+}
+
+.home-divider-img{
+    
+    width: 250px;
+    height: auto;
+    justify-content: center;
+    
+}
