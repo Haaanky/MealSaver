@@ -38,7 +38,7 @@ namespace MealSaver.Controllers
         [Route("oversikt")]
         public IActionResult Overview()
         {
-            var prodArr = itemService.GetAllItems(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var prodArr = itemService.NormalizeDataNormalVM(itemService.GetAllItems(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)));
             double totalAmount = 0;
 
             foreach (var item in prodArr)
@@ -51,7 +51,7 @@ namespace MealSaver.Controllers
                 Message = (string)TempData["Message"],
                 FirstName = HttpContext.User.Identity.Name,
                 TotalAmount = totalAmount,
-                ItemList = itemService.NormalizeDataNormalVM(prodArr)
+                ItemList = prodArr
             };
 
             return View(itemOverviewVM);
@@ -144,7 +144,7 @@ namespace MealSaver.Controllers
             //Creating sample data  
             DataTable dt = new DataTable();
             dt.Columns.Add(type, System.Type.GetType("System.String"));
-            dt.Columns.Add(amount, System.Type.GetType("System.Int32"));
+            dt.Columns.Add(amount, System.Type.GetType("System.Double"));
 
             DataRow dr = dt.NewRow();
 
@@ -185,8 +185,8 @@ namespace MealSaver.Controllers
             List<object> iData = new List<object>();
             //Creating sample data  
             DataTable dt = new DataTable();
-            dt.Columns.Add(date, System.Type.GetType("System.String"));
-            dt.Columns.Add(amount, System.Type.GetType("System.Int32"));
+            dt.Columns.Add(date, Type.GetType("System.String"));
+            dt.Columns.Add(amount, Type.GetType("System.Int32"));
 
             DataRow dr = dt.NewRow();
 
@@ -199,7 +199,7 @@ namespace MealSaver.Controllers
             for (int i = 0; i < dateArr.Count; i++)
             {
                 dr = dt.NewRow();
-                dr[date] = dateArr[i];
+                dr[date] = dateArr[i].ToShortDateString();
                 dr[amount] = itemService.GetTotalAmountForUser(currentUserID, dateArr[i]);
                 if (itemService.GetTotalAmountForUser(currentUserID, dateArr[i]) != 0)
                 {

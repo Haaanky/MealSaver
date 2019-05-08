@@ -58,21 +58,34 @@ namespace MealSaver.Models
 
         internal double GetTotalAmountForUser(string userId)
         {
-            return foodObjContext.Products
-                .Where(o => o.UserId == userId /*&& o.Type == "Frukt"*/)
-                .Sum(o => o.Amount);
+            //return foodObjContext.Products
+            //    .Where(o => o.UserId == userId /*&& o.Type == "Frukt"*/)
+            //    .Sum(o => o.Amount);
+            var tmpData = foodObjContext.Products
+                            .Where(o => o.UserId == userId)
+                            .ToList();
+            return NormalizeTotalAmount(tmpData);
         }
         internal double GetTotalAmountForUser(string userId, ProductType productType)
         {
-            return foodObjContext.Products
-                .Where(o => o.UserId == userId && o.Type == productType.ToString())
-                .Sum(o => o.Amount);
+            //return foodObjContext.Products
+            //    .Where(o => o.UserId == userId && o.Type == productType.ToString())
+            //    .Sum(o => o.Amount);
+            var tmpData = foodObjContext.Products
+                            .Where(o => o.UserId == userId && o.Type == productType.ToString())
+                            .ToList();
+            return NormalizeTotalAmount(tmpData);
         }
         internal double GetTotalAmountForUser(string userId, DateTime dateTime)
         {
-            return foodObjContext.Products
-                .Where(o => o.UserId == userId && o.Date == dateTime)
-                .Sum(o => o.Amount);
+            //return foodObjContext.Products
+            //    .Where(o => o.UserId == userId && o.Date == dateTime)
+            //    .Sum(o => o.Amount);
+            var tmpData = foodObjContext.Products
+                            .Where(o => o.UserId == userId && o.Date == dateTime)
+                            .ToList();
+
+            return NormalizeTotalAmount(tmpData);
         }
 
         internal double GetTotalAmount()
@@ -98,27 +111,27 @@ namespace MealSaver.Models
             return prodArr;
         }
 
-        //public ItemDisplayVM[] NormalizeData(ItemDisplayVM[] arr)
-        //{
-        //    foreach (var item in arr) // normalize database amount to kg/L
-        //    {
-        //        switch (item.UnitOfMeasurement)
-        //        {
-        //            case UnitMeasurement.g: item.Amount /= 1000; break;
-        //            case UnitMeasurement.dL: item.Amount /= 10; break;
-        //            default:
-        //                break;
-        //        }
-        //    }
-        //    return arr;
-        //}
+        private double NormalizeTotalAmount(List<Products> products)
+        {
+            products.ForEach(o =>
+            {
+                switch (o.UnitOfMeasurement)
+                {
+                    case "g": o.Amount /= 1000; break;
+                    case "dL": o.Amount /= 10; break;
+                    default:
+                        break;
+                }
+            });
+            return products.Sum(o => o.Amount);
+        }
         public ItemDisplayNormalizedVM[] NormalizeDataNormalVM(ItemDisplayVM[] arr)
         {
             ItemDisplayNormalizedVM[] items = new ItemDisplayNormalizedVM[arr.Length];
             for (int i = 0; i < arr.Length; i++) // normalize database amount to kg/L
             {
                 ItemDisplayVM item = (ItemDisplayVM)arr[i];
-                items[i] = new ItemDisplayNormalizedVM { Amount = item.Amount, Type = item.Type, UnitOfMeasurement = item.UnitOfMeasurement};
+                items[i] = new ItemDisplayNormalizedVM { Amount = item.Amount, Type = item.Type, UnitOfMeasurement = item.UnitOfMeasurement };
                 switch (items[i].UnitOfMeasurement)
                 {
                     case UnitMeasurement.g: items[i].Amount /= 1000; break;
