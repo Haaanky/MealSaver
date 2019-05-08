@@ -56,5 +56,9 @@ namespace MealSaver.Controllers
         {
             return View();
         }
+        public IActionResult PartialQuotes()
+        {
+            return PartialView("_PartialQuotes");
+        }
     }
 }

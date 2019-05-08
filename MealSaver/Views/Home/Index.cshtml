@@ -6,7 +6,7 @@
 @section SectionName{
     <header class="masthead text-center text-white">
         <div class="masthead-content">
-            <h1 class="masthead-heading mb-0 d-flex justify-content-center">Welcome to WasteLand</h1>
+            <h1 class="masthead-heading mb-0 d-flex justify-content-center">Välkommen till WasteLand</h1>
             <p style="font-size: larger">En tredjedel av all mat som produceras i Sverige varje år slängs - ett riktigt WasteLand. Det vill vi ändra på. Vill du?</p>
 
             @if (!((Context.User != null) && Context.User.Identity.IsAuthenticated))
@@ -101,6 +101,12 @@
                 </blockquote>
             </div>
         </div>
+
+        @*<section id="Quotes">
+            <div class="p-5">
+                <partial name="_PartialQuotes" model="Model" /> <br />
+            </div>
+        </section>*@
 
         <section id="links">
             <div class="p-5">
