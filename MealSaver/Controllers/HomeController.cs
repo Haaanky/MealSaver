@@ -48,5 +48,9 @@ namespace MealSaver.Controllers
         {
             return PartialView("_PartialSocialMedia");
         }
+        public IActionResult PartialQuotes()
+        {
+            return PartialView("_PartialQuotes");
+        }
     }
 }
