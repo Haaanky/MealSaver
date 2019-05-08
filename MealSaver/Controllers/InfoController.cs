@@ -37,7 +37,7 @@ namespace MealSaver.Controllers
             _configuration.GetSection("GoogleReCaptcha:secret").Value
             ))
             {
-                ModelState.AddModelError(nameof(infoContactVM.ReCAPTCHA), "You failed the CAPTCHA, stupid robot.");
+                ModelState.AddModelError(nameof(infoContactVM.ReCAPTCHA), "Du misslyckades med reCAPTCHA, dumma robot.");
                 return View(infoContactVM);
             }
             await infoService.AddContactFormToDBAsync(infoContactVM);

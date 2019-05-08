@@ -15,7 +15,7 @@
         }
         else
         {
-            @*<canvas id="myChart" width="400" height="100"></canvas>*@
+            <canvas id="myChart" width="400" height="100"></canvas>
             <ul>
                 <partial name=_PartialItemList model=Model.ItemList />
             </ul>
@@ -27,16 +27,17 @@
 {
     <partial name="_PartialValidationScripts" />
     <script>
-        //var ctx = document.getElementById('myChart').getContext('2d');
-        //var myChart = new Chart(ctx, {
-        //    type: 'bar',
-        //    data: {
-        //        labels: ['Fisk', 'Frukt', 'Färdigmat', 'Grönsaker', 'Konserver', 'Kött', 'Mejeriprodukter', 'Rotfrukter', 'Spannmål', 'Övrigt'],
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Fisk', 'Frukt', 'Färdigmat', 'Grönsaker', 'Konserver', 'Kött', 'Mejeriprodukter', 'Rotfrukter', 'Spannmål', 'Övrigt'],
+
                 @*labels: [@for (int i = 0; i < itemList.Length; i++)
                 {
                     @Html.Raw("'" + itemList[i].Type + "'" + (i<itemList.Length-1? ", ": string.Empty))
                 }],*@
-                @*datasets: [{
+                datasets: [{
                 label: 'Slängd mat i g',
                     data: [@{
                         double fiskAmount = 0;
@@ -125,6 +126,6 @@
                     }]
                 }
             }
-        });*@
+        });
     </script>
 }

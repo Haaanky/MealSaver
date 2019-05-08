@@ -43,7 +43,7 @@ namespace MealSaver.Controllers
 
             if (!result.Succeeded)
             {
-                ModelState.AddModelError(nameof(UserLoginVM.Username), "Login failed");
+                ModelState.AddModelError(nameof(UserLoginVM.Username), "Login misslyckades");
                 return View(userLoginVM);
             }
             if (!string.IsNullOrWhiteSpace(userLoginVM.ReturnUrl))
