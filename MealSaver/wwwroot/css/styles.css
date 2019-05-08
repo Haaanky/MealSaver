@@ -134,3 +134,7 @@ body > section > div > form > div > div.g-recaptcha.col-4.justify-content-center
     justify-content: center;
     
 }
+
+a {
+    color: pink;
+}
