@@ -123,10 +123,14 @@ body > section > div > form > div > div.g-recaptcha.col-4.justify-content-center
     color: #4ad1e5;
 }
 
-.alink {
-    color: hotpink;
+.home-divider {
+    background-color: rgba(251, 84, 27, 0.12156862745098039);
 }
-.alink:hover {
-    color: hotpink;
-    text-decoration: underline;
+
+.home-divider-img{
+    
+    width: 250px;
+    height: auto;
+    justify-content: center;
+    
 }
