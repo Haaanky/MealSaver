@@ -34,5 +34,7 @@ namespace MealSaver.Models.ViewModels.User
         public string LastName { get; set; }
 
         public string Message { get; set; }
+        public string ReCAPTCHA { get; set; }
+
     }
 }

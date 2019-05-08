@@ -49,13 +49,5 @@
 </div>
 @section scripts {
     <partial name="_PartialValidationScripts" />
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script>
-        window.onload = function () {
-            var $recaptcha = document.querySelector('#g-recaptcha-response');
-            if ($recaptcha) {
-                $recaptcha.setAttribute("required", "required");
-            };
-        }
-    </script>
+    <partial name="_PartialReCAPTCHAScripts" />
 }
