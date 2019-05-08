@@ -35,7 +35,6 @@
                 {
                     @Html.Raw("'" + itemList[i].Type + "'" + (i<itemList.Length-1? ", ": string.Empty))
                 }],*@
-
                 datasets: [{
                 label: 'Slängd mat i g',
                     data: [@{
@@ -87,17 +86,6 @@
                                 default:
                                     break;
                             }
-                            //if (item.Type == "Mjölk")
-                            //{
-                            //}
-                            //else if (item.Type == "Kött")
-                            //{
-                            //    köttAmount += item.Amount;
-                            //}
-                            //else if (item.Type == "Frukt")
-                            //{
-                            //    fruktAmount += item.Amount;
-                            //}
                         }
                         }@fiskAmount, @fruktAmount, @färdigmatAmount, @grönsakerAmount, @konserverAmount, @köttAmount, @mejeriprodukterAmount, @rotfrukterAmount, @spannmålAmount, @övrigtAmount],
                     backgroundColor: [

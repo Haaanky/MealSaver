@@ -29,6 +29,6 @@ namespace MealSaver.Models.ViewModels.Item
         public double Amount { get; set; }
 
         [Display(Name = "Datum")]
-        public DateTime DateOfInput { get; set; } = DateTime.Now.Date;
+        public DateTime DateOfInput { get; set; } = DateTime.Now;
     }
 }
