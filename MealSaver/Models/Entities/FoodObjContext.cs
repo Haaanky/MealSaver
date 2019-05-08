@@ -30,7 +30,7 @@ namespace MealSaver.Models.Entities
             {
                 entity.ToTable("ContactForm", "FoodObj");
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.Email)
                     .IsRequired()
