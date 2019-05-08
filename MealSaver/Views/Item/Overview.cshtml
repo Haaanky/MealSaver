@@ -3,40 +3,40 @@
     ViewData["Title"] = "Overview";
 }
 
-    <section>
-        <div class="d-flex justify-content-center">
-            <h1 class="text-center">Översikt</h1>
+<section>
+    <div class="d-flex justify-content-center">
+        <h1 class="text-center">Översikt</h1>
+    </div>
+    @if (Model.Message != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <p style="text-align: center">
+                @Model.Message
+            </p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
-        <div class="d-flex justify-content-center">
-            @if (Model.ItemList.Length <= 0)
-            {
-                <p>
-                    Det verkar som att du inte har slängt någonting ännu, bra jobbat @Context.User.Identity.Name!
-                </p>
-            }
-            else
-            {
-                <p> Hittils har du slängt @Model.TotalAmount kg mat. För att få inspiration för hur du kan slänga mindre mat, gå till vår <a href="~/#inspiration">inspirationssida.</a></p>
+    }
+    <div class="d-flex justify-content-center">
+        @if (Model.ItemList.Length <= 0)
+        {
+            <p>
+                Det verkar som att du inte har slängt någonting ännu, bra jobbat @Context.User.Identity.Name!
+            </p>
+        }
+        else
+        {
+            <p> Hittils har du slängt @Model.TotalAmount kg mat. För att få inspiration för hur du kan slänga mindre, gå till vår <a href="~/#inspiration">inspirationssida.</a></p>
 
-            }
-            </div>
-            <div class="d-flex justify-content-center">
-                <a asp-controller="item" asp-action="add" class="btn btn-primary btn-xl rounded-pill mt-5">Lägg till slängd mat</a>
-            </div>
+        }
+    </div>
+    <div class="d-flex justify-content-center">
+        <a asp-controller="item" asp-action="add" class="btn btn-primary btn-xl rounded-pill mt-5">Lägg till slängd mat</a>
+    </div>
 </section>
 
 
-@if (Model.Message != null)
-{
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <p style="text-align: center">
-            @Model.Message
-        </p>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-}
 
 
 @*<canvas id="myChart" width="400" height="150"></canvas>*@
