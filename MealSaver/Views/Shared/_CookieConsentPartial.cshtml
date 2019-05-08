@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNetCore.Http.Features
+
+@{
+    var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
+    var showBanner = !consentFeature?.CanTrack ?? false;
+    var cookieString = consentFeature?.CreateConsentCookie();
+}
+
+@if (showBanner)
+{
+    <div id="cookieConsent" class="alert alert-danger alert-dismissible fade show text-center container-fluid" role="alert">
+        Vi använder oss av kakor, och dom vill du väl inte slänga? Så låt oss spara dom åt dig när du är här. <a asp-area="" asp-controller="Home" asp-action="Privacy"> Mer info</a>
+        <button type="button" class="accept-policy close" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
+            <span aria-hidden="true">Acceptera</span>
+        </button>
+    </div>
+    <script>
+        (function () {
+            var button = document.querySelector("#cookieConsent button[data-cookie-string]");
+            button.addEventListener("click", function (event) {
+                document.cookie = button.dataset.cookieString;
+            }, false);
+        })();
+    </script>
+}

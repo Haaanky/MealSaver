@@ -48,7 +48,6 @@ namespace MealSaver
 
             services.ConfigureApplicationCookie(o => o.LoginPath = "/logga-in"); // välja vart login ska vara
 
-
             // FoodObj database schema below 
             services.AddDbContext<FoodObjContext>(o => o.UseSqlServer(connString));
 
@@ -59,23 +58,32 @@ namespace MealSaver
 
             services.AddMvc(o =>
             {
-                if (env.IsProduction())
-                {
-                    o.Filters.Add(new RequireHttpsAttribute());
-                }
+                //if (env.IsProduction())
+                //{
+                //    o.Filters.Add(new RequireHttpsAttribute());
+                //}
             });
             services.AddHttpsRedirection(o =>
             {
-                o.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
-                o.HttpsPort = 5001;
+                //o.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
+                //o.HttpsPort = 5001;
 
             });
             services.AddSession();
             services.AddMemoryCache();
 
+
+            // Kulturinställningar
             var cultureInfo = new CultureInfo("sv-SE");
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
+            // Cookies
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -90,6 +98,7 @@ namespace MealSaver
                 app.UseHsts();
             }
             app.UseStatusCodePagesWithRedirects("/error/httpError/{0}");
+            app.UseCookiePolicy();
 
             app.UseSession();
             app.UseAuthentication();

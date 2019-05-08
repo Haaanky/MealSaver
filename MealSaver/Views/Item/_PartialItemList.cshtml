@@ -1,11 +1,12 @@
 ﻿@model ItemDisplayVM[]
 
-<div class="text-lg-center container">
-    <h2>Så här mycket har du slängt den senaste veckan:</h2>
-    <ul>
-        @foreach (var item in Model)
-        {
-            <li class="list-group-item">@item</li>
-        }
-    </ul>
-</div>
+    <div class="text-lg-center container">
+        <h2>Så här mycket har du slängt den senaste veckan:</h2>
+        <canvas id="myChart" width="400" height="100"></canvas>
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li class="list-group-item">@item</li>
+            }
+        </ul>
+    </div>

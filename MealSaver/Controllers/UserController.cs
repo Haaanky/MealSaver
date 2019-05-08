@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Configuration;
 
 namespace MealSaver.Controllers
 {
@@ -17,10 +18,13 @@ namespace MealSaver.Controllers
     {
         private readonly UserService userService;
         IMemoryCache cache;
-        public UserController(UserService userService, IMemoryCache cache)
+        private readonly IConfiguration _configuration;
+
+        public UserController(UserService userService, IMemoryCache cache, IConfiguration _configuration)
         {
             this.userService = userService;
             this.cache = cache;
+            this._configuration = _configuration;
         }
 
         [HttpGet]
@@ -43,7 +47,7 @@ namespace MealSaver.Controllers
 
             if (!result.Succeeded)
             {
-                ModelState.AddModelError(nameof(UserLoginVM.Username), "Login failed");
+                ModelState.AddModelError(nameof(UserLoginVM.Username), "Login misslyckades");
                 return View(userLoginVM);
             }
             if (!string.IsNullOrWhiteSpace(userLoginVM.ReturnUrl))
@@ -76,7 +80,14 @@ namespace MealSaver.Controllers
         {
             if (!ModelState.IsValid)
                 return View(userSignUpVM);
-
+            if (!InfoService.ReCaptchaPassed(
+                Request.Form["g-recaptcha-response"], // that's how you get it from the Request object
+                _configuration.GetSection("GoogleReCaptcha:secret").Value
+                ))
+            {
+                ModelState.AddModelError(nameof(userSignUpVM.ReCAPTCHA), "Du misslyckades med reCAPTCHA, dumma robot.");
+                return View(userSignUpVM);
+            }
             var result = await userService.TryRegisterAsync(userSignUpVM);
             if (!result.Succeeded)
             {
@@ -84,7 +95,6 @@ namespace MealSaver.Controllers
                 return View(userSignUpVM);
             }
 
-            //return RedirectToAction(nameof(Login)); // Ändra så att man blir inloggad direkt och hamnar på overview
 
             UserLoginVM userLoginVM = userSignUpVM; // Använder en implicit operator i UserLoginVM klassen, motsvarar:
             /*
@@ -101,7 +111,7 @@ namespace MealSaver.Controllers
 
             var success = await userService.TryLoginAsync(userLoginVM);
             //if (success.Succeeded)
-                // create temp data
+            // create temp data
             return Redirect("oversikt");
         }
     }

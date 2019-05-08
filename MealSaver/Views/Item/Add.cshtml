@@ -3,7 +3,7 @@
     ViewData["Title"] = "WasteLand";
 }
 
-<div class="d-flex">
+<div class="d-flex flex-row">
     <partial name=_PartialViewForm model=Model.FormVM />
 
     <div class="text-lg-center container">
@@ -15,7 +15,6 @@
         }
         else
         {
-            @*<canvas id="myChart" width="400" height="100"></canvas>*@
             <ul>
                 <partial name=_PartialItemList model=Model.ItemList />
             </ul>
@@ -37,7 +36,7 @@
                     @Html.Raw("'" + itemList[i].Type + "'" + (i<itemList.Length-1? ", ": string.Empty))
                 }],*@
                 datasets: [{
-                label: 'Slängd mat i g',
+                label: 'Slängd mat i Kg',
                     data: [@{
                         double fiskAmount = 0;
                         double fruktAmount = 0;

@@ -1,4 +1,6 @@
 ﻿@model UserSignUpVM
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
 
 @{
     ViewData["Title"] = "SignUp";
@@ -37,17 +39,22 @@
                 <span asp-validation-for="PasswordRepeat"></span>
             </div>
             <br />
+            <div class="g-recaptcha col-4 justify-content-center align-items-center container" data-sitekey=@Configuration["GoogleReCaptcha:key"]></div>
+            <br />
+            <span asp-validation-for="ReCAPTCHA"></span>
+            <br />
             @*<div class="form-check mb-2 mr-sm-2">
-                <input class="form-check-input" type="checkbox" id="inlineFormCheck">
-                <label class="form-check-label" for="inlineFormCheck">
-                    Kom ihåg mig
-                </label>
-            </div>*@
+                    <input class="form-check-input" type="checkbox" id="inlineFormCheck">
+                    <label class="form-check-label" for="inlineFormCheck">
+                        Kom ihåg mig
+                    </label>
+                </div>*@
             <button type="submit" class="btn btn-primary">Registera</button>
         </div>
     </form>
     <div asp-validation-summary="All"></div>
 </div>
 @section scripts {
-<partial name="_PartialValidationScripts" />
+    <partial name="_PartialValidationScripts" />
+    <partial name="_PartialReCAPTCHAScripts" />
 }

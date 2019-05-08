@@ -51,5 +51,14 @@ namespace MealSaver.Controllers
         {
             return PartialView("_PartialSocialMedia");
         }
+        [Route("om-webbplatsen")]
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+        public IActionResult PartialQuotes()
+        {
+            return PartialView("_PartialQuotes");
+        }
     }
 }
