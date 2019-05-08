@@ -1,5 +1,5 @@
-﻿body > footer > div.m-0.text-center.text-white.small.p-2.bd-highlight > div.d-flex.justify-content-center > a:nth-child(2) > p{
-    padding-left:20px;
+﻿body > footer > div.m-0.text-center.text-white.small.p-2.bd-highlight > div.d-flex.justify-content-center > a:nth-child(2) > p {
+    padding-left: 20px;
 }
 
 
@@ -20,6 +20,7 @@
     .bigScreen {
         display: none;
     }
+
     .smallScreen {
         display: block;
     }
@@ -29,7 +30,7 @@ body > section > div > form > div > div.g-recaptcha.col-4.justify-content-center
     margin-left: 18px;
 }
 
-.partialviewforminput{
+.partialviewforminput {
     min-width: 400px;
 }
 
@@ -120,4 +121,12 @@ body > section > div > form > div > div.g-recaptcha.col-4.justify-content-center
     float: none;
     display: table;
     color: #4ad1e5;
+}
+
+.alink {
+    color: hotpink;
+}
+.alink:hover {
+    color: hotpink;
+    text-decoration: underline;
 }
