@@ -124,7 +124,7 @@ body > section > div > form > div > div.g-recaptcha.col-4.justify-content-center
 }
 
 .home-divider {
-    background-color: rgba(251, 84, 27, 0.12156862745098039);
+    background-color: rgba(222, 226, 230, 0.5019607843137255);
 }
 
 .home-divider-img{
@@ -134,7 +134,6 @@ body > section > div > form > div > div.g-recaptcha.col-4.justify-content-center
     justify-content: center;
     
 }
-}
 
 .alink {
     color: hotpink;
@@ -142,4 +141,8 @@ body > section > div > form > div > div.g-recaptcha.col-4.justify-content-center
 .alink:hover {
     color: hotpink;
     text-decoration: underline;
+}
+
+a {
+    color: hotpink;
 }
