@@ -15,6 +15,7 @@ using MealSaver.Models;
 using Microsoft.Extensions.Configuration;
 using MealSaver.Models.Entities;
 using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 namespace MealSaver
 {
@@ -73,10 +74,6 @@ namespace MealSaver
             services.AddMemoryCache();
 
 
-            // Kulturinställningar
-            var cultureInfo = new CultureInfo("sv-SE");
-            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
-            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
             // Cookies
             services.Configure<CookiePolicyOptions>(options =>
@@ -88,6 +85,28 @@ namespace MealSaver
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            #region Localization
+            // REMARK: you may refactor this into a separate method as it's better to avoid long methods with regions
+            var supportedCultures = new[]
+            {
+            //new CultureInfo(defaultCultureName),
+            new CultureInfo("sv-SE")
+        };
+            var localizationOptions = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("sv-SE"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures,
+                // you can change the list of providers, if you don't want the default behavior
+                // e.g. the following line enables to pick up culture ONLY from cookies
+                RequestCultureProviders = new[] { new CookieRequestCultureProvider() }
+            };
+            app.UseRequestLocalization(localizationOptions);
+            #endregion
+            //Kulturinställningar
+            //var cultureInfo = new CultureInfo("sv-SE");
+            //CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            //CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

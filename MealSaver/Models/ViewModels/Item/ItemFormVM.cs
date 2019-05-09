@@ -23,10 +23,10 @@ namespace MealSaver.Models.ViewModels.Item
         public int SelectedWeightValue { get; set; }
 
         [Display(Name = "Mängd")]
-        [Range(0.1, 999)]
+        //[Range(1, 999)]
         [Required(ErrorMessage = "Välj hur mycket du slängt")]
         
-        public double Amount { get; set; }
+        public string Amount { get; set; }
 
         [Display(Name = "Datum")]
         public DateTime DateOfInput { get; set; } = DateTime.Now;

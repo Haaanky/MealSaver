@@ -64,7 +64,7 @@ namespace MealSaver.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Form(/*ItemAddVM userAddItemVM*/Item item)
+        public async Task<IActionResult> Form(Item item)
         {
             var currentUserID = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
             await itemService.AddItem(item, currentUserID);

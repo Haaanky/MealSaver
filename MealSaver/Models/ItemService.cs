@@ -44,12 +44,13 @@ namespace MealSaver.Models
                     break;
             }
 
+            var parsedAmount = double.Parse(item.Amount.Replace('.', ','));
             foodObjContext.Products.Add(new Products
             {
 
                 Type = item.Type.ToString(),
                 UnitOfMeasurement = item.UnitOfMeasurement.ToString(),
-                Amount = item.Amount,
+                Amount = parsedAmount,
                 Date = item.DateOfInput,
                 UserId = currentUserID
             });

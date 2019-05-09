@@ -32,7 +32,7 @@ namespace MealSaver.Models
     public class Item
     {
         public ProductType Type { get; set; }
-        public double Amount { get; set; }
+        public string Amount { get; set; }
         public UnitMeasurement UnitOfMeasurement { get; set; }
         public DateTime DateOfInput { get; set; }
         public int SelectedFoodValue { get; set; }
