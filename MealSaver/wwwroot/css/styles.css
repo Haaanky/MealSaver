@@ -123,10 +123,32 @@ body > section > div > form > div > div.g-recaptcha.col-4.justify-content-center
     color: #4ad1e5;
 }
 
+.home-divider {
+    background-color: rgba(222, 226, 230, 0.5019607843137255);
+}
+
+.home-divider-img{
+    
+    width: 250px;
+    height: auto;
+    justify-content: center;
+    
+}
+
 .alink {
     color: hotpink;
 }
 .alink:hover {
     color: hotpink;
     text-decoration: underline;
+}
+
+a {
+    color: hotpink;
+}
+
+@media only screen and (max-width: 600px) {
+    .chart {
+        width: 90vw !important;
+    }
 }
