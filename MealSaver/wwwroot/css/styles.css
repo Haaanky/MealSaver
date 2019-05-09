@@ -134,7 +134,6 @@ body > section > div > form > div > div.g-recaptcha.col-4.justify-content-center
     justify-content: center;
     
 }
-}
 
 .alink {
     color: hotpink;
@@ -146,4 +145,10 @@ body > section > div > form > div > div.g-recaptcha.col-4.justify-content-center
 
 a {
     color: hotpink;
+}
+
+@media only screen and (max-width: 600px) {
+    .chart {
+        width: 90vw !important;
+    }
 }
