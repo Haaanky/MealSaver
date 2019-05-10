@@ -72,12 +72,6 @@ namespace MealSaver
             services.AddSession();
             services.AddMemoryCache();
 
-
-            // Kulturinställningar
-            var cultureInfo = new CultureInfo("sv-SE");
-            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
-            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
-
             // Cookies
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -88,6 +82,11 @@ namespace MealSaver
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            // Kulturinställningar
+            var cultureInfo = new CultureInfo("sv-SE");
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
