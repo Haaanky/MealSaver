@@ -27,13 +27,6 @@ namespace MealSaver.Controllers
             this.cache = cache;
         }
 
-        public void Test()
-        {
-            for (int i = 0; i < 10; i++)
-            {
-
-            }
-        }
         [HttpGet]
         [Route("oversikt")]
         public IActionResult Overview()
